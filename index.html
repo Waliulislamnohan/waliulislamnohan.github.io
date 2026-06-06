@@ -1,322 +1,809 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MD Waliul Islam Nohan | AI Researcher & Founder</title>
-
-  <meta name="description"
-        content="AI Researcher, Founder, UN SDG Championship recognized. Working on efficient AI systems, SLMs, and deep learning research."/>
-
-  <!-- Devicon -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css"/>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MD Waliul Islam Nohan | AI Systems Architect</title>
   <style>
     :root {
-      --primary:#2d4799;
-      --bg:#f7f9fc;
-      --text:#0f172a;
-      --muted:#475569;
-      --card:#ffffff;
-      --chip:#eef2ff;
+      --ink: #17212b;
+      --muted: #5c6a75;
+      --line: #d8e0e6;
+      --paper: #fbfcfd;
+      --accent: #0f766e;
+      --accent-2: #b45309;
+      --panel: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
-      background:var(--bg);
-      color:var(--text);
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
     }
 
-    .container {
-      max-width:1180px;
-      margin:auto;
-      padding:64px 24px;
+    main {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 34px 0 42px;
     }
 
-    h1 { font-size:56px; margin:0; }
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 22px;
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
     h2 {
-      margin-top:80px;
-      font-size:34px;
-      border-left:6px solid var(--primary);
-      padding-left:16px;
+      margin: 28px 0 16px;
+      font-size: 20px;
+      letter-spacing: 0;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
     }
-    h3 { margin-top:0; }
 
-    p { line-height:1.75; color:var(--muted); }
+    h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
 
     a {
-      color:var(--primary);
-      text-decoration:none;
-      font-weight:600;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    
+    a:hover {
+      text-decoration: underline;
     }
 
-    /* HERO */
-    .hero { display:grid; gap:28px; }
-    .badge {
-      background:var(--primary);
-      color:#fff;
-      padding:8px 16px;
-      border-radius:999px;
-      font-size:14px;
-      width:max-content;
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-weight: 750;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: .08em;
     }
 
-    .logos {
-      display:flex;
-      flex-wrap:wrap;
-      gap:28px;
-      align-items:center;
-      margin-top:12px;
+    .subtitle {
+      margin-top: 12px;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 18px;
     }
 
-    .logos img { height:44px; }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-    /* GRID / CARD */
+    .contact span {
+      white-space: nowrap;
+    }
+
     .grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:28px;
-      margin-top:36px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    section {
+      margin: 24px 0;
     }
 
     .card {
-      background:var(--card);
-      border-radius:18px;
-      padding:28px;
-      box-shadow:0 12px 36px rgba(0,0,0,.08);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      break-inside: avoid;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .card-content {
+      margin-bottom: 12px;
     }
 
-    /* TIMELINE */
-    .timeline {
-      margin-top:40px;
-      display:grid;
-      gap:28px;
+    .callout {
+      border-left: 5px solid var(--accent);
+      background: #eef8f6;
+      padding: 16px 18px;
+      border-radius: 8px;
     }
 
-    .timeline-item {
-      background:#fff;
-      border-left:6px solid var(--primary);
-      padding:26px 30px;
-      border-radius:14px;
-      box-shadow:0 10px 28px rgba(0,0,0,.06);
+    .price {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--accent-2);
+      font-weight: 800;
     }
 
-    .timeline-item span {
-      font-weight:700;
-      color:var(--primary);
-      display:block;
-      margin-bottom:8px;
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
     }
 
-    /* TECH */
-    .tech-title {
-      font-weight:700;
-      margin:32px 0 16px;
+    li {
+      margin: 5px 0;
     }
 
-    .tech-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-      gap:28px;
-      text-align:center;
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
     }
 
-    .tech i {
-      font-size:48px;
-      color:var(--primary);
+    .metric {
+      border-top: 3px solid var(--accent);
+      background: var(--panel);
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .tech p {
-      margin-top:10px;
-      font-size:14px;
-      color:var(--muted);
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.1;
     }
 
-    /* CHIPS */
-    .chip-grid {
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:20px;
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    .chip {
-      background:var(--chip);
-      color:var(--primary);
-      padding:10px 14px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:600;
+    .tagline {
+      font-size: 21px;
+      font-weight: 750;
+      line-height: 1.25;
+      margin-bottom: 8px;
     }
 
-    footer {
-      text-align:center;
-      margin:96px 0 40px;
-      color:var(--muted);
+    .muted {
+      color: var(--muted);
+    }
+    
+    .project-links {
+      margin-top: auto;
+      padding-top: 10px;
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .journey-strip {
+      display: grid;
+      gap: 12px;
+    }
+
+    .journey-main {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .journey-grid img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 24px, 980px);
+        padding-top: 24px;
+      }
+
+      .two,
+      .three,
+      .metrics,
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact span {
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      main {
+        width: auto;
+        padding: 0;
+      }
+
+      a {
+        color: var(--ink);
+      }
+
+      .card,
+      .metric,
+      .callout {
+        box-shadow: none;
+      }
     }
   </style>
 </head>
-
 <body>
-<div class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <span class="badge">AI Researcher • Founder • Self-Taught Engineer</span>
-    <h1>MD Waliul Islam Nohan</h1>
-
-    <p>
-      Bangladeshi AI researcher and entrepreneur working on
-      <strong>efficient AI systems, small language models, and deep-learning architectures</strong>.
-      My focus is on pre-training, fine-tuning, and deploying original models that
-      minimize compute while preserving intelligence.
-    </p>
-
-    <p>
-      This site documents a technical evolution — from physics-driven systems thinking
-      to globally recognized AI research and company building.
-    </p>
-
-    <div class="logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Y_Combinator_logo.png/320px-Y_Combinator_logo.png">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/320px-NASA_logo.svg.png">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/United_Nations_emblem_blue.svg/320px-United_Nations_emblem_blue.svg.png">
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section>
-    <h2>Selected Achievements</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>UN SDG Championship 2025</h3>
-        <p>
-          Research recognized by a UN-led global initiative:
-          <strong>“$46 AI Model Beats $46M Quantum Project of India”</strong>,
-          demonstrating scalable AI-driven quantum circuit simulation.
-        </p>
+  <main>
+    <header>
+      <p class="eyebrow">AI Systems Architect | Founder | Startup & Product Auditor</p>
+      <h1>MD Waliul Islam Nohan</h1>
+      <p class="subtitle">I help companies, startups, and investors identify where AI can reduce cost, increase revenue, or expose product and technology risk, then help build the first working system within 7-14 days.</p>
+      <div class="contact">
+        <span>Email: waliulnohan@gmail.com</span>
+        <span>Phone/WhatsApp: +8801875490002 </span>
+        <span>LinkedIn: <a href="https://www.linkedin.com/in/md-waliul-islam-nohan/">Profile</a></span>
+        <span>GitHub: <a href="https://github.com/Waliulislamnohan">Waliulislamnohan</a></span>
       </div>
+    </header>
 
-      <div class="card">
-        <h3>NASA Space Apps Challenge</h3>
-        <p>
-          Two-time winner at the world’s largest space and data hackathon,
-          building AI solutions across climate, space, and sustainability.
-        </p>
+    <section class="callout">
+      <p class="tagline">Best used when a company needs AI clarity fast: what to build, what to avoid, what it will cost, and how to execute with the right team.</p>
+      <p class="muted">Available for AI audits, automation sprints, product due diligence, project rescue, AI roadmap design, and monthly CTO/AI advisor support.</p>
+    </section>
+
+    <section>
+      <h2>Builder Journey: 2021-2026</h2>
+      <div class="journey-strip">
+        <img class="journey-main" src="assets/nohan-journey-1.png" alt="Nohan journey timeline from junior engineer onward">
+        <div class="journey-grid">
+          <img src="assets/nohan-journey-2.png" alt="Hackathon and international competition achievements">
+          <img src="assets/nohan-journey-3.png" alt="Project manager, AI tech lead, Jobs Navi and Golden Vault timeline">
+          <img src="assets/nohan-journey-4.png" alt="Aaladin AI, EnglishMate, judging and ML hackathon work">
+          <img src="assets/nohan-journey-5.png" alt="2026 vision covering AI consulting, research tour, talent scout and product review">
+        </div>
       </div>
+      <p class="muted">The pattern: self-taught engineering, production systems, hackathon/community leadership, AI product building, startup execution, consulting, and research-facing global ambition.</p>
+    </section>
 
-      <div class="card">
-        <h3>World Robotics Championship</h3>
-        <p>
-          Achieved <strong>4th place globally</strong> at Technoxian,
-          competing in advanced robotics and intelligent systems.
-        </p>
+    <section>
+      <div class="metrics">
+        <div class="metric">
+          <strong>20+</strong>
+          <span>AI systems architected and delivered</span>
+        </div>
+        <div class="metric">
+          <strong>25+</strong>
+          <span>member engineering and operations team led</span>
+        </div>
+        <div class="metric">
+          <strong>5+</strong>
+          <span>years of software, AI, and product experience</span>
+        </div>
+        <div class="metric">
+          <strong>100+</strong>
+          <span>developers organized through community leadership</span>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>YC-Backed Company Selection</h3>
-        <p>
-          Selected as the <strong>first self-taught engineer</strong> at a YC-backed company (Chaldal),
-          contributing to production systems with thousands of daily users.
-        </p>
+    <section>
+      <h2>What I Can Help With</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="card-content">
+            <h3>For Investors</h3>
+            <p>Audit AI startups and products before funding or partnership decisions.</p>
+            <ul>
+              <li>Product viability</li>
+              <li>AI feasibility</li>
+              <li>Tech and team risk</li>
+              <li>Cost and scalability review</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <h3>For Startups</h3>
+            <p>Turn AI ideas into systems with a practical architecture and delivery plan.</p>
+            <ul>
+              <li>MVP architecture</li>
+              <li>AI pipeline design</li>
+              <li>Team management</li>
+              <li>Product rescue and rebuild</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <h3>For Companies</h3>
+            <p>Integrate new technology into sales, support, finance, education, HR, and operations.</p>
+            <ul>
+              <li>Workflow automation</li>
+              <li>Internal AI tools</li>
+              <li>AI roadmap</li>
+              <li>Team training</li>
+            </ul>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EVOLUTION -->
-  <section>
-    <h2>Evolution & Origin</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span>2005 – 2018 · Foundation</span>
-        Grew up in a constrained environment, which shaped independent thinking
-        and unconventional learning.
+    <section>
+      <h2>Services & Packages</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="card-content">
+            <h3>Startup/Product Audit</h3>
+            <span class="price">1.5-2.5 lakh BDT | 3-5 days</span>
+            <p>Product, AI, technology, team, cost, and scalability review with an investor-style risk report and next-step roadmap.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <h3>AI Automation Sprint</h3>
+            <span class="price">3-4 lakh BDT | 7 days</span>
+            <p>Workflow audit, AI opportunity prioritization, one working prototype or automation, roadmap, and handover.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <h3>AI Transformation Sprint</h3>
+            <span class="price">5-7 lakh BDT | 14 days</span>
+            <p>Full AI opportunity audit, production-ready or near-production workflow, system architecture, team training, and 30-day advisory support.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <h3>Monthly CTO / AI Advisor</h3>
+            <span class="price">5 lakh BDT/month</span>
+            <p>Weekly architecture review, AI roadmap, developer/team management, hiring support, product delivery supervision, and founder reporting.</p>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <span>2018 – 2020 · Physics & Systems Thinking</span>
-        Interest in astrophysics and rocket propulsion built a systems-first mindset.
+    <section>
+      <h2>Selected Project Proof</h2>
+      <div class="grid two">
+        <!-- AI Sales CRM -->
+        <article class="card">
+          <div class="card-content">
+            <h3>AI Sales CRM (Fuel AI)</h3>
+            <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions with AI agents that mimic human-like responses, streamlining sales workflows and boosting efficiency.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://app.fuelai.com/" target="_blank">🔗 App Platform</a>
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- AI Business Launchpad -->
+        <article class="card">
+          <div class="card-content">
+            <h3>AI Business Launchpad (Scalova AI)</h3>
+            <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch decks, responsive websites, marketing copy, and automated videos utilizing multiple AI models.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://www.scalova.ai/" target="_blank">🔗 Live Website</a>
+          </div>
+        </article>
+
+        <!-- AI Fabricator -->
+        <article class="card">
+          <div class="card-content">
+            <h3>AI Fabricator</h3>
+            <p>No-code AI agent and autonomous workflow creator connecting internal tools, external APIs, and custom language models through an intuitive drag-and-drop orchestration interface.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/1194998760?fl=ip&fe=ec" target="_blank">▶️ Video Demo</a>
+          </div>
+        </article>
+
+        <!-- Health AI -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Health AI (Cognipath)</h3>
+            <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish" symptom parsing and maps directly to nationwide formulary and regulatory standards.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/1195006778?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
+          </div>
+        </article>
+
+        <!-- EnglishMate -->
+        <article class="card">
+          <div class="card-content">
+            <h3>EnglishMate</h3>
+            <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar feedback, context repair, and semantic paraphrasing.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://youtu.be/_7skSK4btac" target="_blank">▶️ Video Presentation</a>
+            <a href="https://englishmate.vercel.app/" target="_blank">🔗 Live Website</a>
+          </div>
+        </article>
+
+        <!-- SiteGenie -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Site Genie</h3>
+            <p>An intelligent generative website engine that constructs fully modular, customized, and responsive web systems in minutes based simply on cross-prompt textual business design ideas.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/1195005006?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
+          </div>
+        </article>
+
+        <!-- Productivity AI -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Productivity AI (Lineage P&amp;ID Tool)</h3>
+            <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID diagrams effortlessly via intuitive collaborative interfaces.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- The 3rd Eye -->
+        <article class="card">
+          <div class="card-content">
+            <h3>The 3rd Eye (Search Anything)</h3>
+            <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor Module, role-based security, and natural language query systems.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- TrackIO -->
+        <article class="card">
+          <div class="card-content">
+            <h3>TrackIO (Vehicle Monitoring AI)</h3>
+            <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting, fuel usage analysis, and automated route deviation alarms.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- City Pass -->
+        <article class="card">
+          <div class="card-content">
+            <h3>City Pass</h3>
+            <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling trackers, and travel accessibility vectors.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- FloodShield -->
+        <article class="card">
+          <div class="card-content">
+            <h3>FloodShield</h3>
+            <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical flood mapping and crisis chatbot assistance.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/1195007708?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
+          </div>
+        </article>
+
+        <!-- Justice AI -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Justice AI</h3>
+            <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal tracking services.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://justice-frontend-v3.vercel.app/" target="_blank">🔗 Live Website</a>
+          </div>
+        </article>
+
+        <!-- FlyNepal -->
+        <article class="card">
+          <div class="card-content">
+            <h3>FlyNepal (Travel App)</h3>
+            <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking options under an structured user environment.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- Karigori -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Karigori</h3>
+            <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction pipelines.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://youtu.be/ByWUNkfRdCA?si=MxVO6_vTUhyGnclk" target="_blank">▶️ Video Guide</a>
+          </div>
+        </article>
+
+        <!-- Golden Vault -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Golden Vault</h3>
+            <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement metrics.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://youtu.be/t02S9t3NjfY?si=Ral0-U1mnwVYibKP" target="_blank">▶️ Video Walkthrough</a>
+            <a href="https://goldenvault.org/" target="_blank">🔗 Platform</a>
+          </div>
+        </article>
+
+        <!-- Halal GPT -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Halal GPT (Huda 2.0)</h3>
+            <p>An internationally compliant, secure theological conversational knowledge platform utilizing cross-referenced scholarly guidance verification models.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://halal-gpt.vercel.app/" target="_blank">🔗 Chat Platform</a>
+          </div>
+        </article>
+
+        <!-- Monitor AI -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Monitor AI</h3>
+            <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and descriptive guardian updates.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- Background Removal App -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Background Removal App</h3>
+            <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and content creators.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- AI Reel Creator -->
+        <article class="card">
+          <div class="card-content">
+            <h3>AI Reel Creator (Re:elify)</h3>
+            <p>A specialized processing platform leveraged to generate short-form automated marketing media assets, tailored for scalable engagement on modern programmatic video feeds.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/916289327?fl=ip&fe=ec" target="_blank">▶️ Video Demo</a>
+          </div>
+        </article>
+
+        <!-- Edulink -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Edulink</h3>
+            <p>An official government application portal streamlining administrative processing pipelines and information workflows safely and accurately.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/1195008263?fl=ip&fe=ec" target="_blank">▶️ Video Demo</a>
+          </div>
+        </article>
+
+        <!-- Caspian Life -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Caspian Life</h3>
+            <p>Corporate platform setup featuring advanced interface optimizations, cloud configurations, and automated system setups.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://vimeo.com/1054611202?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Presentation</a>
+          </div>
+        </article>
+
+        <!-- Pragati AI & MediGuru -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Pragati AI &amp; MediGuru</h3>
+            <p>Smart localized competitive mock diagnostics platforms leveraging automated guidance systems, metrics, flashcards, and tracking vectors for students across Bangladesh.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://pragatiai.vercel.app/leaderboard" target="_blank">🔗 Pragati Leaderboard</a>
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- Project Manager AI -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Project Manager AI</h3>
+            <p>Automated workflow companion built to optimize task operational assignments, map core execution bottlenecks, and predict delays using predictive analytics tracking.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- PurePic Platform -->
+        <article class="card">
+          <div class="card-content">
+            <h3>PurePic</h3>
+            <p>An automated inventory management, digital storefront optimization, and operational monitoring suite customized directly for fast-growing small business environments.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- Enterprise ERP Suite -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Aaladin AI Enterprise ERP</h3>
+            <p>Deep automated resource planning system combining underlying corporate asset metrics, payroll logs, inventory structures, and visual data layers under unified platforms.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- Compliance SOP Suite -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Aaladin AI SOP Digitizer</h3>
+            <p>Operational standardizing module crafted to convert flat corporate compliance text tracks into interactive structured trackable visual workflows cleanly.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
+          </div>
+        </article>
+
+        <!-- General Web Assets -->
+        <article class="card">
+          <div class="card-content">
+            <h3>Commercial Web Foundations</h3>
+            <p>Production architectural systems delivered for specialized services including <i>Gadgets All BD</i>, <i>Roshan Transport</i>, and <i>Vector Power</i>.</p>
+          </div>
+          <div class="project-links">
+            <a href="https://gadgetsallbd.com/" target="_blank">🔗 GadgetsAll</a>
+            <a href="https://www.vectorpowerbd.com/" target="_blank">🔗 VectorPower</a>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <span>2021 – 2023 · Software → AI</span>
-        Transitioned into large-scale software systems and ML-driven products.
+    <!-- Core Research Tracks & Ongoing Foundations Section -->
+    <section>
+      <h2>Deep Tech Research &amp; Core Innovations (Ongoing)</h2>
+      <div class="grid two">
+        <!-- OCR AI -->
+        <article class="card">
+          <div class="card-content">
+            <h3>1. Custom Precision OCR AI Engine</h3>
+            <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical symbols, and structural data maps into centralized testing databases.</p>
+          </div>
+          <div class="project-links">
+            <span class="muted">Status: Core Integration Module</span>
+          </div>
+        </article>
+
+        <!-- Voice AI (STS) -->
+        <article class="card">
+          <div class="card-content">
+            <h3>2. Bangla Conversational Voice AI (STS)</h3>
+            <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B communication automation pipelines.</p>
+          </div>
+          <div class="project-links">
+            <span class="muted">Status: API Pipeline Active</span>
+          </div>
+        </article>
+
+        <!-- SLM -->
+        <article class="card">
+          <div class="card-content">
+            <h3>3. Custom Efficient Small Language Model (SLM)</h3>
+            <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than commercial alternatives.</p>
+          </div>
+          <div class="project-links">
+            <span class="muted">Status: Core Research &amp; Testing</span>
+          </div>
+        </article>
+
+        <!-- VLM -->
+        <article class="card">
+          <div class="card-content">
+            <h3>4. Custom Vision Language Model (VLM)</h3>
+            <p>Deep-learning visual interpretation systems applied directly to custom object classifications, live monitoring matrices, and specialized imagery recognition workflows.</p>
+          </div>
+          <div class="project-links">
+            <span class="muted">Status: Active Development</span>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <span>2024 – Present · AI Research & Company Building</span>
-        Focused on efficient deep learning, proprietary models, and global research impact.
+    <section>
+      <h2>Background & Credibility</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="card-content">
+            <h3>Experience</h3>
+            <ul>
+              <li>Founder & Chief AI Architect at Aaladin AI</li>
+              <li>Former AI Tech Lead at Envobyte</li>
+              <li>Former Junior Software Engineer at YC-backed Chaldal</li>
+              <li>Built and led technical teams for client delivery, hackathons, and AI systems</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <h3>Recognition</h3>
+            <ul>
+              <li>2x NASA Space Apps winner</li>
+              <li>World Robotics Championship recognition</li>
+              <li>Hackathon judge and ML question setter</li>
+              <li>Research validation through UN SDG Championship</li>
+            </ul>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- STACK -->
-  <section>
-    <h2>AI, Research & Systems Stack</h2>
+    <section>
+      <h2>Technical Scope</h2>
+      <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot, NestJS, PostgreSQL, MySQL, MongoDB, Docker, AWS EC2/RDS/S3/Lambda, CI/CD, Kafka, RabbitMQ, Swagger, and production architecture.</p>
+    </section>
 
-    <div class="tech-title">Core AI & Deep Learning</div>
-    <div class="tech-grid">
-      <div class="tech"><i class="devicon-python-plain"></i><p>Python</p></div>
-      <div class="tech"><i class="devicon-pytorch-original"></i><p>PyTorch</p></div>
-      <div class="tech"><i class="devicon-tensorflow-original"></i><p>TensorFlow</p></div>
-      <div class="tech"><i class="devicon-numpy-original"></i><p>NumPy</p></div>
-      <div class="tech"><i class="devicon-pandas-original"></i><p>Pandas</p></div>
-    </div>
-
-    <div class="tech-title">Advanced AI Concepts</div>
-    <div class="chip-grid">
-      <div class="chip">Neural Networks</div>
-      <div class="chip">CNNs</div>
-      <div class="chip">Transformers</div>
-      <div class="chip">Pre-training</div>
-      <div class="chip">Fine-tuning</div>
-      <div class="chip">LoRA</div>
-      <div class="chip">PEFT</div>
-      <div class="chip">RAG</div>
-      <div class="chip">Distributed Training</div>
-      <div class="chip">Inference Optimization</div>
-      <div class="chip">Small Language Models</div>
-    </div>
-
-    <div class="tech-title">Data Engineering & Orchestration</div>
-    <div class="chip-grid">
-      <div class="chip">Apache Airflow</div>
-      <div class="chip">Apache Spark</div>
-      <div class="chip">Snowflake</div>
-      <div class="chip">ETL Pipelines</div>
-      <div class="chip">Feature Engineering</div>
-    </div>
-  </section>
-
-  <!-- VISION -->
-  <section>
-    <h2>Research Vision</h2>
-    <p>
-      My research focuses on building <strong>efficient, non-replicable AI systems</strong>
-      that reduce dependency on massive compute while maintaining intelligence.
-    </p>
-    <p>
-      Long-term objective: foundational AI research, patent-ready architectures,
-      and positioning Bangladesh as a global AI contributor.
-    </p>
-  </section>
-
-  <!-- CONTACT -->
-  <section>
-    <h2>Contact & Presence</h2>
-    <ul>
-      <li>Email: <a href="mailto:waliulnohan@gmail.com">waliulnohan@gmail.com</a></li>
-      <li>GitHub: <a href="https://github.com/Waliulislamnohan">github.com/Waliulislamnohan</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/md-waliul-islam-nohan/">linkedin.com/in/md-waliul-islam-nohan</a></li>
-    </ul>
-  </section>
-
-  <footer>
-    © 2026 — Research over hype. Systems over slogans.
-  </footer>
-
-</div>
+    <section class="footer">
+      <p><strong>Suggested next step:</strong> 20-minute discovery call to identify the highest-value AI opportunity, audit risk, and decide whether a 3-14 day paid sprint makes sense.</p>
+    </section>
+  </main>
 </body>
 </html>
