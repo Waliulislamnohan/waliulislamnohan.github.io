@@ -13,6 +13,7 @@
       --accent: #0f766e;
       --accent-2: #b45309;
       --panel: #ffffff;
+      --success: #16a34a;
     }
 
     * {
@@ -114,6 +115,10 @@
 
     .three {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     section {
@@ -241,6 +246,112 @@
       background: #ffffff;
     }
 
+    /* Scenario cards */
+    .scenario-card {
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scenario-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 6px 16px rgba(15, 118, 110, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .scenario-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .scenario-title {
+      font-size: 17px;
+      font-weight: 750;
+      margin-bottom: 10px;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .scenario-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .scenario-trigger {
+      background: #f5f5f5;
+      border-left: 3px solid var(--accent-2);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .scenario-solution {
+      display: inline-block;
+      font-size: 12px;
+      padding: 8px 14px;
+      background: #eef8f6;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: auto;
+    }
+
+    /* Free Consultation CTA */
+    .free-offer-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .free-offer-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .free-offer-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .free-offer-cta {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .free-offer-cta:hover {
+      background: #0a5c5e;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+    }
+
     @media (max-width: 760px) {
       main {
         width: min(100% - 24px, 980px);
@@ -249,6 +360,7 @@
 
       .two,
       .three,
+      .four,
       .metrics,
       .journey-grid {
         grid-template-columns: 1fr;
@@ -256,6 +368,14 @@
 
       .contact span {
         white-space: normal;
+      }
+
+      .free-offer-box {
+        padding: 18px;
+      }
+
+      .free-offer-title {
+        font-size: 18px;
       }
     }
 
@@ -286,7 +406,7 @@
     <header>
       <p class="eyebrow">AI Systems Architect | Founder | Startup & Product Auditor</p>
       <h1>MD Waliul Islam Nohan</h1>
-      <p class="subtitle">I help companies, startups, and investors identify where AI can reduce cost, increase revenue, or expose product and technology risk, then help build the first working system within 7-14 days.</p>
+      <p class="subtitle">I help companies, startups, and investors identify where AI can reduce cost, increase revenue, or expose product and technology risk, then help build the first working system[...]
       <div class="contact">
         <span>Email: waliulnohan@gmail.com</span>
         <span>Phone/WhatsApp: +8801875490002 </span>
@@ -311,7 +431,7 @@
           <img src="assets/nohan-journey-5.png" alt="2026 vision covering AI consulting, research tour, talent scout and product review">
         </div>
       </div>
-      <p class="muted">The pattern: self-taught engineering, production systems, hackathon/community leadership, AI product building, startup execution, consulting, and research-facing global ambition.</p>
+      <p class="muted">The pattern: self-taught engineering, production systems, hackathon/community leadership, AI product building, startup execution, consulting, and research-facing global ambition[...]
     </section>
 
     <section>
@@ -377,9 +497,59 @@
       </div>
     </section>
 
-Here is the updated code block for your section, formatted as requested with the detailed bullet points and target groups mapped out for all four packages.
+    <!-- Your Situation, Your Solution -->
+    <section>
+      <h2 style="text-align: center; margin-bottom: 28px;">Match Your Situation to Your Solution</h2>
+      <div class="grid four">
+        <!-- Scenario 1 -->
+        <article class="scenario-card">
+          <div class="scenario-icon">🚨</div>
+          <div class="scenario-title">You Overcommitted Your Client/Investor</div>
+          <p class="scenario-desc">You promised AI features or a launch date—and now you're burning cash with little to show and time running out.</p>
+          <div class="scenario-trigger">Your reality: "We have 5-10 days to save this."</div>
+          <span class="scenario-solution">🚨 Rescue Sprint</span>
+        </article>
 
-```html
+        <!-- Scenario 2 -->
+        <article class="scenario-card">
+          <div class="scenario-icon">🔄</div>
+          <div class="scenario-title">Founder Wanting to Pivot</div>
+          <p class="scenario-desc">Your product works, but you need to add AI differentiation. Can you actually execute it with your current team?</p>
+          <div class="scenario-trigger">Your question: "Is this realistic? Should we rebuild?"</div>
+          <span class="scenario-solution">📋 Product Audit</span>
+        </article>
+
+        <!-- Scenario 3 -->
+        <article class="scenario-card">
+          <div class="scenario-icon">🔍</div>
+          <div class="scenario-title">VC/Investor Due Diligence</div>
+          <p class="scenario-desc">You need a technical insider's view of an AI startup before funding. Does their tech work? Are the risks real?</p>
+          <div class="scenario-trigger">Your need: "Deep technical audit from someone who knows BS."</div>
+          <span class="scenario-solution">🔬 Tech Audit</span>
+        </article>
+
+        <!-- Scenario 4 -->
+        <article class="scenario-card">
+          <div class="scenario-icon">💼</div>
+          <div class="scenario-title">Scaling Your Internal AI Tool</div>
+          <p class="scenario-desc">You automated your business with Claude/LangChain. Now you want to productize it and sell it to others.</p>
+          <div class="scenario-trigger">Your ambition: "How do we package this into a product?"</div>
+          <span class="scenario-solution">🚀 Product Sprint</span>
+        </article>
+      </div>
+
+      <!-- Free Consultation Offer -->
+      <div class="free-offer-box">
+        <div class="free-offer-title">💡 Got an Interesting Problem?</div>
+        <p class="free-offer-subtitle">
+          If your product or story is compelling enough, I may do a consultation call <strong>for free</strong>. Tell me what you're building, what you're stuck on, and why it matters. If it clicks, we'll jump on a call.
+        </p>
+        <a href="mailto:waliulnohan@gmail.com?subject=Let%27s%20discuss%20my%20AI%20product%20%26%20story" class="free-offer-cta">
+          ✉️ Tell Me Your Story
+        </a>
+      </div>
+    </section>
+
     <section>
       <h2>Services & Packages</h2>
       <div class="grid two">
@@ -482,19 +652,18 @@ Here is the updated code block for your section, formatted as requested with the
           </div>
         </article>
 
-
-<!-- Package 5: Elite AI Product Rescue Sprint -->
+        <!-- Package 5: Elite AI Product Rescue Sprint -->
         <article class="card" style="border: 2px solid var(--accent-2); background: #fffbeb; grid-column: span 2;">
           <div class="card-content">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
               <h3 style="margin: 0; color: var(--accent-2); font-size: 18px; font-weight: 800;">🚨 AI Product Rescue Sprint</h3>
-              <span style="background: var(--accent-2); color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em;">High Priority</span>
+              <span style="background: var(--accent-2); color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em;">High Impact</span>
             </div>
             <span class="price" style="margin-bottom: 12px;">Custom Pricing | 5-10 Days Rapid Turnaround</span>
             
             <p><strong>What you get:</strong></p>
             <ul>
-              <li><strong>Immediate Technical Triage:</strong> Instant 24-hour audit of your current code infrastructure, API bottlenecks, data leaks, and model-level failure points to find exactly what is broken.</li>
+              <li><strong>Immediate Technical Triage:</strong> Instant 24-hour audit of your current code infrastructure, API bottlenecks, data leaks, and model-level failure points to find exactly what's broken.</li>
               <li><strong>Forward-Deployed Engineering:</strong> Hands-on, deep-dive tactical intervention led directly by an elite engineer deployed straight into your stack to get their hands dirty.</li>
               <li><strong>Emergency Re-Architecting:</strong> Rapid codebase restructuring, pipeline stabilization, and bug resolution within a tight 5 to 10-day sprint window.</li>
               <li><strong>Guaranteed Milestone Delivery:</strong> A fully revived, stable, and functioning production release ready for deployment.</li>
@@ -509,12 +678,8 @@ Here is the updated code block for your section, formatted as requested with the
             </ul>
           </div>
         </article>
-
-
       </div>
     </section>
-
-
 
     <section>
       <h2>Selected Project Proof</h2>
@@ -523,7 +688,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>AI Sales CRM (Fuel AI)</h3>
-            <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions with AI agents that mimic human-like responses, streamlining sales workflows and boosting efficiency.</p>
+            <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions wit[...]
           </div>
           <div class="project-links">
             <a href="https://app.fuelai.com/" target="_blank">🔗 App Platform</a>
@@ -535,7 +700,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>AI Business Launchpad (Scalova AI)</h3>
-            <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch decks, responsive websites, marketing copy, and automated videos utilizing multiple AI models.</p>
+            <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch [...]
           </div>
           <div class="project-links">
             <a href="https://www.scalova.ai/" target="_blank">🔗 Live Website</a>
@@ -557,7 +722,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>Health AI (Cognipath)</h3>
-            <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish" symptom parsing and maps directly to nationwide formulary and regulatory standards.</p>
+            <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish" symp[...]
           </div>
           <div class="project-links">
             <a href="https://vimeo.com/1195006778?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
@@ -568,7 +733,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>EnglishMate</h3>
-            <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar feedback, context repair, and semantic paraphrasing.</p>
+            <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar feedba[...]
           </div>
           <div class="project-links">
             <a href="https://youtu.be/_7skSK4btac" target="_blank">▶️ Video Presentation</a>
@@ -590,8 +755,8 @@ Here is the updated code block for your section, formatted as requested with the
         <!-- Productivity AI -->
         <article class="card">
           <div class="card-content">
-            <h3>Productivity AI (Lineage P&amp;ID Tool)</h3>
-            <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID diagrams effortlessly via intuitive collaborative interfaces.</p>
+            <h3>Productivity AI (Lineage P&ID Tool)</h3>
+            <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID diagrams[...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -602,7 +767,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>The 3rd Eye (Search Anything)</h3>
-            <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor Module, role-based security, and natural language query systems.</p>
+            <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor Modul[...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -613,7 +778,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>TrackIO (Vehicle Monitoring AI)</h3>
-            <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting, fuel usage analysis, and automated route deviation alarms.</p>
+            <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting, fue[...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -624,7 +789,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>City Pass</h3>
-            <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling trackers, and travel accessibility vectors.</p>
+            <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling tracke[...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -635,7 +800,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>FloodShield</h3>
-            <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical flood mapping and crisis chatbot assistance.</p>
+            <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical floo[...]
           </div>
           <div class="project-links">
             <a href="https://vimeo.com/1195007708?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
@@ -646,7 +811,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>Justice AI</h3>
-            <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal tracking services.</p>
+            <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal tracki[...]
           </div>
           <div class="project-links">
             <a href="https://justice-frontend-v3.vercel.app/" target="_blank">🔗 Live Website</a>
@@ -657,7 +822,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>FlyNepal (Travel App)</h3>
-            <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking options under an structured user environment.</p>
+            <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking options[...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -668,7 +833,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>Karigori</h3>
-            <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction pipelines.</p>
+            <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction pipel[...]
           </div>
           <div class="project-links">
             <a href="https://youtu.be/ByWUNkfRdCA?si=MxVO6_vTUhyGnclk" target="_blank">▶️ Video Guide</a>
@@ -679,7 +844,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>Golden Vault</h3>
-            <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement metrics.</p>
+            <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement metrics.<[...]
           </div>
           <div class="project-links">
             <a href="https://youtu.be/t02S9t3NjfY?si=Ral0-U1mnwVYibKP" target="_blank">▶️ Video Walkthrough</a>
@@ -702,7 +867,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>Monitor AI</h3>
-            <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and descriptive guardian updates.</p>
+            <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and descrip[...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -713,7 +878,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>Background Removal App</h3>
-            <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and content creators.</p>
+            <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and [...]
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -831,7 +996,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>1. Custom Precision OCR AI Engine</h3>
-            <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical symbols, and structural data maps into centralized testing databases.</p>
+            <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical symb[...]
           </div>
           <div class="project-links">
             <span class="muted">Status: Core Integration Module</span>
@@ -842,7 +1007,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>2. Bangla Conversational Voice AI (STS)</h3>
-            <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B communication automation pipelines.</p>
+            <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B communic[...]
           </div>
           <div class="project-links">
             <span class="muted">Status: API Pipeline Active</span>
@@ -853,7 +1018,7 @@ Here is the updated code block for your section, formatted as requested with the
         <article class="card">
           <div class="card-content">
             <h3>3. Custom Efficient Small Language Model (SLM)</h3>
-            <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than commercial alternatives.</p>
+            <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than [...]
           </div>
           <div class="project-links">
             <span class="muted">Status: Core Research &amp; Testing</span>
@@ -903,7 +1068,7 @@ Here is the updated code block for your section, formatted as requested with the
 
     <section>
       <h2>Technical Scope</h2>
-      <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot, NestJS, PostgreSQL, MySQL, MongoDB, Docker, AWS EC2/RDS/S3/Lambda, CI/CD, Kafka, RabbitMQ, Swagger, and production architecture.</p>
+      <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot, Ne[...]
     </section>
 
     <section class="footer">
