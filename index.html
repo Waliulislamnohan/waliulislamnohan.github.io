@@ -647,7 +647,7 @@
       }
     }
 
-    /* ---- Left-side section navigator (mobile only) ---- */
+    /* ---- Left-side section navigator (mobile only) — creative "orbit rail" ---- */
     .side-nav {
       display: none;
     }
@@ -657,66 +657,129 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 14px;
         position: fixed;
-        left: 8px;
+        left: 10px;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translate(0, -50%);
         z-index: 41;
-        padding: 10px 6px;
+        padding: 16px 9px;
         background: var(--glass-bg);
         backdrop-filter: blur(14px) saturate(160%);
         -webkit-backdrop-filter: blur(14px) saturate(160%);
         border: 1px solid var(--glass-border);
         border-radius: 999px;
         box-shadow: var(--glass-shadow);
-        max-height: 70vh;
+        max-height: 64vh;
         overflow-y: auto;
         scrollbar-width: none;
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      }
+
+      .side-nav::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 14px;
+        bottom: 14px;
+        width: 2px;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, var(--line), var(--line));
+        border-radius: 2px;
+        z-index: 0;
+      }
+
+      .side-nav-fill {
+        position: absolute;
+        left: 50%;
+        top: 14px;
+        width: 2px;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+        border-radius: 2px;
+        z-index: 0;
+        transition: height 0.2s ease;
       }
 
       .side-nav::-webkit-scrollbar {
         display: none;
       }
 
+      /* Idle: rail rests mostly off-screen, just a glowing sliver peeking in */
+      .side-nav.is-idle {
+        transform: translate(-72%, -50%);
+        opacity: 0.55;
+      }
+
+      .side-nav.is-idle .side-nav-dot:not(.is-active) {
+        opacity: 0;
+      }
+
       .side-nav-dot {
-        width: 7px;
-        height: 7px;
+        width: 18px;
+        height: 18px;
         flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 50%;
         border: none;
-        background: var(--line);
+        background: var(--paper);
+        box-shadow: 0 0 0 2px var(--line) inset;
         padding: 0;
         cursor: pointer;
-        transition: all 0.2s ease;
         position: relative;
+        z-index: 1;
+        font-size: 9px;
+        line-height: 1;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      }
+
+      .side-nav-dot .bead-icon {
+        opacity: 0;
+        transform: scale(0.4);
+        transition: all 0.25s ease;
       }
 
       .side-nav-dot.is-active {
+        width: 30px;
+        height: 30px;
         background: var(--accent);
-        height: 18px;
-        border-radius: 5px;
+        box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18), 0 0 14px rgba(15, 118, 110, 0.55);
+        animation: side-nav-pulse 2.2s ease-in-out infinite;
+      }
+
+      .side-nav-dot.is-active .bead-icon {
+        opacity: 1;
+        transform: scale(1);
+        font-size: 14px;
+      }
+
+      @keyframes side-nav-pulse {
+        0%, 100% { box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18), 0 0 14px rgba(15, 118, 110, 0.55); }
+        50% { box-shadow: 0 0 0 6px rgba(15, 118, 110, 0.1), 0 0 20px rgba(15, 118, 110, 0.7); }
       }
 
       .side-nav-dot .side-nav-label {
         position: absolute;
-        left: 16px;
+        left: 30px;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-50%) translateX(-4px);
         white-space: nowrap;
         background: var(--ink);
         color: #fff;
         font-size: 11px;
         font-weight: 600;
-        padding: 4px 8px;
-        border-radius: 6px;
+        padding: 5px 9px;
+        border-radius: 7px;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.15s ease;
+        transition: opacity 0.2s ease, transform 0.2s ease;
       }
 
       .side-nav-dot.is-active .side-nav-label {
         opacity: 1;
+        transform: translateY(-50%) translateX(0);
       }
     }
 
@@ -1041,6 +1104,163 @@
       color: #fff;
     }
 
+    /* ---- Mobile header hamburger + dropdown ---- */
+    .nav-menu-btn {
+      display: none;
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      cursor: pointer;
+      order: -1;
+    }
+
+    .nav-menu-btn .bar {
+      position: relative;
+      width: 16px;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .nav-menu-btn .bar::before,
+    .nav-menu-btn .bar::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.25s ease, top 0.25s ease;
+    }
+
+    .nav-menu-btn .bar::before {
+      top: -5px;
+    }
+
+    .nav-menu-btn .bar::after {
+      top: 5px;
+    }
+
+    .nav-menu-btn.is-open .bar {
+      background: transparent;
+    }
+
+    .nav-menu-btn.is-open .bar::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .nav-menu-btn.is-open .bar::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: 899;
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.32s ease, opacity 0.25s ease;
+    }
+
+    .nav-dropdown.is-open {
+      max-height: 80vh;
+      opacity: 1;
+      overflow-y: auto;
+    }
+
+    .nav-dropdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 18px;
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav-dropdown-grid a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 6px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid var(--glass-border);
+      text-align: center;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(10px) scale(0.92);
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown-grid a {
+      animation: nav-tile-in 0.36s ease forwards;
+    }
+
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(1) { animation-delay: 0.02s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(2) { animation-delay: 0.05s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(3) { animation-delay: 0.08s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(4) { animation-delay: 0.11s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(5) { animation-delay: 0.14s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(6) { animation-delay: 0.17s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(7) { animation-delay: 0.20s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(8) { animation-delay: 0.23s; }
+    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(9) { animation-delay: 0.26s; }
+
+    @keyframes nav-tile-in {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .nav-dropdown-grid a:active {
+      transform: scale(0.94);
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .nav-tile-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .nav-tile-label {
+      font-size: 11.5px;
+      letter-spacing: 0.01em;
+    }
+
+    @media (max-width: 760px) {
+      .nav-menu-btn {
+        display: inline-flex;
+      }
+
+      .nav-dropdown {
+        display: flex;
+      }
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -1337,6 +1557,9 @@
   <div id="scroll-progress"></div>
   <nav class="topnav">
     <div class="topnav-inner">
+      <button class="nav-menu-btn" id="nav-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="bar"></span>
+      </button>
       <strong style="font-size:14px;">MD Waliul Islam Nohan</strong>
       <div class="topnav-links">
         <a href="#journey">Journey</a>
@@ -1349,6 +1572,19 @@
         <button class="style-switch" id="style-switch-btn" type="button">🎨 Glassmorphism</button>
         <button class="topnav-cv" id="download-cv-btn" type="button">⬇ Download CV (PDF)</button>
         <a class="topnav-cta" href="mailto:waliulnohan@gmail.com?subject=Discovery%20Call%20Request&body=Hi%20Nohan%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20discovery%20call.%0A%0AContext%20about%20what%20I%27m%20working%20on%3A%0A">Book a Call ↓</a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="nav-dropdown">
+      <div class="nav-dropdown-grid">
+        <a href="#journey"><span class="nav-tile-icon">🚀</span><span class="nav-tile-label">Journey</span></a>
+        <a href="#help"><span class="nav-tile-icon">🧭</span><span class="nav-tile-label">Services</span></a>
+        <a href="#find-yourself"><span class="nav-tile-icon">🎯</span><span class="nav-tile-label">Find Yourself</span></a>
+        <a href="#packages"><span class="nav-tile-icon">📦</span><span class="nav-tile-label">Packages</span></a>
+        <a href="#mentorship"><span class="nav-tile-icon">🌱</span><span class="nav-tile-label">Mentorship</span></a>
+        <a href="#proof"><span class="nav-tile-icon">🛠️</span><span class="nav-tile-label">Project Proof</span></a>
+        <a href="#rnd"><span class="nav-tile-icon">🔬</span><span class="nav-tile-label">R&amp;D</span></a>
+        <a href="#credibility"><span class="nav-tile-icon">🏅</span><span class="nav-tile-label">Credibility</span></a>
+        <a href="#contact-footer"><span class="nav-tile-icon">✉️</span><span class="nav-tile-label">Contact</span></a>
       </div>
     </div>
   </nav>
@@ -1451,7 +1687,7 @@
     </section>
 
     <!-- Your Situation, Your Solution -->
-    <section data-tone="amber">
+    <section data-tone="amber" id="find-yourself">
       <span class="section-tag" style="display:block; text-align:center;">🎯 Find Yourself</span>
       <h2 style="text-align: center; margin-bottom: 28px;">Match Your Situation to Your Solution</h2>
       <div class="grid four">
@@ -1521,7 +1757,7 @@
       </div>
     </section>
 
-    <section data-tone="violet">
+    <section data-tone="violet" id="packages">
       <span class="section-tag">📦 Pricing</span>
       <h2>Services & Packages</h2>
       <div class="grid two">
@@ -1654,7 +1890,7 @@
     </section>
 
     <!-- Talent & Career Services Section -->
-    <section data-tone="green">
+    <section data-tone="green" id="mentorship">
       <span class="section-tag" style="display:block; text-align:center;">🌱 Mentorship</span>
       <h2 style="text-align: center; margin-bottom: 28px;">Talent Guidance & Career Navigation</h2>
       <p style="text-align: center; color: var(--muted); margin-bottom: 24px; font-size: 14px; line-height: 1.6;">
@@ -2011,7 +2247,7 @@
     </section>
 
     <!-- Core Research Tracks & Ongoing Foundations Section -->
-    <section data-tone="cyan">
+    <section data-tone="cyan" id="rnd">
       <span class="section-tag">🔬 R&D</span>
       <h2>Deep Tech Research &amp; Core Innovations (Ongoing)</h2>
       <div class="grid two">
@@ -2499,7 +2735,39 @@
   </script>
 
   <script>
-    // ---- Left-side section navigator (mobile) ----
+    // ---- Mobile header dropdown toggle ----
+    (function () {
+      const btn = document.getElementById('nav-menu-btn');
+      const dropdown = document.getElementById('nav-dropdown');
+      if (!btn || !dropdown) return;
+
+      function close() {
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('is-open');
+      }
+
+      function toggle() {
+        const open = btn.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        dropdown.classList.toggle('is-open', open);
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggle();
+      });
+
+      dropdown.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target) && e.target !== btn) close();
+      });
+    })();
+  </script>
+
+  <script>
+    // ---- Left-side section navigator (mobile) — creative "orbit rail" with idle auto-hide ----
     (function () {
       const sections = Array.from(document.querySelectorAll('main > section')).filter(
         (s) => s.offsetHeight > 40
@@ -2509,15 +2777,31 @@
       const nav = document.createElement('div');
       nav.className = 'side-nav';
       nav.setAttribute('aria-label', 'Section navigator');
+
+      const fill = document.createElement('div');
+      fill.className = 'side-nav-fill';
+      nav.appendChild(fill);
+
       document.body.appendChild(nav);
 
-      const dots = sections.map((section) => {
+      const FALLBACK_ICONS = ['✦', '✧', '◆', '●', '◇', '✺', '✪', '✷', '✸'];
+
+      const dots = sections.map((section, i) => {
         const heading = section.querySelector('h2');
+        const tag = section.querySelector('.section-tag');
         const label = heading ? heading.textContent.trim() : 'Section';
+        let icon = FALLBACK_ICONS[i % FALLBACK_ICONS.length];
+        if (tag) {
+          const match = tag.textContent.trim().match(/^\S+/);
+          if (match) icon = match[0];
+        }
         const dot = document.createElement('button');
         dot.className = 'side-nav-dot';
-        dot.innerHTML = '<span class="side-nav-label">' + label + '</span>';
+        dot.innerHTML =
+          '<span class="bead-icon">' + icon + '</span>' +
+          '<span class="side-nav-label">' + label + '</span>';
         dot.addEventListener('click', () => {
+          wake();
           section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
         nav.appendChild(dot);
@@ -2526,6 +2810,14 @@
 
       function setActive(index) {
         dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+      }
+
+      function updateFill() {
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        const railHeight = nav.clientHeight - 28;
+        fill.style.height = Math.max(0, railHeight * ratio) + 'px';
       }
 
       if ('IntersectionObserver' in window) {
@@ -2546,7 +2838,37 @@
         sections.forEach((s) => observer.observe(s));
       }
 
+      // ---- Idle auto-collapse: rail tucks away when the person isn't using it ----
+      const IDLE_DELAY_MS = 2600;
+      const FIRST_HINT_MS = 2800;
+      let idleTimer = null;
+
+      function sleep() {
+        nav.classList.add('is-idle');
+      }
+
+      function wake() {
+        nav.classList.remove('is-idle');
+        if (idleTimer) clearTimeout(idleTimer);
+        idleTimer = setTimeout(sleep, IDLE_DELAY_MS);
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          updateFill();
+          wake();
+        },
+        { passive: true }
+      );
+
+      nav.addEventListener('touchstart', wake, { passive: true });
+      nav.addEventListener('mouseenter', wake);
+
+      updateFill();
       setActive(0);
+      // Show fully expanded briefly on load so people notice it, then tuck away
+      idleTimer = setTimeout(sleep, FIRST_HINT_MS);
     })();
   </script>
 
