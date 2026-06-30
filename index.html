@@ -528,15 +528,15 @@
       }
     }
 
-    /* ---- Tinder-style package swiper (mobile only) ---- */
-    .pkg-swiper { display: none; }
-    .pkg-swipe-hint { display: none; }
-    .pkg-dock { display: none; }
+    /* ---- Tinder-style swipeable cards (mobile only, generic — JS-generated) ---- */
+    .swipe-deck { display: none; }
+    .swipe-hint { display: none; }
+    .mobile-dock { display: none; }
 
     @media (max-width: 760px) {
-      #pkg-grid-desktop { display: none; }
+      .has-swipe-deck > .grid { display: none; }
 
-      .pkg-swiper {
+      .swipe-deck {
         display: flex;
         gap: 14px;
         overflow-x: auto;
@@ -547,44 +547,29 @@
         scrollbar-width: none;
       }
 
-      .pkg-swiper::-webkit-scrollbar {
+      .swipe-deck::-webkit-scrollbar {
         display: none;
       }
 
-      .pkg-slide {
+      .swipe-slide {
         flex: 0 0 88vw;
         scroll-snap-align: center;
         scroll-snap-stop: always;
-      }
-
-      .pkg-card {
-        background: var(--glass-bg);
-        backdrop-filter: blur(14px) saturate(160%);
-        -webkit-backdrop-filter: blur(14px) saturate(160%);
-        border: 1px solid var(--glass-border);
-        border-radius: 18px;
-        padding: 20px;
-        box-shadow: 0 14px 36px rgba(23, 33, 43, 0.14);
-        min-height: 60vh;
         display: flex;
-        flex-direction: column;
       }
 
-      .pkg-card-priority {
-        border: 2px solid var(--accent-2);
-        background: #fffbeb;
+      .swipe-slide > * {
+        width: 100%;
+        min-height: 56vh;
+        margin: 0;
       }
 
-      .pkg-card h3 {
-        font-size: 19px;
-      }
-
-      .pkg-card .price {
+      .swipe-slide .price {
         display: inline-block;
         margin: 4px 0 14px;
       }
 
-      .pkg-swipe-hint {
+      .swipe-hint {
         display: block;
         text-align: center;
         color: var(--muted);
@@ -592,14 +577,16 @@
         margin-top: -8px;
       }
 
-      .pkg-dock {
+      .mobile-dock {
         display: flex;
+        align-items: center;
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
         bottom: 16px;
         z-index: 40;
         gap: 8px;
+        max-width: 90vw;
         background: var(--glass-bg);
         backdrop-filter: blur(14px) saturate(160%);
         -webkit-backdrop-filter: blur(14px) saturate(160%);
@@ -612,14 +599,26 @@
         transition: opacity 0.25s ease;
       }
 
-      .pkg-dock.is-visible {
+      .mobile-dock.is-visible {
         opacity: 1;
         pointer-events: auto;
       }
 
-      .pkg-dot {
+      .mobile-dock .dock-dots {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .mobile-dock .dock-dots::-webkit-scrollbar {
+        display: none;
+      }
+
+      .dock-dot {
         width: 9px;
         height: 9px;
+        flex: 0 0 auto;
         border-radius: 50%;
         border: none;
         background: var(--line);
@@ -628,10 +627,23 @@
         transition: all 0.2s ease;
       }
 
-      .pkg-dot.is-active {
+      .dock-dot.is-active {
         background: var(--accent);
         width: 22px;
         border-radius: 5px;
+      }
+
+      .dock-autoplay-toggle {
+        flex: 0 0 auto;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: var(--accent);
+        font-size: 11px;
+        cursor: pointer;
+        margin-left: 2px;
       }
     }
 
@@ -1382,10 +1394,10 @@
       </div>
     </section>
 
-    <section data-tone="violet" id="packages-section">
+    <section data-tone="violet">
       <span class="section-tag">📦 Pricing</span>
       <h2>Services & Packages</h2>
-      <div class="grid two" id="pkg-grid-desktop">
+      <div class="grid two">
         <!-- Package 1 -->
         <article class="card reveal">
           <div class="card-content">
@@ -1512,132 +1524,7 @@
           </div>
         </article>
       </div>
-
-      <!-- Mobile Tinder-style package swiper -->
-      <div class="pkg-swiper" id="pkg-swiper">
-        <div class="pkg-slide">
-          <article class="pkg-card">
-            <h3>Startup/Product Audit</h3>
-            <span class="price">1.5-2.5 lakh BDT | 3-5 days</span>
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Product viability review</li>
-              <li>AI feasibility check</li>
-              <li>Technology architecture audit</li>
-              <li>Team and delivery risk assessment</li>
-              <li>Cost, infrastructure, and scalability review</li>
-              <li>Investor-style written report with risk rating and next-step roadmap</li>
-            </ul>
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Investors before funding a startup</li>
-              <li>Founders before rebuilding or scaling</li>
-              <li>Teams unsure whether their AI product is technically realistic</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="pkg-slide">
-          <article class="pkg-card">
-            <h3>AI Automation Sprint</h3>
-            <span class="price">3-4 lakh BDT | 7 days</span>
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Business workflow audit</li>
-              <li>AI use-case prioritization</li>
-              <li>One working prototype or internal automation</li>
-              <li>Architecture and implementation roadmap</li>
-              <li>Team handover session</li>
-            </ul>
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Companies that want to see AI impact quickly</li>
-              <li>Teams with manual processes that cost time or money</li>
-              <li>Founders who need a working demo before pitching or selling</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="pkg-slide">
-          <article class="pkg-card">
-            <h3>AI Transformation Sprint</h3>
-            <span class="price">5-7 lakh BDT | 14 days</span>
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Full AI opportunity audit</li>
-              <li>One production-ready or near-production AI workflow</li>
-              <li>System architecture plan</li>
-              <li>Data, infrastructure, and model/API strategy</li>
-              <li>Team training</li>
-              <li>30-day advisory support after delivery</li>
-            </ul>
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Companies serious about integrating AI into core operations</li>
-              <li>Startups preparing for launch, funding, or enterprise sales</li>
-              <li>Institutions that need a real implementation plan, not just training</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="pkg-slide">
-          <article class="pkg-card">
-            <h3>Monthly CTO / AI Advisor</h3>
-            <span class="price">5 lakh BDT/month</span>
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Weekly architecture and product review</li>
-              <li>AI roadmap and implementation guidance</li>
-              <li>Developer/team management support</li>
-              <li>Hiring and talent evaluation</li>
-              <li>Product delivery supervision</li>
-              <li>Founder/executive reporting</li>
-            </ul>
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Startups without a strong technical leader</li>
-              <li>Companies building AI products with an internal team</li>
-              <li>Founders who need senior technical judgment without hiring a full-time CTO</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="pkg-slide">
-          <article class="pkg-card pkg-card-priority">
-            <div style="display:flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-              <h3 style="margin:0; color: var(--accent-2); font-size: 18px; font-weight: 800;">🚨 AI Product Rescue Sprint</h3>
-              <span style="background: var(--accent-2); color:#fff; font-size: 11px; font-weight:700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; letter-spacing: .05em;">High Priority</span>
-            </div>
-            <span class="price">Custom Pricing | 5-10 Days Rapid Turnaround</span>
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li><strong>Immediate Technical Triage:</strong> 24-hour audit of code, API bottlenecks, data leaks, and model-level failure points.</li>
-              <li><strong>Forward-Deployed Engineering:</strong> Hands-on intervention led by an elite engineer deployed into your stack.</li>
-              <li><strong>Emergency Re-Architecting:</strong> Rapid codebase restructuring and bug resolution in 5-10 days.</li>
-              <li><strong>Guaranteed Milestone Delivery:</strong> A stable, functioning production release.</li>
-              <li><strong>Handover Strategy:</strong> Full documentation of fixes and preventative safeguards.</li>
-            </ul>
-            <p style="margin-top: 14px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Companies facing critical system failures or stalled launches.</li>
-              <li>Startups whose internal teams are stuck or under-resourced.</li>
-              <li>Investors or founders needing to rapidly save a failing technical asset.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-
-      <p class="pkg-swipe-hint">👈 Swipe to browse packages 👉</p>
     </section>
-
-    <!-- Bottom dock: package switcher (mobile only) -->
-    <div class="pkg-dock" id="pkg-dock">
-      <button class="pkg-dot" data-index="0" aria-label="Package 1"></button>
-      <button class="pkg-dot" data-index="1" aria-label="Package 2"></button>
-      <button class="pkg-dot" data-index="2" aria-label="Package 3"></button>
-      <button class="pkg-dot" data-index="3" aria-label="Package 4"></button>
-      <button class="pkg-dot" data-index="4" aria-label="Package 5"></button>
-    </div>
 
     <!-- Talent & Career Services Section -->
     <section data-tone="green">
@@ -2295,62 +2182,192 @@
   </script>
 
   <script>
-    // ---- Tinder-style package swiper <-> bottom dock sync ----
+    // ---- Generic Tinder-style swipeable cards for every multi-card section (mobile) ----
     (function () {
-      const swiper = document.getElementById('pkg-swiper');
-      const dock = document.getElementById('pkg-dock');
-      const dots = dock ? Array.from(dock.querySelectorAll('.pkg-dot')) : [];
-      const pkgSection = document.getElementById('packages-section');
-      if (!swiper || !dock || !dots.length || !pkgSection) return;
+      const CARD_SELECTORS = '.card, .scenario-card, .talent-card';
+      const sections = Array.from(document.querySelectorAll('main section'));
+      const decks = []; // { section, deck, slides, dots[] }
 
-      const slides = Array.from(swiper.querySelectorAll('.pkg-slide'));
+      sections.forEach((section, sIdx) => {
+        const grid = section.querySelector(':scope > .grid');
+        if (!grid) return;
+        const cards = Array.from(grid.children).filter((el) => el.matches(CARD_SELECTORS));
+        if (cards.length < 2) return;
 
-      function setActive(index) {
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
-      }
+        section.classList.add('has-swipe-deck');
 
-      let ticking = false;
-      swiper.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const center = swiper.scrollLeft + swiper.clientWidth / 2;
-          let closest = 0;
-          let closestDist = Infinity;
-          slides.forEach((slide, i) => {
-            const mid = slide.offsetLeft + slide.clientWidth / 2;
-            const dist = Math.abs(mid - center);
-            if (dist < closestDist) {
-              closestDist = dist;
-              closest = i;
-            }
-          });
-          setActive(closest);
-          ticking = false;
+        const deck = document.createElement('div');
+        deck.className = 'swipe-deck';
+        deck.id = 'swipe-deck-' + sIdx;
+
+        cards.forEach((card) => {
+          const slide = document.createElement('div');
+          slide.className = 'swipe-slide';
+          const clone = card.cloneNode(true);
+          clone.classList.remove('reveal');
+          slide.appendChild(clone);
+          deck.appendChild(slide);
         });
-      }, { passive: true });
 
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-          const slide = slides[i];
-          if (!slide) return;
-          swiper.scrollTo({ left: slide.offsetLeft - (swiper.clientWidth - slide.clientWidth) / 2, behavior: 'smooth' });
+        grid.insertAdjacentElement('afterend', deck);
+
+        const hint = document.createElement('p');
+        hint.className = 'swipe-hint';
+        hint.textContent = '👈 Swipe to browse 👉';
+        deck.insertAdjacentElement('afterend', hint);
+
+        decks.push({
+          section,
+          deck,
+          slides: Array.from(deck.querySelectorAll('.swipe-slide')),
         });
       });
 
-      // Show dock only while the packages section is in view (mobile only)
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            dock.classList.toggle('is-visible', entry.isIntersecting);
+      if (!decks.length) return;
+
+      // ---- Single shared bottom dock ----
+      const dock = document.createElement('div');
+      dock.className = 'mobile-dock';
+      dock.id = 'mobile-dock';
+      dock.innerHTML =
+        '<button class="dock-autoplay-toggle" id="dock-autoplay-toggle" aria-label="Pause/play auto-scroll">⏸</button>' +
+        '<div class="dock-dots" id="dock-dots"></div>';
+      document.body.appendChild(dock);
+      const dotsWrap = dock.querySelector('#dock-dots');
+      const autoplayToggle = dock.querySelector('#dock-autoplay-toggle');
+
+      let current = null; // active deck entry
+      let autoplayEnabled = true;
+      let idleTimer = null;
+      let autoplayTimer = null;
+      const IDLE_RESUME_MS = 4500;
+      const AUTOPLAY_INTERVAL_MS = 3200;
+
+      function buildDots(entry) {
+        dotsWrap.innerHTML = '';
+        entry.dots = entry.slides.map((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'dock-dot';
+          dot.setAttribute('aria-label', 'Card ' + (i + 1));
+          dot.addEventListener('click', () => {
+            pauseAutoplayTemporarily();
+            scrollToSlide(entry, i);
           });
-        }, { threshold: 0.15 });
-        observer.observe(pkgSection);
-      } else {
-        dock.classList.add('is-visible');
+          dotsWrap.appendChild(dot);
+          return dot;
+        });
       }
 
-      setActive(0);
+      function setActiveDot(entry, index) {
+        if (!entry.dots) return;
+        entry.dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+        entry.activeIndex = index;
+      }
+
+      function closestSlideIndex(entry) {
+        const deck = entry.deck;
+        const center = deck.scrollLeft + deck.clientWidth / 2;
+        let closest = 0;
+        let closestDist = Infinity;
+        entry.slides.forEach((slide, i) => {
+          const mid = slide.offsetLeft + slide.clientWidth / 2;
+          const dist = Math.abs(mid - center);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closest = i;
+          }
+        });
+        return closest;
+      }
+
+      function scrollToSlide(entry, index) {
+        const slide = entry.slides[index];
+        if (!slide) return;
+        entry.deck.scrollTo({
+          left: slide.offsetLeft - (entry.deck.clientWidth - slide.clientWidth) / 2,
+          behavior: 'smooth',
+        });
+      }
+
+      function attachScrollListener(entry) {
+        if (entry._listenerAttached) return;
+        entry._listenerAttached = true;
+        let ticking = false;
+        entry.deck.addEventListener(
+          'scroll',
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+              setActiveDot(entry, closestSlideIndex(entry));
+              ticking = false;
+            });
+          },
+          { passive: true }
+        );
+        ['touchstart', 'pointerdown', 'wheel'].forEach((evt) => {
+          entry.deck.addEventListener(evt, pauseAutoplayTemporarily, { passive: true });
+        });
+      }
+
+      function switchTo(entry) {
+        if (current === entry) return;
+        current = entry;
+        if (!entry.dots) buildDots(entry);
+        attachScrollListener(entry);
+        setActiveDot(entry, closestSlideIndex(entry));
+      }
+
+      function pauseAutoplayTemporarily() {
+        autoplayEnabled = false;
+        if (idleTimer) clearTimeout(idleTimer);
+        if (autoplayToggle.dataset.userPaused !== 'true') {
+          idleTimer = setTimeout(() => {
+            autoplayEnabled = true;
+          }, IDLE_RESUME_MS);
+        }
+      }
+
+      autoplayToggle.addEventListener('click', () => {
+        const userPaused = autoplayToggle.dataset.userPaused === 'true';
+        autoplayToggle.dataset.userPaused = userPaused ? 'false' : 'true';
+        autoplayToggle.textContent = userPaused ? '⏸' : '▶';
+        autoplayEnabled = userPaused;
+        if (idleTimer) clearTimeout(idleTimer);
+      });
+
+      // Auto-advance the currently visible deck so people discover it's swipeable
+      autoplayTimer = setInterval(() => {
+        if (!current || !autoplayEnabled) return;
+        if (document.hidden) return;
+        const next = (current.activeIndex + 1) % current.slides.length;
+        scrollToSlide(current, next);
+      }, AUTOPLAY_INTERVAL_MS);
+
+      // Track which section's deck is in view; show dock only then
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            let best = null;
+            let bestRatio = 0;
+            entries.forEach((e) => {
+              const entry = decks.find((d) => d.section === e.target);
+              if (!entry) return;
+              if (e.isIntersecting && e.intersectionRatio > bestRatio) {
+                bestRatio = e.intersectionRatio;
+                best = entry;
+              }
+            });
+            dock.classList.toggle('is-visible', !!best);
+            if (best) switchTo(best);
+          },
+          { threshold: [0.2, 0.4, 0.6] }
+        );
+        decks.forEach((entry) => observer.observe(entry.section));
+      } else {
+        switchTo(decks[0]);
+        dock.classList.add('is-visible');
+      }
     })();
   </script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ca00fcc150b41ab83b9d565b0562b89"}'></script><!-- End Cloudflare Web Analytics -->
