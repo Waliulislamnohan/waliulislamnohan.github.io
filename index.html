@@ -576,6 +576,44 @@
         break-inside: avoid;
       }
     }
+
+    /* Same flattening as @media print, but toggleable via JS as a class —
+       used by the html2pdf export so the captured snapshot looks like the
+       print view (no blur/glass, no nav, no floating button). */
+    body.pdf-export-mode {
+      background: white !important;
+    }
+
+    body.pdf-export-mode main {
+      width: auto;
+      padding: 0 24px;
+    }
+
+    body.pdf-export-mode .card,
+    body.pdf-export-mode .metric,
+    body.pdf-export-mode .callout,
+    body.pdf-export-mode .scenario-card,
+    body.pdf-export-mode .talent-card,
+    body.pdf-export-mode .free-offer-box {
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: #ffffff !important;
+      border: 1px solid var(--line) !important;
+      transform: none !important;
+    }
+
+    body.pdf-export-mode .bg-blobs,
+    body.pdf-export-mode .topnav,
+    body.pdf-export-mode #scroll-progress,
+    body.pdf-export-mode #jump-fab {
+      display: none !important;
+    }
+
+    body.pdf-export-mode .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
     /* ---- Dynamic add-ons: nav, progress bar, reveal, back-to-top ---- */
     #scroll-progress {
       position: fixed;
@@ -724,6 +762,40 @@
       }
       .topnav {
         margin-top: 0;
+        padding: 8px 0;
+      }
+      .topnav-inner {
+        gap: 8px;
+      }
+      .topnav-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+      .style-switch,
+      .topnav-cv,
+      .topnav-cta {
+        font-size: 12px;
+        padding: 7px 10px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .topnav-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .style-switch,
+      .topnav-cv,
+      .topnav-cta {
+        text-align: center;
+      }
+      #jump-fab {
+        width: 46px;
+        height: 46px;
+        right: 14px;
+        bottom: 14px;
+        font-size: 17px;
       }
     }
 
@@ -929,7 +1001,7 @@
       border: 3px solid var(--ink);
       box-shadow: 4px 4px 0 var(--ink);
     }
-  </style>
+  </style>  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
   <div class="bg-blobs"><span></span><span></span><span></span></div>
@@ -947,7 +1019,7 @@
       <div class="topnav-actions">
         <button class="style-switch" id="style-switch-btn" type="button">🎨 Glassmorphism</button>
         <button class="topnav-cv" id="download-cv-btn" type="button">⬇ Download CV (PDF)</button>
-        <a class="topnav-cta" href="#contact-footer">Book a Call ↓</a>
+        <a class="topnav-cta" href="mailto:waliulnohan@gmail.com?subject=Discovery%20Call%20Request&body=Hi%20Nohan%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20discovery%20call.%0A%0AContext%20about%20what%20I%27m%20working%20on%3A%0A">Book a Call ↓</a>
       </div>
     </div>
   </nav>
@@ -1815,16 +1887,54 @@
     })();
 
     // Floating jump-to-contact / back-to-top button
-    // Download CV (PDF) — uses the browser's native print dialog so the
-    // visitor can choose "Save as PDF" with a clean, glass-free layout.
+    // Download CV (PDF) — generates and downloads an actual .pdf file using
+    // html2pdf.js. Falls back to the browser print dialog if the library
+    // failed to load (e.g. no internet access to the CDN).
     var downloadCvBtn = document.getElementById('download-cv-btn');
-    var originalTitle = document.title;
-    downloadCvBtn.addEventListener('click', function () {
+    var downloadCvBtnDefaultLabel = downloadCvBtn.textContent;
+    var mainEl = document.querySelector('main');
+
+    function fallbackToPrint() {
+      var originalTitle = document.title;
       document.title = 'MD Waliul Islam Nohan - CV';
       window.print();
-    });
-    window.addEventListener('afterprint', function () {
-      document.title = originalTitle;
+      window.addEventListener('afterprint', function restoreTitle() {
+        document.title = originalTitle;
+        window.removeEventListener('afterprint', restoreTitle);
+      });
+    }
+
+    downloadCvBtn.addEventListener('click', function () {
+      if (typeof html2pdf === 'undefined') {
+        fallbackToPrint();
+        return;
+      }
+
+      downloadCvBtn.disabled = true;
+      downloadCvBtn.textContent = '⏳ Preparing PDF…';
+      document.body.classList.add('pdf-export-mode');
+
+      var opt = {
+        margin: [10, 8, 10, 8],
+        filename: 'MD-Waliul-Islam-Nohan-CV.pdf',
+        image: { type: 'jpeg', quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'avoid-all'] }
+      };
+
+      // Wait a frame so the class change re-paints before capture
+      requestAnimationFrame(function () {
+        html2pdf().set(opt).from(mainEl).save()
+          .catch(function () {
+            fallbackToPrint();
+          })
+          .finally(function () {
+            document.body.classList.remove('pdf-export-mode');
+            downloadCvBtn.disabled = false;
+            downloadCvBtn.textContent = downloadCvBtnDefaultLabel;
+          });
+      });
     });
 
     var jumpFab = document.getElementById('jump-fab');
