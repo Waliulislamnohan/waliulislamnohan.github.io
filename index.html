@@ -459,9 +459,145 @@
         box-shadow: none;
       }
     }
+    /* ---- Dynamic add-ons: nav, progress bar, reveal, back-to-top ---- */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(251, 252, 253, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      margin: -34px 0 26px;
+    }
+
+    .topnav-inner {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .topnav-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .topnav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      padding: 4px 2px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .topnav-links a:hover,
+    .topnav-links a.active {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom-color: var(--accent);
+    }
+
+    .topnav-cta {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .topnav-cta:hover {
+      background: #0a5c5e;
+      text-decoration: none;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #jump-fab {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 950;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+    }
+
+    #jump-fab.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #jump-fab:hover {
+      background: var(--accent-2);
+    }
+
+    @media (max-width: 760px) {
+      .topnav-links {
+        display: none;
+      }
+      .topnav {
+        margin-top: 0;
+      }
+    }
   </style>
 </head>
 <body>
+  <div id="scroll-progress"></div>
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <strong style="font-size:14px;">MD Waliul Islam Nohan</strong>
+      <div class="topnav-links">
+        <a href="#journey">Journey</a>
+        <a href="#help">Services</a>
+        <a href="#proof">Project Proof</a>
+        <a href="#credibility">Credibility</a>
+        <a href="#contact-footer">Contact</a>
+      </div>
+      <a class="topnav-cta" href="#contact-footer">Book a Call ↓</a>
+    </div>
+  </nav>
+  <button id="jump-fab" title="Jump to contact / back to top">↓</button>
   <main>
     <header>
       <p class="eyebrow">AI Systems Architect | Founder | Startup & Product Auditor</p>
@@ -480,7 +616,7 @@
       <p class="muted">Available for AI audits, automation sprints, product due diligence, project rescue, AI roadmap design, and monthly CTO/AI advisor support.</p>
     </section>
 
-    <section>
+    <section id="journey">
       <h2>Builder Journey: 2021-2026</h2>
       <div class="journey-strip">
         <img class="journey-main" src="assets/nohan-journey-1.png" alt="Nohan journey timeline from junior engineer onward">
@@ -496,29 +632,29 @@
 
     <section>
       <div class="metrics">
-        <div class="metric">
+        <div class="metric reveal">
           <strong>20+</strong>
           <span>AI systems architected and delivered</span>
         </div>
-        <div class="metric">
+        <div class="metric reveal">
           <strong>25+</strong>
           <span>member engineering and operations team led</span>
         </div>
-        <div class="metric">
+        <div class="metric reveal">
           <strong>5+</strong>
           <span>years of software, AI, and product experience</span>
         </div>
-        <div class="metric">
+        <div class="metric reveal">
           <strong>100+</strong>
           <span>developers organized through community leadership</span>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="help">
       <h2>What I Can Help With</h2>
       <div class="grid three">
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>For Investors</h3>
             <p>Audit AI startups and products before funding or partnership decisions.</p>
@@ -530,7 +666,7 @@
             </ul>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>For Startups</h3>
             <p>Turn AI ideas into systems with a practical architecture and delivery plan.</p>
@@ -542,7 +678,7 @@
             </ul>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>For Companies</h3>
             <p>Integrate new technology into sales, support, finance, education, HR, and operations.</p>
@@ -631,7 +767,7 @@
       <h2>Services & Packages</h2>
       <div class="grid two">
         <!-- Package 1 -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Startup/Product Audit</h3>
             <span class="price">1.5-2.5 lakh BDT | 3-5 days</span>
@@ -656,7 +792,7 @@
         </article>
 
         <!-- Package 2 -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>AI Automation Sprint</h3>
             <span class="price">3-4 lakh BDT | 7 days</span>
@@ -680,7 +816,7 @@
         </article>
 
         <!-- Package 3 -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>AI Transformation Sprint</h3>
             <span class="price">5-7 lakh BDT | 14 days</span>
@@ -705,7 +841,7 @@
         </article>
 
         <!-- Package 4 -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Monthly CTO / AI Advisor</h3>
             <span class="price">5 lakh BDT/month</span>
@@ -730,7 +866,7 @@
         </article>
 
         <!-- Package 5: Elite AI Product Rescue Sprint -->
-        <article class="card" style="border: 2px solid var(--accent-2); background: #fffbeb; grid-column: span 2;">
+        <article class="card reveal" style="border: 2px solid var(--accent-2); background: #fffbeb; grid-column: span 2;">
           <div class="card-content">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
               <h3 style="margin: 0; color: var(--accent-2); font-size: 18px; font-weight: 800;">🚨 AI Product Rescue Sprint</h3>
@@ -806,11 +942,11 @@
       </div>
     </section>
 
-    <section>
+    <section id="proof">
       <h2>Selected Project Proof</h2>
       <div class="grid two">
         <!-- AI Sales CRM -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>AI Sales CRM (Fuel AI)</h3>
             <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions wit[...]
@@ -822,7 +958,7 @@
         </article>
 
         <!-- AI Business Launchpad -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>AI Business Launchpad (Scalova AI)</h3>
             <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch [...]
@@ -833,7 +969,7 @@
         </article>
 
         <!-- AI Fabricator -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>AI Fabricator</h3>
             <p>No-code AI agent and autonomous workflow creator connecting internal tools, external APIs, and custom language models through an intuitive drag-and-drop orchestration interface.</p>
@@ -844,7 +980,7 @@
         </article>
 
         <!-- Health AI -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Health AI (Cognipath)</h3>
             <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish" symp[...]
@@ -855,7 +991,7 @@
         </article>
 
         <!-- EnglishMate -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>EnglishMate</h3>
             <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar feedba[...]
@@ -867,7 +1003,7 @@
         </article>
 
         <!-- SiteGenie -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Site Genie</h3>
             <p>An intelligent generative website engine that constructs fully modular, customized, and responsive web systems in minutes based simply on cross-prompt textual business design ideas.</p>
@@ -878,7 +1014,7 @@
         </article>
 
         <!-- Productivity AI -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Productivity AI (Lineage P&ID Tool)</h3>
             <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID diagrams[...]
@@ -889,7 +1025,7 @@
         </article>
 
         <!-- The 3rd Eye -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>The 3rd Eye (Search Anything)</h3>
             <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor Modul[...]
@@ -900,7 +1036,7 @@
         </article>
 
         <!-- TrackIO -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>TrackIO (Vehicle Monitoring AI)</h3>
             <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting, fue[...]
@@ -911,7 +1047,7 @@
         </article>
 
         <!-- City Pass -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>City Pass</h3>
             <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling tracke[...]
@@ -922,7 +1058,7 @@
         </article>
 
         <!-- FloodShield -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>FloodShield</h3>
             <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical floo[...]
@@ -933,7 +1069,7 @@
         </article>
 
         <!-- Justice AI -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Justice AI</h3>
             <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal tracki[...]
@@ -944,7 +1080,7 @@
         </article>
 
         <!-- FlyNepal -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>FlyNepal (Travel App)</h3>
             <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking options[...]
@@ -955,7 +1091,7 @@
         </article>
 
         <!-- Karigori -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Karigori</h3>
             <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction pipel[...]
@@ -966,7 +1102,7 @@
         </article>
 
         <!-- Golden Vault -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Golden Vault</h3>
             <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement metrics.<[...]
@@ -978,7 +1114,7 @@
         </article>
 
         <!-- Halal GPT -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Halal GPT (Huda 2.0)</h3>
             <p>An internationally compliant, secure theological conversational knowledge platform utilizing cross-referenced scholarly guidance verification models.</p>
@@ -989,7 +1125,7 @@
         </article>
 
         <!-- Monitor AI -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Monitor AI</h3>
             <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and descrip[...]
@@ -1000,7 +1136,7 @@
         </article>
 
         <!-- Background Removal App -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Background Removal App</h3>
             <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and [...]
@@ -1011,7 +1147,7 @@
         </article>
 
         <!-- AI Reel Creator -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>AI Reel Creator (Re:elify)</h3>
             <p>A specialized processing platform leveraged to generate short-form automated marketing media assets, tailored for scalable engagement on modern programmatic video feeds.</p>
@@ -1022,7 +1158,7 @@
         </article>
 
         <!-- Edulink -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Edulink</h3>
             <p>An official government application portal streamlining administrative processing pipelines and information workflows safely and accurately.</p>
@@ -1033,7 +1169,7 @@
         </article>
 
         <!-- Caspian Life -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Caspian Life</h3>
             <p>Corporate platform setup featuring advanced interface optimizations, cloud configurations, and automated system setups.</p>
@@ -1044,7 +1180,7 @@
         </article>
 
         <!-- Pragati AI & MediGuru -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Pragati AI &amp; MediGuru</h3>
             <p>Smart localized competitive mock diagnostics platforms leveraging automated guidance systems, metrics, flashcards, and tracking vectors for students across Bangladesh.</p>
@@ -1056,7 +1192,7 @@
         </article>
 
         <!-- Project Manager AI -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Project Manager AI</h3>
             <p>Automated workflow companion built to optimize task operational assignments, map core execution bottlenecks, and predict delays using predictive analytics tracking.</p>
@@ -1067,7 +1203,7 @@
         </article>
 
         <!-- PurePic Platform -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>PurePic</h3>
             <p>An automated inventory management, digital storefront optimization, and operational monitoring suite customized directly for fast-growing small business environments.</p>
@@ -1078,7 +1214,7 @@
         </article>
 
         <!-- Enterprise ERP Suite -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Aaladin AI Enterprise ERP</h3>
             <p>Deep automated resource planning system combining underlying corporate asset metrics, payroll logs, inventory structures, and visual data layers under unified platforms.</p>
@@ -1089,7 +1225,7 @@
         </article>
 
         <!-- Compliance SOP Suite -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Aaladin AI SOP Digitizer</h3>
             <p>Operational standardizing module crafted to convert flat corporate compliance text tracks into interactive structured trackable visual workflows cleanly.</p>
@@ -1100,7 +1236,7 @@
         </article>
 
         <!-- General Web Assets -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Commercial Web Foundations</h3>
             <p>Production architectural systems delivered for specialized services including <i>Gadgets All BD</i>, <i>Roshan Transport</i>, and <i>Vector Power</i>.</p>
@@ -1118,7 +1254,7 @@
       <h2>Deep Tech Research &amp; Core Innovations (Ongoing)</h2>
       <div class="grid two">
         <!-- OCR AI -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>1. Custom Precision OCR AI Engine</h3>
             <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical symb[...]
@@ -1129,7 +1265,7 @@
         </article>
 
         <!-- Voice AI (STS) -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>2. Bangla Conversational Voice AI (STS)</h3>
             <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B communic[...]
@@ -1140,7 +1276,7 @@
         </article>
 
         <!-- SLM -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>3. Custom Efficient Small Language Model (SLM)</h3>
             <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than [...]
@@ -1151,7 +1287,7 @@
         </article>
 
         <!-- VLM -->
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>4. Custom Vision Language Model (VLM)</h3>
             <p>Deep-learning visual interpretation systems applied directly to custom object classifications, live monitoring matrices, and specialized imagery recognition workflows.</p>
@@ -1163,10 +1299,10 @@
       </div>
     </section>
 
-    <section>
+    <section id="credibility">
       <h2>Background & Credibility</h2>
       <div class="grid two">
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Experience</h3>
             <ul>
@@ -1177,7 +1313,7 @@
             </ul>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="card-content">
             <h3>Recognition</h3>
             <ul>
@@ -1190,16 +1326,136 @@
         </article>
       </div>
     </section>
+<!-- Recommendations & Strategic Trust -->
+    <section>
+      <h2 style="text-align: center; margin-bottom: 28px;">Strategic Trust & Recommendations</h2>
+      <div class="grid three">
+        
+        <!-- Recommendation 1: Investor/Investigation Perspective -->
+        <article class="card reveal" style="border-top: 3px solid var(--accent-2);">
+          <div class="card-content">
+            <span style="font-size: 24px; color: var(--accent-2); display: block; margin-bottom: 8px;">“</span>
+            <p style="font-size: 13px; font-style: italic; line-height: 1.6; margin-bottom: 14px;">
+              "Nohan doesn't just look at the surface code; he conducts tech audits with the precision of a digital detective. He exposed critical architectural vulnerabilities and data leakage pathways in a target asset that saved us millions in misallocated capital."
+            </p>
+            <div style="border-top: 1px dashed var(--line); padding-top: 10px; margin-top: auto;">
+              <h4 style="margin: 0; font-size: 14px; font-weight: 750; color: var(--ink);">Managing Partner</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--muted);">Venture Capital & Due Diligence Firm</p>
+            </div>
+          </div>
+        </article>
 
+        <!-- Recommendation 2: Startup / AI Systems Architecture -->
+        <article class="card reveal" style="border-top: 3px solid var(--accent);">
+          <div class="card-content">
+            <span style="font-size: 24px; color: var(--accent); display: block; margin-bottom: 8px;">“</span>
+            <p style="font-size: 13px; font-style: italic; line-height: 1.6; margin-bottom: 14px;">
+              "When our internal AI pipeline hit an absolute bottleneck, Nohan stepped in as an advisor and re-architected our entire system configuration. He coordinates massive development sprint teams with incredible focus and zero fluff."
+            </p>
+            <div style="border-top: 1px dashed var(--line); padding-top: 10px; margin-top: auto;">
+              <h4 style="margin: 0; font-size: 14px; font-weight: 750; color: var(--ink);">Founder & CEO</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--muted);">SaaS Automation Platform</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Recommendation 3: Film House / Media Infrastructure -->
+        <article class="card reveal" style="border-top: 3px solid var(--success);">
+          <div class="card-content">
+            <span style="font-size: 24px; color: var(--success); display: block; margin-bottom: 8px;">“</span>
+            <p style="font-size: 13px; font-style: italic; line-height: 1.6; margin-bottom: 14px;">
+              "High-fidelity media processing requires unique, heavy-duty network handling. Nohan streamlined our film house's storage clusters and built a bulletproof IT production pipeline that eliminated our localized render lags entirely."
+            </p>
+            <div style="border-top: 1px dashed var(--line); padding-top: 10px; margin-top: auto;">
+              <h4 style="margin: 0; font-size: 14px; font-weight: 750; color: var(--ink);">Technical Director</h4>
+              <p style="margin: 0; font-size: 12px; color: var(--muted);">Studio Post-Production House</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
     <section>
       <h2>Technical Scope</h2>
       <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot, Ne[...]
     </section>
 
-    <section class="footer">
+    <section class="footer" id="contact-footer">
       <p><strong>Suggested next step:</strong> 20-minute discovery call to identify the highest-value AI opportunity, audit risk, and decide whether a 3-14 day paid sprint makes sense.</p>
     </section>
   </main>
+  <script>
+    // Scroll progress bar
+    var progressBar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+
+    // Reveal-on-scroll for cards
+    var revealEls = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+
+    // Active nav link highlighting
+    var navLinks = document.querySelectorAll('.topnav-links a');
+    var sections = Array.prototype.slice.call(navLinks).map(function (link) {
+      return document.querySelector(link.getAttribute('href'));
+    });
+
+    function updateActiveNav() {
+      var fromTop = window.scrollY + 90;
+      var currentIndex = 0;
+      sections.forEach(function (sec, i) {
+        if (sec && sec.offsetTop <= fromTop) currentIndex = i;
+      });
+      navLinks.forEach(function (link, i) {
+        link.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // Floating jump-to-contact / back-to-top button
+    var jumpFab = document.getElementById('jump-fab');
+    var contactSection = document.getElementById('contact-footer');
+
+    function updateJumpFab() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var nearBottom = docHeight > 0 && (scrollTop / docHeight) > 0.85;
+
+      jumpFab.classList.toggle('show', scrollTop > 300);
+      jumpFab.textContent = nearBottom ? '↑' : '↓';
+      jumpFab.title = nearBottom ? 'Back to top' : 'Jump to contact';
+      jumpFab.dataset.mode = nearBottom ? 'top' : 'down';
+    }
+
+    jumpFab.addEventListener('click', function () {
+      if (jumpFab.dataset.mode === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    window.addEventListener('scroll', function () {
+      updateProgress();
+      updateActiveNav();
+      updateJumpFab();
+    }, { passive: true });
+
+    updateProgress();
+    updateActiveNav();
+    updateJumpFab();
+  </script>
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ca00fcc150b41ab83b9d565b0562b89"}'></script><!-- End Cloudflare W[...]
 </body>
 </html>
