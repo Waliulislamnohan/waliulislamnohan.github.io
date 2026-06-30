@@ -647,6 +647,133 @@
       }
     }
 
+    /* ---- Left-side section navigator (mobile only) ---- */
+    .side-nav {
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      .side-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        position: fixed;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 41;
+        padding: 10px 6px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(14px) saturate(160%);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
+        border: 1px solid var(--glass-border);
+        border-radius: 999px;
+        box-shadow: var(--glass-shadow);
+        max-height: 70vh;
+        overflow-y: auto;
+        scrollbar-width: none;
+      }
+
+      .side-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .side-nav-dot {
+        width: 7px;
+        height: 7px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        border: none;
+        background: var(--line);
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+      }
+
+      .side-nav-dot.is-active {
+        background: var(--accent);
+        height: 18px;
+        border-radius: 5px;
+      }
+
+      .side-nav-dot .side-nav-label {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        background: var(--ink);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 6px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+      }
+
+      .side-nav-dot.is-active .side-nav-label {
+        opacity: 1;
+      }
+    }
+
+    /* ---- Custom cursor circle (mouse/trackpad devices only) ---- */
+    .custom-cursor {
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      body.has-custom-cursor,
+      body.has-custom-cursor a,
+      body.has-custom-cursor button {
+        cursor: none;
+      }
+
+      .custom-cursor {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 26px;
+        height: 26px;
+        margin-left: -13px;
+        margin-top: -13px;
+        border-radius: 50%;
+        border: 1.5px solid var(--accent);
+        background: rgba(15, 118, 110, 0.08);
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-100px, -100px);
+        transition: width 0.18s ease, height 0.18s ease, margin 0.18s ease,
+          background 0.18s ease, border-color 0.18s ease, opacity 0.2s ease;
+        opacity: 0;
+      }
+
+      .custom-cursor.is-active {
+        opacity: 1;
+      }
+
+      .custom-cursor.is-pressed {
+        width: 18px;
+        height: 18px;
+        margin-left: -9px;
+        margin-top: -9px;
+        background: rgba(15, 118, 110, 0.18);
+      }
+
+      .custom-cursor.is-hovering {
+        width: 44px;
+        height: 44px;
+        margin-left: -22px;
+        margin-top: -22px;
+        border-color: var(--accent-2);
+        background: rgba(180, 83, 9, 0.1);
+      }
+    }
+
     @media print {
       body {
         background: white;
@@ -2368,6 +2495,111 @@
         switchTo(decks[0]);
         dock.classList.add('is-visible');
       }
+    })();
+  </script>
+
+  <script>
+    // ---- Left-side section navigator (mobile) ----
+    (function () {
+      const sections = Array.from(document.querySelectorAll('main > section')).filter(
+        (s) => s.offsetHeight > 40
+      );
+      if (!sections.length) return;
+
+      const nav = document.createElement('div');
+      nav.className = 'side-nav';
+      nav.setAttribute('aria-label', 'Section navigator');
+      document.body.appendChild(nav);
+
+      const dots = sections.map((section) => {
+        const heading = section.querySelector('h2');
+        const label = heading ? heading.textContent.trim() : 'Section';
+        const dot = document.createElement('button');
+        dot.className = 'side-nav-dot';
+        dot.innerHTML = '<span class="side-nav-label">' + label + '</span>';
+        dot.addEventListener('click', () => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        nav.appendChild(dot);
+        return dot;
+      });
+
+      function setActive(index) {
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            let best = null;
+            let bestRatio = 0;
+            entries.forEach((e) => {
+              if (e.isIntersecting && e.intersectionRatio > bestRatio) {
+                bestRatio = e.intersectionRatio;
+                best = e.target;
+              }
+            });
+            if (best) setActive(sections.indexOf(best));
+          },
+          { threshold: [0.25, 0.5, 0.75] }
+        );
+        sections.forEach((s) => observer.observe(s));
+      }
+
+      setActive(0);
+    })();
+  </script>
+
+  <script>
+    // ---- Custom cursor circle for mouse/trackpad devices ----
+    (function () {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      document.body.classList.add('has-custom-cursor');
+      const cursor = document.createElement('div');
+      cursor.className = 'custom-cursor';
+      document.body.appendChild(cursor);
+
+      let mouseX = 0;
+      let mouseY = 0;
+      let curX = 0;
+      let curY = 0;
+      let started = false;
+
+      function loop() {
+        curX += (mouseX - curX) * 0.2;
+        curY += (mouseY - curY) * 0.2;
+        cursor.style.transform = 'translate(' + curX + 'px, ' + curY + 'px)';
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!started) {
+          started = true;
+          curX = mouseX;
+          curY = mouseY;
+          cursor.classList.add('is-active');
+        }
+      });
+
+      window.addEventListener('mousedown', () => cursor.classList.add('is-pressed'));
+      window.addEventListener('mouseup', () => cursor.classList.remove('is-pressed'));
+      document.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
+      document.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, .card, .scenario-card, .talent-card')) {
+          cursor.classList.add('is-hovering');
+        }
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, .card, .scenario-card, .talent-card')) {
+          cursor.classList.remove('is-hovering');
+        }
+      });
     })();
   </script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ca00fcc150b41ab83b9d565b0562b89"}'></script><!-- End Cloudflare Web Analytics -->
