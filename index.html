@@ -14,6 +14,9 @@
       --accent-2: #b45309;
       --panel: #ffffff;
       --success: #16a34a;
+      --glass-bg: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --glass-shadow: 0 8px 32px rgba(23, 33, 43, 0.08);
     }
 
     * {
@@ -26,6 +29,62 @@
       background: var(--paper);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Soft animated gradient blobs behind the glass cards */
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .bg-blobs span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.35;
+      animation: blob-float 22s ease-in-out infinite;
+    }
+
+    .bg-blobs span:nth-child(1) {
+      width: 420px;
+      height: 420px;
+      top: -120px;
+      left: -100px;
+      background: radial-gradient(circle, #5eead4, transparent 70%);
+      animation-delay: 0s;
+    }
+
+    .bg-blobs span:nth-child(2) {
+      width: 380px;
+      height: 380px;
+      top: 30%;
+      right: -140px;
+      background: radial-gradient(circle, #fde68a, transparent 70%);
+      animation-delay: -7s;
+    }
+
+    .bg-blobs span:nth-child(3) {
+      width: 360px;
+      height: 360px;
+      bottom: -120px;
+      left: 20%;
+      background: radial-gradient(circle, #bbf7d0, transparent 70%);
+      animation-delay: -14s;
+    }
+
+    @keyframes blob-float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.08); }
+      66% { transform: translate(-25px, 25px) scale(0.95); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-blobs span { animation: none; }
     }
 
     main {
@@ -126,14 +185,24 @@
     }
 
     .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
       padding: 16px;
       break-inside: avoid;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(23, 33, 43, 0.14);
+      background: rgba(255, 255, 255, 0.7);
     }
     
     .card-content {
@@ -142,9 +211,12 @@
 
     .callout {
       border-left: 5px solid var(--accent);
-      background: #eef8f6;
+      background: rgba(238, 248, 246, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       padding: 16px 18px;
-      border-radius: 8px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
     }
 
     .price {
@@ -172,12 +244,20 @@
 
     .metric {
       border-top: 3px solid var(--accent);
-      background: var(--panel);
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
       padding: 12px;
-      border-radius: 8px;
-      border-left: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-radius: 10px;
+      border-left: 1px solid var(--glass-border);
+      border-right: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.25s ease;
+    }
+
+    .metric:hover {
+      transform: translateY(-3px);
     }
 
     .metric strong {
@@ -248,13 +328,16 @@
 
     /* Scenario cards */
     .scenario-card {
-      background: var(--panel);
-      border: 2px solid var(--line);
-      border-radius: 10px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border: 2px solid var(--glass-border);
+      border-radius: 14px;
       padding: 20px;
       transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--glass-shadow);
     }
 
     .scenario-card:hover {
@@ -312,12 +395,15 @@
 
     /* Free Consultation CTA */
     .free-offer-box {
-      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-      border: 2px solid var(--accent);
-      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(219, 234, 254, 0.55) 0%, rgba(224, 231, 255, 0.55) 100%);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border: 2px solid rgba(15, 118, 110, 0.35);
+      border-radius: 16px;
       padding: 24px;
       margin-bottom: 28px;
       text-align: center;
+      box-shadow: var(--glass-shadow);
     }
 
     .free-offer-title {
@@ -354,12 +440,15 @@
 
     /* Talent cards */
     .talent-card {
-      background: var(--panel);
-      border: 2px solid var(--success);
-      border-radius: 10px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border: 2px solid rgba(22, 163, 74, 0.4);
+      border-radius: 14px;
       padding: 20px;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--glass-shadow);
     }
 
     .talent-card:hover {
@@ -455,8 +544,36 @@
 
       .card,
       .metric,
-      .callout {
-        box-shadow: none;
+      .callout,
+      .scenario-card,
+      .talent-card,
+      .free-offer-box {
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: #ffffff !important;
+        border: 1px solid var(--line) !important;
+      }
+
+      /* Hide on-screen-only chrome when printing/exporting to PDF */
+      .bg-blobs,
+      .topnav,
+      #scroll-progress,
+      #jump-fab {
+        display: none !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      section {
+        page-break-inside: avoid;
+      }
+
+      .card {
+        break-inside: avoid;
       }
     }
     /* ---- Dynamic add-ons: nav, progress bar, reveal, back-to-top ---- */
@@ -474,9 +591,10 @@
       position: sticky;
       top: 0;
       z-index: 900;
-      background: rgba(251, 252, 253, 0.92);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(251, 252, 253, 0.6);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid var(--glass-border);
       padding: 10px 0;
       margin: -34px 0 26px;
     }
@@ -512,6 +630,12 @@
       border-bottom-color: var(--accent);
     }
 
+    .topnav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .topnav-cta {
       display: inline-block;
       padding: 8px 16px;
@@ -526,6 +650,28 @@
     .topnav-cta:hover {
       background: #0a5c5e;
       text-decoration: none;
+    }
+
+    .topnav-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--accent-2);
+      color: var(--accent-2);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .topnav-cv:hover {
+      background: var(--accent-2);
+      color: #fff;
     }
 
     .reveal {
@@ -580,9 +726,213 @@
         margin-top: 0;
       }
     }
+
+    /* ====================================================================
+       STYLE SWITCHER — Glassmorphism (default) / Neomorphism /
+       Liquid Glass / Spandle UI
+       Default glass rules live on .card, .metric, .scenario-card,
+       .talent-card, .free-offer-box, .topnav, .topnav-cv, #jump-fab above.
+       Each [data-theme] block below overrides just those components.
+       ==================================================================== */
+
+    .style-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .style-switch:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ---------- Neomorphism ---------- */
+    body[data-theme="neo"] {
+      background: #e6e9ef;
+    }
+
+    body[data-theme="neo"] .bg-blobs {
+      display: none;
+    }
+
+    body[data-theme="neo"] .card,
+    body[data-theme="neo"] .metric,
+    body[data-theme="neo"] .scenario-card,
+    body[data-theme="neo"] .talent-card,
+    body[data-theme="neo"] .free-offer-box,
+    body[data-theme="neo"] .callout {
+      background: #e6e9ef;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: none;
+      border-radius: 18px;
+      box-shadow: 8px 8px 16px #b9bec7, -8px -8px 16px #ffffff;
+    }
+
+    body[data-theme="neo"] .card:hover,
+    body[data-theme="neo"] .metric:hover,
+    body[data-theme="neo"] .scenario-card:hover,
+    body[data-theme="neo"] .talent-card:hover {
+      box-shadow: 10px 10px 20px #b3b9c2, -10px -10px 20px #ffffff;
+      transform: translateY(-2px);
+    }
+
+    body[data-theme="neo"] .topnav {
+      background: #e6e9ef;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: none;
+      box-shadow: 0 6px 14px #b9bec7;
+    }
+
+    body[data-theme="neo"] .topnav-cv,
+    body[data-theme="neo"] .style-switch {
+      background: #e6e9ef;
+      border: none;
+      box-shadow: 4px 4px 8px #b9bec7, -4px -4px 8px #ffffff;
+    }
+
+    body[data-theme="neo"] .topnav-cv:hover,
+    body[data-theme="neo"] .style-switch:hover {
+      box-shadow: inset 3px 3px 6px #b9bec7, inset -3px -3px 6px #ffffff;
+      color: var(--accent);
+      background: #e6e9ef;
+    }
+
+    body[data-theme="neo"] #jump-fab {
+      box-shadow: 6px 6px 14px #b9bec7, -6px -6px 14px #ffffff;
+    }
+
+    /* ---------- Liquid Glass ---------- */
+    body[data-theme="liquid"] .card,
+    body[data-theme="liquid"] .metric,
+    body[data-theme="liquid"] .scenario-card,
+    body[data-theme="liquid"] .talent-card,
+    body[data-theme="liquid"] .free-offer-box,
+    body[data-theme="liquid"] .callout {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(22px) saturate(190%);
+      -webkit-backdrop-filter: blur(22px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 10px 36px rgba(15, 60, 80, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body[data-theme="liquid"] .card::before,
+    body[data-theme="liquid"] .scenario-card::before,
+    body[data-theme="liquid"] .talent-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent);
+      pointer-events: none;
+    }
+
+    body[data-theme="liquid"] .card:hover,
+    body[data-theme="liquid"] .scenario-card:hover,
+    body[data-theme="liquid"] .talent-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 44px rgba(15, 60, 80, 0.26), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    body[data-theme="liquid"] .topnav {
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(22px) saturate(190%);
+      -webkit-backdrop-filter: blur(22px) saturate(190%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    body[data-theme="liquid"] .topnav-cv,
+    body[data-theme="liquid"] .style-switch {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    body[data-theme="liquid"] #jump-fab {
+      background: rgba(15, 118, 110, 0.75);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(15, 118, 110, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    /* ---------- Spandle UI (bold offset-shadow / neo-brutalist) ---------- */
+    body[data-theme="spandle"] {
+      background: #fdf6ec;
+    }
+
+    body[data-theme="spandle"] .bg-blobs {
+      opacity: 0.5;
+    }
+
+    body[data-theme="spandle"] .card,
+    body[data-theme="spandle"] .metric,
+    body[data-theme="spandle"] .scenario-card,
+    body[data-theme="spandle"] .talent-card,
+    body[data-theme="spandle"] .free-offer-box,
+    body[data-theme="spandle"] .callout {
+      background: #ffffff;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: 3px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 6px 6px 0 var(--accent);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    body[data-theme="spandle"] .card:hover,
+    body[data-theme="spandle"] .metric:hover,
+    body[data-theme="spandle"] .scenario-card:hover,
+    body[data-theme="spandle"] .talent-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0 var(--accent-2);
+    }
+
+    body[data-theme="spandle"] .topnav {
+      background: #fdf6ec;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 3px solid var(--ink);
+    }
+
+    body[data-theme="spandle"] .topnav-cv,
+    body[data-theme="spandle"] .style-switch,
+    body[data-theme="spandle"] .topnav-cta {
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    body[data-theme="spandle"] .topnav-cv:hover,
+    body[data-theme="spandle"] .style-switch:hover,
+    body[data-theme="spandle"] .topnav-cta:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    body[data-theme="spandle"] #jump-fab {
+      border-radius: 8px;
+      border: 3px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
   </style>
 </head>
 <body>
+  <div class="bg-blobs"><span></span><span></span><span></span></div>
   <div id="scroll-progress"></div>
   <nav class="topnav">
     <div class="topnav-inner">
@@ -594,7 +944,11 @@
         <a href="#credibility">Credibility</a>
         <a href="#contact-footer">Contact</a>
       </div>
-      <a class="topnav-cta" href="#contact-footer">Book a Call ↓</a>
+      <div class="topnav-actions">
+        <button class="style-switch" id="style-switch-btn" type="button">🎨 Glassmorphism</button>
+        <button class="topnav-cv" id="download-cv-btn" type="button">⬇ Download CV (PDF)</button>
+        <a class="topnav-cta" href="#contact-footer">Book a Call ↓</a>
+      </div>
     </div>
   </nav>
   <button id="jump-fab" title="Jump to contact / back to top">↓</button>
@@ -602,7 +956,7 @@
     <header>
       <p class="eyebrow">AI Systems Architect | Founder | Startup & Product Auditor</p>
       <h1>MD Waliul Islam Nohan</h1>
-      <p class="subtitle">I help companies, startups, and investors identify where AI can reduce cost, increase revenue, or expose product and technology risk, then help build the first working system[...]
+      <p class="subtitle">I help companies, startups, and investors identify where AI can reduce cost, increase revenue, or expose product and technology risk, then help build the first working.</p>
       <div class="contact">
         <span>Email: waliulnohan@gmail.com</span>
         <span>Phone/WhatsApp: +8801875490002 </span>
@@ -627,7 +981,7 @@
           <img src="assets/nohan-journey-5.png" alt="2026 vision covering AI consulting, research tour, talent scout and product review">
         </div>
       </div>
-      <p class="muted">The pattern: self-taught engineering, production systems, hackathon/community leadership, AI product building, startup execution, consulting, and research-facing global ambition[...]
+      <p class="muted">The pattern: self-taught engineering, production systems, hackathon/community leadership, AI product building, startup execution, consulting, and research-facing global.</p>
     </section>
 
     <section>
@@ -755,7 +1109,7 @@
       <div class="free-offer-box">
         <div class="free-offer-title">💡 Got an Interesting Problem?</div>
         <p class="free-offer-subtitle">
-          If your product or story is compelling enough, I may do a consultation call <strong>for free</strong>. Tell me what you're building, what you're stuck on, and why it matters. If it clicks[...]
+          If your product or story is compelling enough, I may do a consultation call <strong>for free</strong>. Tell me what you're building, what you're stuck on, and why it matters. If it.
         </p>
         <a href="mailto:waliulnohan@gmail.com?subject=Let%27s%20discuss%20my%20AI%20product%20%26%20story" class="free-offer-cta">
           ✉️ Tell Me Your Story
@@ -949,7 +1303,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>AI Sales CRM (Fuel AI)</h3>
-            <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions wit[...]
+            <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions.</p>
           </div>
           <div class="project-links">
             <a href="https://app.fuelai.com/" target="_blank">🔗 App Platform</a>
@@ -961,7 +1315,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>AI Business Launchpad (Scalova AI)</h3>
-            <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch [...]
+            <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch.</p>
           </div>
           <div class="project-links">
             <a href="https://www.scalova.ai/" target="_blank">🔗 Live Website</a>
@@ -983,7 +1337,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Health AI (Cognipath)</h3>
-            <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish" symp[...]
+            <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish".</p>
           </div>
           <div class="project-links">
             <a href="https://vimeo.com/1195006778?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
@@ -994,7 +1348,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>EnglishMate</h3>
-            <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar feedba[...]
+            <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar.</p>
           </div>
           <div class="project-links">
             <a href="https://youtu.be/_7skSK4btac" target="_blank">▶️ Video Presentation</a>
@@ -1017,7 +1371,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Productivity AI (Lineage P&ID Tool)</h3>
-            <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID diagrams[...]
+            <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1028,7 +1382,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>The 3rd Eye (Search Anything)</h3>
-            <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor Modul[...]
+            <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1039,7 +1393,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>TrackIO (Vehicle Monitoring AI)</h3>
-            <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting, fue[...]
+            <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1050,7 +1404,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>City Pass</h3>
-            <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling tracke[...]
+            <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1061,7 +1415,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>FloodShield</h3>
-            <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical floo[...]
+            <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical.</p>
           </div>
           <div class="project-links">
             <a href="https://vimeo.com/1195007708?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
@@ -1072,7 +1426,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Justice AI</h3>
-            <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal tracki[...]
+            <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal.</p>
           </div>
           <div class="project-links">
             <a href="https://justice-frontend-v3.vercel.app/" target="_blank">🔗 Live Website</a>
@@ -1083,7 +1437,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>FlyNepal (Travel App)</h3>
-            <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking options[...]
+            <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1094,7 +1448,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Karigori</h3>
-            <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction pipel[...]
+            <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction.</p>
           </div>
           <div class="project-links">
             <a href="https://youtu.be/ByWUNkfRdCA?si=MxVO6_vTUhyGnclk" target="_blank">▶️ Video Guide</a>
@@ -1105,7 +1459,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Golden Vault</h3>
-            <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement metrics.<[...]
+            <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement.</p>
           </div>
           <div class="project-links">
             <a href="https://youtu.be/t02S9t3NjfY?si=Ral0-U1mnwVYibKP" target="_blank">▶️ Video Walkthrough</a>
@@ -1128,7 +1482,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Monitor AI</h3>
-            <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and descrip[...]
+            <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1139,7 +1493,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>Background Removal App</h3>
-            <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and [...]
+            <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and.</p>
           </div>
           <div class="project-links">
             <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
@@ -1257,7 +1611,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>1. Custom Precision OCR AI Engine</h3>
-            <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical symb[...]
+            <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical.</p>
           </div>
           <div class="project-links">
             <span class="muted">Status: Core Integration Module</span>
@@ -1268,7 +1622,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>2. Bangla Conversational Voice AI (STS)</h3>
-            <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B communic[...]
+            <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B.</p>
           </div>
           <div class="project-links">
             <span class="muted">Status: API Pipeline Active</span>
@@ -1279,7 +1633,7 @@
         <article class="card reveal">
           <div class="card-content">
             <h3>3. Custom Efficient Small Language Model (SLM)</h3>
-            <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than [...]
+            <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than.</p>
           </div>
           <div class="project-links">
             <span class="muted">Status: Core Research &amp; Testing</span>
@@ -1377,7 +1731,7 @@
     </section>
     <section>
       <h2>Technical Scope</h2>
-      <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot, Ne[...]
+      <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot.</p>
     </section>
 
     <section class="footer" id="contact-footer">
@@ -1423,7 +1777,56 @@
       });
     }
 
+    // Style switcher — cycles through Glassmorphism / Neomorphism /
+    // Liquid Glass / Spandle UI and remembers the choice for next visit.
+    var THEMES = [
+      { key: 'glass',   label: '🎨 Glassmorphism' },
+      { key: 'neo',     label: '🪨 Neomorphism' },
+      { key: 'liquid',  label: '💧 Liquid Glass' },
+      { key: 'spandle', label: '🟧 Spandle UI' }
+    ];
+    var styleSwitchBtn = document.getElementById('style-switch-btn');
+
+    function applyTheme(key) {
+      if (key === 'glass') {
+        document.body.removeAttribute('data-theme');
+      } else {
+        document.body.setAttribute('data-theme', key);
+      }
+      var theme = THEMES.find(function (t) { return t.key === key; });
+      styleSwitchBtn.textContent = theme ? theme.label : THEMES[0].label;
+      try { localStorage.setItem('nohan-portfolio-theme', key); } catch (e) {}
+    }
+
+    function currentThemeKey() {
+      return document.body.getAttribute('data-theme') || 'glass';
+    }
+
+    styleSwitchBtn.addEventListener('click', function () {
+      var currentIndex = THEMES.findIndex(function (t) { return t.key === currentThemeKey(); });
+      var nextIndex = (currentIndex + 1) % THEMES.length;
+      applyTheme(THEMES[nextIndex].key);
+    });
+
+    (function initTheme() {
+      var saved = 'glass';
+      try { saved = localStorage.getItem('nohan-portfolio-theme') || 'glass'; } catch (e) {}
+      applyTheme(saved);
+    })();
+
     // Floating jump-to-contact / back-to-top button
+    // Download CV (PDF) — uses the browser's native print dialog so the
+    // visitor can choose "Save as PDF" with a clean, glass-free layout.
+    var downloadCvBtn = document.getElementById('download-cv-btn');
+    var originalTitle = document.title;
+    downloadCvBtn.addEventListener('click', function () {
+      document.title = 'MD Waliul Islam Nohan - CV';
+      window.print();
+    });
+    window.addEventListener('afterprint', function () {
+      document.title = originalTitle;
+    });
+
     var jumpFab = document.getElementById('jump-fab');
     var contactSection = document.getElementById('contact-footer');
 
@@ -1456,6 +1859,6 @@
     updateActiveNav();
     updateJumpFab();
   </script>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ca00fcc150b41ab83b9d565b0562b89"}'></script><!-- End Cloudflare W[...]
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ca00fcc150b41ab83b9d565b0562b89"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
