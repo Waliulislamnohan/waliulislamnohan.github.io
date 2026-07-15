@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MD Waliul Islam Nohan | AI Systems Architect</title>
+  <title>MD Waliul Islam Nohan | Rebuilding Software for Post-AI Era</title>
   <style>
     :root {
       --ink: #1a1f35;
@@ -12,11 +12,9 @@
       --paper: #faf9f7;
       --accent: #1e3a5f;
       --accent-2: #d4a574;
+      --accent-light: #a8c5df;
       --panel: #ffffff;
       --success: #16a34a;
-      --glass-bg: rgba(255, 255, 255, 0.6);
-      --glass-border: rgba(255, 255, 255, 0.7);
-      --glass-shadow: 0 6px 24px rgba(26, 31, 53, 0.06);
     }
 
     * {
@@ -27,2970 +25,1107 @@
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Soft animated gradient blobs behind the glass cards */
-    .bg-blobs {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .bg-blobs span {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.35;
-      animation: blob-float 22s ease-in-out infinite;
-    }
-
-    .bg-blobs span:nth-child(1) {
-      width: 420px;
-      height: 420px;
-      top: -120px;
-      left: -100px;
-      background: radial-gradient(circle, #5eead4, transparent 70%);
-      animation-delay: 0s;
-    }
-
-    .bg-blobs span:nth-child(2) {
-      width: 380px;
-      height: 380px;
-      top: 30%;
-      right: -140px;
-      background: radial-gradient(circle, #fde68a, transparent 70%);
-      animation-delay: -7s;
-    }
-
-    .bg-blobs span:nth-child(3) {
-      width: 360px;
-      height: 360px;
-      bottom: -120px;
-      left: 20%;
-      background: radial-gradient(circle, #bbf7d0, transparent 70%);
-      animation-delay: -14s;
-    }
-
-    @keyframes blob-float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -40px) scale(1.08); }
-      66% { transform: translate(-25px, 25px) scale(0.95); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .bg-blobs span { animation: none; }
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
     }
 
     main {
-      width: min(980px, calc(100% - 36px));
+      width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 34px 0 42px;
+      padding: 60px 0;
     }
 
-    header {
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 22px;
-      margin-bottom: 26px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    h2 {
-      margin: 28px 0 16px;
-      font-size: 20px;
-      letter-spacing: 0;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 6px;
-    }
-
-    h3 {
-      margin: 0 0 6px;
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-
-    p {
-      margin: 0 0 10px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 650;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--accent);
-      font-weight: 750;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: .08em;
-    }
-
-    .subtitle {
-      margin-top: 12px;
-      max-width: 780px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .contact span {
-      white-space: nowrap;
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .two {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .three {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .four {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    section {
-      margin: 24px 0;
-    }
-
-    .card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 16px;
-      break-inside: avoid;
+    /* ===== HERO SECTION ===== */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      min-height: 70vh;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--glass-shadow);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 36px rgba(23, 33, 43, 0.14);
-      background: rgba(255, 255, 255, 0.7);
-    }
-    
-    .card-content {
-      margin-bottom: 12px;
-    }
-
-    .callout {
-      border-left: 5px solid var(--accent);
-      background: rgba(238, 248, 246, 0.65);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 16px 18px;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(30, 58, 95, 0.03) 0%, rgba(212, 165, 116, 0.02) 100%);
       border-radius: 12px;
-      border: 1px solid var(--glass-border);
+      margin-bottom: 80px;
     }
 
-    .price {
-      display: inline-block;
-      margin-bottom: 8px;
+    .hero-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
       color: var(--accent-2);
-      font-weight: 800;
+      margin-bottom: 20px;
     }
 
-    ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-    }
-
-    li {
-      margin: 5px 0;
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .metric {
-      border-top: 3px solid var(--accent);
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      padding: 12px;
-      border-radius: 10px;
-      border-left: 1px solid var(--glass-border);
-      border-right: 1px solid var(--glass-border);
-      border-bottom: 1px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-      transition: transform 0.25s ease;
-    }
-
-    .metric:hover {
-      transform: translateY(-3px);
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 22px;
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 900;
       line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
     }
 
-    .metric span {
-      color: var(--muted);
-      font-size: 13px;
+    .hero-taglines {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .tagline {
-      font-size: 21px;
-      font-weight: 750;
-      line-height: 1.25;
-      margin-bottom: 8px;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-    
-    .project-links {
-      margin-top: auto;
-      padding-top: 10px;
-      font-size: 13px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-top: 1px dashed var(--line);
-    }
-
-    .footer {
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .journey-strip {
-      display: grid;
-      gap: 12px;
-    }
-
-    .journey-main {
-      width: 100%;
-      display: block;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #ffffff;
-    }
-
-    .journey-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .journey-grid img {
-      width: 100%;
-      display: block;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #ffffff;
-    }
-
-    /* Scenario cards */
-    .scenario-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border: 2px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 20px;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--glass-shadow);
-    }
-
-    .scenario-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 6px 16px rgba(15, 118, 110, 0.15);
-      transform: translateY(-2px);
-    }
-
-    .scenario-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-
-    .scenario-title {
-      font-size: 17px;
-      font-weight: 750;
-      margin-bottom: 10px;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-
-    .scenario-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
-
-    .scenario-trigger {
-      background: #f5f5f5;
-      border-left: 3px solid var(--accent-2);
-      padding: 10px 12px;
-      margin-bottom: 12px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 600;
-      font-style: italic;
-      color: var(--ink);
-    }
-
-    .scenario-solution {
-      display: inline-block;
-      font-size: 12px;
-      padding: 8px 14px;
-      background: #eef8f6;
-      border: 1px solid var(--accent);
-      border-radius: 6px;
+      font-size: 18px;
+      font-weight: 700;
       color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: auto;
+      line-height: 1.4;
+      position: relative;
+      padding-left: 24px;
+      text-align: left;
     }
 
-    /* Free Consultation CTA */
-    .free-offer-box {
-      background: linear-gradient(135deg, rgba(219, 234, 254, 0.55) 0%, rgba(224, 231, 255, 0.55) 100%);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border: 2px solid rgba(15, 118, 110, 0.35);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 28px;
-      text-align: center;
-      box-shadow: var(--glass-shadow);
+    .tagline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      background: var(--accent-2);
+      border-radius: 50%;
     }
 
-    .free-offer-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .free-offer-subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .free-offer-cta {
-      display: inline-block;
-      padding: 12px 24px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .free-offer-cta:hover {
-      background: #0a5c5e;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
-    }
-
-    /* Talent cards */
-    .talent-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border: 2px solid rgba(22, 163, 74, 0.4);
-      border-radius: 14px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--glass-shadow);
-    }
-
-    .talent-card:hover {
-      box-shadow: 0 6px 16px rgba(22, 163, 74, 0.15);
-      transform: translateY(-2px);
-    }
-
-    .talent-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-
-    .talent-title {
-      font-size: 17px;
-      font-weight: 750;
-      margin-bottom: 10px;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-
-    .talent-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
-
-    .talent-solutions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 12px;
-      border-top: 1px solid #e0e7ff;
-    }
-
-    .talent-solution-item {
-      font-size: 12px;
-      color: var(--success);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .talent-solution-item:before {
-      content: "✓";
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    @media (max-width: 760px) {
-      main {
-        width: min(100% - 24px, 980px);
-        padding-top: 24px;
+    @media (max-width: 640px) {
+      .hero {
+        padding: 40px 16px;
+        min-height: 50vh;
       }
 
-      .two,
-      .three,
-      .four,
-      .metrics,
-      .journey-grid {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .tagline {
+        font-size: 16px;
+      }
+    }
+
+    /* ===== VISITOR DETECTION MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(26, 31, 53, 0.15);
+      text-align: center;
+      animation: modalSlide 0.3s ease-out;
+    }
+
+    @keyframes modalSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .modal-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .visitor-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .visitor-btn {
+      padding: 16px 20px;
+      border: 2px solid var(--line);
+      background: transparent;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      color: var(--ink);
+    }
+
+    .visitor-btn:hover {
+      border-color: var(--accent);
+      background: rgba(30, 58, 95, 0.05);
+      transform: translateX(4px);
+    }
+
+    .visitor-btn-label {
+      font-weight: 700;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .visitor-btn-desc {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ===== STORY SECTION ===== */
+    .story-section {
+      margin-bottom: 80px;
+      padding: 60px 20px;
+      background: rgba(212, 165, 116, 0.08);
+      border-radius: 12px;
+    }
+
+    .story-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .story-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+
+    .story-header p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .story-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .story-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+
+    .story-text p {
+      margin-bottom: 16px;
+    }
+
+    .story-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .story-images img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(26, 31, 53, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .story-content {
         grid-template-columns: 1fr;
       }
 
-      .contact span {
-        white-space: normal;
-      }
-
-      .free-offer-box {
-        padding: 18px;
-      }
-
-      .free-offer-title {
-        font-size: 18px;
+      .story-images img {
+        height: 200px;
       }
     }
 
-    /* ---- Tinder-style swipeable cards (mobile only, generic — JS-generated) ---- */
-    .swipe-deck { display: none; }
-    .swipe-hint { display: none; }
-    .mobile-dock { display: none; }
-
-    @media (max-width: 760px) {
-      .has-swipe-deck > .grid { display: none; }
-
-      .swipe-deck {
-        display: flex;
-        gap: 14px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 6px 6vw 24px;
-        margin: 0 -18px;
-        scrollbar-width: none;
-      }
-
-      .swipe-deck::-webkit-scrollbar {
-        display: none;
-      }
-
-      .swipe-slide {
-        flex: 0 0 88vw;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
-        display: flex;
-      }
-
-      .swipe-slide > * {
-        width: 100%;
-        min-height: 56vh;
-        margin: 0;
-      }
-
-      .swipe-slide .price {
-        display: inline-block;
-        margin: 4px 0 14px;
-      }
-
-      .swipe-hint {
-        display: block;
-        text-align: center;
-        color: var(--muted);
-        font-size: 13px;
-        margin-top: -8px;
-      }
-
-      .mobile-dock {
-        display: flex;
-        align-items: center;
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 16px;
-        z-index: 40;
-        gap: 8px;
-        max-width: 90vw;
-        background: var(--glass-bg);
-        backdrop-filter: blur(14px) saturate(160%);
-        -webkit-backdrop-filter: blur(14px) saturate(160%);
-        border: 1px solid var(--glass-border);
-        border-radius: 999px;
-        padding: 8px 10px;
-        box-shadow: var(--glass-shadow);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-      }
-
-      .mobile-dock.is-visible {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .mobile-dock .dock-dots {
-        display: flex;
-        gap: 8px;
-        overflow-x: auto;
-        scrollbar-width: none;
-      }
-
-      .mobile-dock .dock-dots::-webkit-scrollbar {
-        display: none;
-      }
-
-      .dock-dot {
-        width: 9px;
-        height: 9px;
-        flex: 0 0 auto;
-        border-radius: 50%;
-        border: none;
-        background: var(--line);
-        padding: 0;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .dock-dot.is-active {
-        background: var(--accent);
-        width: 22px;
-        border-radius: 5px;
-      }
-
-      .dock-autoplay-toggle {
-        flex: 0 0 auto;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        border: none;
-        background: transparent;
-        color: var(--accent);
-        font-size: 11px;
-        cursor: pointer;
-        margin-left: 2px;
-      }
+    /* ===== ADAPTIVE CARDS SECTION ===== */
+    .cards-section {
+      margin-bottom: 80px;
+      padding: 60px 20px;
     }
 
-    /* ---- Left-side section navigator (mobile only) — creative "orbit rail" ---- */
-    .side-nav {
-      display: none;
-    }
-
-    @media (max-width: 760px) {
-      .side-nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        position: fixed;
-        left: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 41;
-        padding: 16px 9px;
-        background: var(--glass-bg);
-        backdrop-filter: blur(14px) saturate(160%);
-        -webkit-backdrop-filter: blur(14px) saturate(160%);
-        border: 1px solid var(--glass-border);
-        border-radius: 999px;
-        box-shadow: var(--glass-shadow);
-        max-height: 64vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        scrollbar-width: none;
-        transition: padding 0.3s ease, gap 0.3s ease, background 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-
-      .side-nav::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 14px;
-        bottom: 14px;
-        width: 2px;
-        transform: translateX(-50%);
-        background: linear-gradient(to bottom, var(--line), var(--line));
-        border-radius: 2px;
-        z-index: 0;
-        transition: opacity 0.25s ease;
-      }
-
-      .side-nav-fill {
-        position: absolute;
-        left: 50%;
-        top: 14px;
-        width: 2px;
-        transform: translateX(-50%);
-        background: linear-gradient(to bottom, var(--accent), var(--accent-2));
-        border-radius: 2px;
-        z-index: 0;
-        transition: height 0.2s ease, opacity 0.25s ease;
-      }
-
-      .side-nav::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Idle: every non-active dot is actually removed from the hit-test
-         (not just faded) so it never blocks taps on the page behind it.
-         The rail itself shrink-wraps down to one small, fully on-screen,
-         pulsing pin — never an invisible ghost block over your content. */
-      .side-nav.is-idle {
-        padding: 4px;
-        gap: 0;
-        background: transparent;
-        border-color: transparent;
-        box-shadow: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        max-height: none;
-      }
-
-      .side-nav.is-idle::before,
-      .side-nav.is-idle .side-nav-fill {
-        display: none;
-      }
-
-      .side-nav.is-idle .side-nav-dot:not(.is-active) {
-        display: none;
-      }
-
-      .side-nav-dot {
-        width: 18px;
-        height: 18px;
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        border: none;
-        background: var(--paper);
-        box-shadow: 0 0 0 2px var(--line) inset;
-        padding: 0;
-        cursor: pointer;
-        position: relative;
-        z-index: 1;
-        font-size: 9px;
-        line-height: 1;
-        transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-          height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-
-      .side-nav-dot .bead-icon {
-        opacity: 0;
-        transform: scale(0.4);
-        transition: all 0.25s ease;
-      }
-
-      .side-nav-dot.is-active {
-        width: 30px;
-        height: 30px;
-        background: var(--accent);
-        box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18), 0 0 14px rgba(15, 118, 110, 0.55);
-        animation: side-nav-pulse 2.2s ease-in-out infinite;
-      }
-
-      .side-nav-dot.is-active .bead-icon {
-        opacity: 1;
-        transform: scale(1);
-        font-size: 14px;
-      }
-
-      @keyframes side-nav-pulse {
-        0%, 100% { box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18), 0 0 14px rgba(15, 118, 110, 0.55); }
-        50% { box-shadow: 0 0 0 6px rgba(15, 118, 110, 0.1), 0 0 20px rgba(15, 118, 110, 0.7); }
-      }
-
-      .side-nav-dot .side-nav-label {
-        position: absolute;
-        left: 30px;
-        top: 50%;
-        transform: translateY(-50%) translateX(-4px);
-        white-space: nowrap;
-        background: var(--ink);
-        color: #fff;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 5px 9px;
-        border-radius: 7px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .side-nav-dot.is-active .side-nav-label {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
-      }
-    }
-
-    /* ---- Custom cursor circle (mouse/trackpad devices only) ---- */
-    .custom-cursor {
-      display: none;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      body.has-custom-cursor,
-      body.has-custom-cursor a,
-      body.has-custom-cursor button {
-        cursor: none;
-      }
-
-      .custom-cursor {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 26px;
-        height: 26px;
-        margin-left: -13px;
-        margin-top: -13px;
-        border-radius: 50%;
-        border: 1.5px solid var(--accent);
-        background: rgba(15, 118, 110, 0.08);
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-100px, -100px);
-        transition: width 0.18s ease, height 0.18s ease, margin 0.18s ease,
-          background 0.18s ease, border-color 0.18s ease, opacity 0.2s ease;
-        opacity: 0;
-      }
-
-      .custom-cursor.is-active {
-        opacity: 1;
-      }
-
-      .custom-cursor.is-pressed {
-        width: 18px;
-        height: 18px;
-        margin-left: -9px;
-        margin-top: -9px;
-        background: rgba(15, 118, 110, 0.18);
-      }
-
-      .custom-cursor.is-hovering {
-        width: 44px;
-        height: 44px;
-        margin-left: -22px;
-        margin-top: -22px;
-        border-color: var(--accent-2);
-        background: rgba(180, 83, 9, 0.1);
-      }
-    }
-
-    @media print {
-      body {
-        background: white;
-      }
-
-      main {
-        width: auto;
-        padding: 0;
-      }
-
-      a {
-        color: var(--ink);
-      }
-
-      .card,
-      .metric,
-      .callout,
-      .scenario-card,
-      .talent-card,
-      .free-offer-box {
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: #ffffff !important;
-        border: 1px solid var(--line) !important;
-      }
-
-      /* Hide on-screen-only chrome when printing/exporting to PDF */
-      .bg-blobs,
-      .topnav,
-      #scroll-progress,
-      #jump-fab {
-        display: none !important;
-      }
-
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      section {
-        page-break-inside: avoid;
-      }
-
-      .card {
-        break-inside: avoid;
-      }
-    }
-
-    /* Same flattening as @media print, but toggleable via JS as a class —
-       used by the html2pdf export so the captured snapshot looks like the
-       print view (no blur/glass, no nav, no floating button). */
-    body.pdf-export-mode {
-      background: white !important;
-    }
-
-    body.pdf-export-mode main {
-      width: auto;
-      padding: 0 24px;
-    }
-
-    body.pdf-export-mode .card,
-    body.pdf-export-mode .metric,
-    body.pdf-export-mode .callout,
-    body.pdf-export-mode .scenario-card,
-    body.pdf-export-mode .talent-card,
-    body.pdf-export-mode .free-offer-box {
-      box-shadow: none !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: #ffffff !important;
-      border: 1px solid var(--line) !important;
-      transform: none !important;
-    }
-
-    body.pdf-export-mode .bg-blobs,
-    body.pdf-export-mode .topnav,
-    body.pdf-export-mode #scroll-progress,
-    body.pdf-export-mode #jump-fab {
-      display: none !important;
-    }
-
-    body.pdf-export-mode .reveal {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    /* ====================================================================
-       SECTION TONES — gives each section its own accent color, a soft
-       background wash, and matching card top-borders so sections read as
-       distinct "zones" instead of all looking identical.
-       ==================================================================== */
-    section[data-tone] {
-      padding: 28px 24px;
-      border-radius: 22px;
-      margin: 32px 0;
-    }
-
-    section[data-tone] h2 {
-      border-bottom-color: var(--section-accent);
-    }
-
-    section[data-tone] .card {
-      border-top: 4px solid var(--section-accent);
-    }
-
-    section[data-tone] .metric {
-      border-top-color: var(--section-accent);
-    }
-
-    section[data-tone="teal"] {
-      --section-accent: #0f766e;
-      background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(15, 118, 110, 0) 65%);
-    }
-
-    section[data-tone="blue"] {
-      --section-accent: #2563eb;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.07), rgba(37, 99, 235, 0) 65%);
-    }
-
-    section[data-tone="amber"] {
-      --section-accent: #b45309;
-      background: linear-gradient(135deg, rgba(180, 83, 9, 0.07), rgba(180, 83, 9, 0) 65%);
-    }
-
-    section[data-tone="violet"] {
-      --section-accent: #7c3aed;
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.07), rgba(124, 58, 237, 0) 65%);
-    }
-
-    section[data-tone="green"] {
-      --section-accent: #16a34a;
-      background: linear-gradient(135deg, rgba(22, 163, 74, 0.07), rgba(22, 163, 74, 0) 65%);
-    }
-
-    section[data-tone="rose"] {
-      --section-accent: #e11d48;
-      background: linear-gradient(135deg, rgba(225, 29, 72, 0.07), rgba(225, 29, 72, 0) 65%);
-    }
-
-    section[data-tone="cyan"] {
-      --section-accent: #0891b2;
-      background: linear-gradient(135deg, rgba(8, 145, 178, 0.07), rgba(8, 145, 178, 0) 65%);
-    }
-
-    section[data-tone="slate"] {
-      --section-accent: #475569;
-      background: linear-gradient(135deg, rgba(71, 85, 105, 0.07), rgba(71, 85, 105, 0) 65%);
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--section-accent, var(--accent));
-      margin-bottom: 4px;
-    }
-
-    @media (max-width: 760px) {
-      section[data-tone] {
-        padding: 20px 16px;
-        border-radius: 16px;
-        margin: 22px 0;
-      }
-    }
-    /* ---- Dynamic add-ons: nav, progress bar, reveal, back-to-top ---- */
-    #scroll-progress {
-      position: fixed;
-      top: 0; left: 0;
-      height: 4px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      z-index: 1000;
-      transition: width 0.1s ease-out;
-    }
-
-    .topnav {
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      background: rgba(251, 252, 253, 0.6);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 10px 0;
-      margin: -34px 0 26px;
-    }
-
-    .topnav-inner {
-      width: min(980px, calc(100% - 36px));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .topnav-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 13px;
-    }
-
-    .topnav-links a {
-      color: var(--muted);
-      font-weight: 600;
-      padding: 4px 2px;
-      border-bottom: 2px solid transparent;
-    }
-
-    .topnav-links a:hover,
-    .topnav-links a.active {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom-color: var(--accent);
-    }
-
-    .topnav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .topnav-cta {
-      display: inline-block;
-      padding: 8px 16px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .topnav-cta:hover {
-      background: #0a5c5e;
-      text-decoration: none;
-    }
-
-    .topnav-cv {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(6px);
-      border: 1px solid var(--accent-2);
-      color: var(--accent-2);
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .topnav-cv:hover {
-      background: var(--accent-2);
-      color: #fff;
-    }
-
-    /* ---- Mobile header hamburger + dropdown ---- */
-    .nav-menu-btn {
-      display: none;
-      flex: 0 0 auto;
-      width: 36px;
-      height: 36px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--glass-border);
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 8px;
-      cursor: pointer;
-      order: -1;
-    }
-
-    .nav-menu-btn .bar {
-      position: relative;
-      width: 16px;
-      height: 2px;
-      background: var(--ink);
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-
-    .nav-menu-btn .bar::before,
-    .nav-menu-btn .bar::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 16px;
-      height: 2px;
-      background: var(--ink);
-      transition: transform 0.25s ease, top 0.25s ease;
-    }
-
-    .nav-menu-btn .bar::before {
-      top: -5px;
-    }
-
-    .nav-menu-btn .bar::after {
-      top: 5px;
-    }
-
-    .nav-menu-btn.is-open .bar {
-      background: transparent;
-    }
-
-    .nav-menu-btn.is-open .bar::before {
-      top: 0;
-      transform: rotate(45deg);
-    }
-
-    .nav-menu-btn.is-open .bar::after {
-      top: 0;
-      transform: rotate(-45deg);
-    }
-
-    .nav-dropdown {
-      display: none;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 100%;
-      z-index: 899;
-      background: var(--glass-bg);
-      backdrop-filter: blur(18px) saturate(160%);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      border-bottom: 1px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.32s ease, opacity 0.25s ease;
-    }
-
-    .nav-dropdown.is-open {
-      max-height: 80vh;
-      opacity: 1;
-      overflow-y: auto;
-    }
-
-    .nav-dropdown-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 18px;
-      width: min(980px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    .nav-dropdown-grid a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 14px 6px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.45);
-      border: 1px solid var(--glass-border);
+    .cards-header {
       text-align: center;
-      font-weight: 700;
+      margin-bottom: 50px;
+    }
+
+    .cards-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
       color: var(--ink);
-      text-decoration: none;
-      opacity: 0;
-      transform: translateY(10px) scale(0.92);
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease,
-        border-color 0.18s ease;
+      margin: 0 0 16px;
     }
 
-    .nav-dropdown.is-open .nav-dropdown-grid a {
-      animation: nav-tile-in 0.36s ease forwards;
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(1) { animation-delay: 0.02s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(2) { animation-delay: 0.05s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(3) { animation-delay: 0.08s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(4) { animation-delay: 0.11s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(5) { animation-delay: 0.14s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(6) { animation-delay: 0.17s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(7) { animation-delay: 0.20s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(8) { animation-delay: 0.23s; }
-    .nav-dropdown.is-open .nav-dropdown-grid a:nth-child(9) { animation-delay: 0.26s; }
-
-    @keyframes nav-tile-in {
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+    .adaptive-card {
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.3s ease;
     }
 
-    .nav-dropdown-grid a:active {
-      transform: scale(0.94);
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
+    .adaptive-card:hover {
+      border-color: var(--accent-2);
+      box-shadow: 0 12px 32px rgba(26, 31, 53, 0.12);
+      transform: translateY(-4px);
     }
 
-    .nav-tile-icon {
-      font-size: 22px;
-      line-height: 1;
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
     }
 
-    .nav-tile-label {
-      font-size: 11.5px;
-      letter-spacing: 0.01em;
-    }
-
-    @media (max-width: 760px) {
-      .nav-menu-btn {
-        display: inline-flex;
-      }
-
-      .nav-dropdown {
-        display: flex;
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #jump-fab {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 950;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
+    .adaptive-card h3 {
       font-size: 20px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(10px);
-      transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 12px;
     }
 
-    #jump-fab.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
+    .adaptive-card .card-problems {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 16px 0;
+      line-height: 1.6;
     }
 
-    #jump-fab:hover {
-      background: var(--accent-2);
+    .adaptive-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
     }
 
-    @media (max-width: 760px) {
-      .topnav-links {
-        display: none;
-      }
-      .topnav {
-        margin-top: 0;
-        padding: 8px 0;
-      }
-      .topnav-inner {
-        gap: 8px;
-      }
-      .topnav-actions {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 8px;
-      }
-      .style-switch,
-      .topnav-cv,
-      .topnav-cta {
-        font-size: 12px;
-        padding: 7px 10px;
-      }
+    .adaptive-card li {
+      font-size: 14px;
+      color: var(--ink);
+      padding-left: 20px;
+      margin-bottom: 10px;
+      position: relative;
     }
 
-    @media (max-width: 420px) {
-      .topnav-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .style-switch,
-      .topnav-cv,
-      .topnav-cta {
-        text-align: center;
-      }
-      #jump-fab {
-        width: 46px;
-        height: 46px;
-        right: 14px;
-        bottom: 14px;
-        font-size: 17px;
-      }
+    .adaptive-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+      font-weight: bold;
     }
 
-    /* ====================================================================
-       STYLE SWITCHER — Glassmorphism (default) / Neomorphism /
-       Liquid Glass / Spandle UI
-       Default glass rules live on .card, .metric, .scenario-card,
-       .talent-card, .free-offer-box, .topnav, .topnav-cv, #jump-fab above.
-       Each [data-theme] block below overrides just those components.
-       ==================================================================== */
-
-    .style-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(6px);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .style-switch:hover {
+    .card-cta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
       background: var(--accent);
-      color: #fff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
 
-    /* ---------- Neomorphism ---------- */
-    body[data-theme="neo"] {
-      background: #e6e9ef;
+    .card-cta:hover {
+      background: var(--accent-2);
+      color: var(--ink);
+      transform: translateX(4px);
     }
 
-    body[data-theme="neo"] .bg-blobs {
+    .hidden-card {
       display: none;
     }
 
-    body[data-theme="neo"] .card,
-    body[data-theme="neo"] .metric,
-    body[data-theme="neo"] .scenario-card,
-    body[data-theme="neo"] .talent-card,
-    body[data-theme="neo"] .free-offer-box,
-    body[data-theme="neo"] .callout {
-      background: #e6e9ef;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border: none;
-      border-radius: 18px;
-      box-shadow: 8px 8px 16px #b9bec7, -8px -8px 16px #ffffff;
+    /* ===== PRODUCTS SECTION ===== */
+    .products-section {
+      margin-bottom: 80px;
+      padding: 60px 20px;
+      background: rgba(30, 58, 95, 0.03);
+      border-radius: 12px;
     }
 
-    body[data-theme="neo"] .card:hover,
-    body[data-theme="neo"] .metric:hover,
-    body[data-theme="neo"] .scenario-card:hover,
-    body[data-theme="neo"] .talent-card:hover {
-      box-shadow: 10px 10px 20px #b3b9c2, -10px -10px 20px #ffffff;
+    .products-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .products-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 24px rgba(26, 31, 53, 0.1);
       transform: translateY(-2px);
     }
 
-    body[data-theme="neo"] .topnav {
-      background: #e6e9ef;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border-bottom: none;
-      box-shadow: 0 6px 14px #b9bec7;
+    .product-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
     }
 
-    body[data-theme="neo"] .topnav-cv,
-    body[data-theme="neo"] .style-switch {
-      background: #e6e9ef;
-      border: none;
-      box-shadow: 4px 4px 8px #b9bec7, -4px -4px 8px #ffffff;
+    .product-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
 
-    body[data-theme="neo"] .topnav-cv:hover,
-    body[data-theme="neo"] .style-switch:hover {
-      box-shadow: inset 3px 3px 6px #b9bec7, inset -3px -3px 6px #ffffff;
+    .product-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .product-link {
+      font-size: 13px;
+      padding: 6px 12px;
+      background: rgba(30, 58, 95, 0.08);
       color: var(--accent);
-      background: #e6e9ef;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
     }
 
-    body[data-theme="neo"] #jump-fab {
-      box-shadow: 6px 6px 14px #b9bec7, -6px -6px 14px #ffffff;
+    .product-link:hover {
+      background: var(--accent);
+      color: white;
     }
 
-    /* ---------- Liquid Glass ---------- */
-    body[data-theme="liquid"] .card,
-    body[data-theme="liquid"] .metric,
-    body[data-theme="liquid"] .scenario-card,
-    body[data-theme="liquid"] .talent-card,
-    body[data-theme="liquid"] .free-offer-box,
-    body[data-theme="liquid"] .callout {
-      background: rgba(255, 255, 255, 0.22);
-      backdrop-filter: blur(22px) saturate(190%);
-      -webkit-backdrop-filter: blur(22px) saturate(190%);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      border-radius: 22px;
-      box-shadow: 0 10px 36px rgba(15, 60, 80, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.8);
-      position: relative;
-      overflow: hidden;
+    /* ===== LOGOS SECTION ===== */
+    .logos-section {
+      margin-bottom: 80px;
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    body[data-theme="liquid"] .card::before,
-    body[data-theme="liquid"] .scenario-card::before,
-    body[data-theme="liquid"] .talent-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 45%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent);
-      pointer-events: none;
+    .logos-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 50px;
     }
 
-    body[data-theme="liquid"] .card:hover,
-    body[data-theme="liquid"] .scenario-card:hover,
-    body[data-theme="liquid"] .talent-card:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 16px 44px rgba(15, 60, 80, 0.26), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-      background: rgba(255, 255, 255, 0.32);
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+      align-items: center;
     }
 
-    body[data-theme="liquid"] .topnav {
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(22px) saturate(190%);
-      -webkit-backdrop-filter: blur(22px) saturate(190%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-    }
-
-    body[data-theme="liquid"] .topnav-cv,
-    body[data-theme="liquid"] .style-switch {
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9);
-    }
-
-    body[data-theme="liquid"] #jump-fab {
-      background: rgba(15, 118, 110, 0.75);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 24px rgba(15, 118, 110, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-    }
-
-    /* ---------- Spandle UI (bold offset-shadow / neo-brutalist) ---------- */
-    body[data-theme="spandle"] {
-      background: #fdf6ec;
-    }
-
-    body[data-theme="spandle"] .bg-blobs {
-      opacity: 0.5;
-    }
-
-    body[data-theme="spandle"] .card,
-    body[data-theme="spandle"] .metric,
-    body[data-theme="spandle"] .scenario-card,
-    body[data-theme="spandle"] .talent-card,
-    body[data-theme="spandle"] .free-offer-box,
-    body[data-theme="spandle"] .callout {
-      background: #ffffff;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border: 3px solid var(--ink);
-      border-radius: 6px;
-      box-shadow: 6px 6px 0 var(--accent);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    body[data-theme="spandle"] .card:hover,
-    body[data-theme="spandle"] .metric:hover,
-    body[data-theme="spandle"] .scenario-card:hover,
-    body[data-theme="spandle"] .talent-card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 9px 9px 0 var(--accent-2);
-    }
-
-    body[data-theme="spandle"] .topnav {
-      background: #fdf6ec;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border-bottom: 3px solid var(--ink);
-    }
-
-    body[data-theme="spandle"] .topnav-cv,
-    body[data-theme="spandle"] .style-switch,
-    body[data-theme="spandle"] .topnav-cta {
-      border: 2px solid var(--ink);
-      border-radius: 6px;
-      box-shadow: 3px 3px 0 var(--ink);
-    }
-
-    body[data-theme="spandle"] .topnav-cv:hover,
-    body[data-theme="spandle"] .style-switch:hover,
-    body[data-theme="spandle"] .topnav-cta:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0 var(--ink);
-    }
-
-    body[data-theme="spandle"] #jump-fab {
+    .logo-item {
+      padding: 24px;
       border-radius: 8px;
-      border: 3px solid var(--ink);
-      box-shadow: 4px 4px 0 var(--ink);
+      border: 2px solid var(--line);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.3s ease;
     }
-  </style>  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    .logo-item:hover {
+      border-color: var(--accent-2);
+      background: rgba(212, 165, 116, 0.05);
+    }
+
+    /* ===== MEDIA SECTION ===== */
+    .media-section {
+      margin-bottom: 80px;
+      padding: 60px 20px;
+      background: rgba(212, 165, 116, 0.08);
+      border-radius: 12px;
+    }
+
+    .media-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .media-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .media-item {
+      background: var(--panel);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(26, 31, 53, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .media-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(26, 31, 53, 0.15);
+    }
+
+    .media-image {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .media-content {
+      padding: 16px;
+    }
+
+    .media-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .media-metric {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .media-desc {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ===== SPONSORSHIP SECTION ===== */
+    .sponsor-section {
+      margin-bottom: 80px;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(30, 58, 95, 0.08) 0%, rgba(212, 165, 116, 0.08) 100%);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .sponsor-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 20px;
+    }
+
+    .sponsor-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .sponsor-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 32px auto;
+    }
+
+    .detail-box {
+      padding: 24px;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 2px solid var(--line);
+    }
+
+    .detail-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent-2);
+      margin-bottom: 8px;
+    }
+
+    .detail-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .sponsor-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .sponsor-btn:hover {
+      background: var(--accent-2);
+      color: var(--ink);
+      transform: scale(1.05);
+    }
+
+    /* ===== CONTACT FOOTER ===== */
+    .contact-footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 2px solid var(--line);
+      margin-top: 80px;
+    }
+
+    .contact-info {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== UTILITIES ===== */
+    .section-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 60px 0;
+    }
+  </style>
 </head>
 <body>
-  <div class="bg-blobs"><span></span><span></span><span></span></div>
-  <div id="scroll-progress"></div>
-  <nav class="topnav">
-    <div class="topnav-inner">
-      <button class="nav-menu-btn" id="nav-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-        <span class="bar"></span>
-      </button>
-      <strong style="font-size:14px;">MD Waliul Islam Nohan</strong>
-      <div class="topnav-links">
-        <a href="#journey">Journey</a>
-        <a href="#help">Services</a>
-        <a href="#proof">Project Proof</a>
-        <a href="#credibility">Credibility</a>
-        <a href="#contact-footer">Contact</a>
-      </div>
-      <div class="topnav-actions">
-        <button class="style-switch" id="style-switch-btn" type="button">🎨 Glassmorphism</button>
-        <button class="topnav-cv" id="download-cv-btn" type="button">⬇ Download CV (PDF)</button>
-        <a class="topnav-cta" href="mailto:waliulnohan@gmail.com?subject=Let%27s%20Discuss%20Post-AI%20Strategy&body=Hi%20Nohan%2C%0A%0AI%27d%20like%20to%20explore%20how%20you%20can%20help%20us%20with%3A%0A%0A%5BYour%20challenge%20here%5D%0A">Book Discovery Call ↓</a>
-      </div>
-    </div>
-    <div class="nav-dropdown" id="nav-dropdown">
-      <div class="nav-dropdown-grid">
-        <a href="#journey"><span class="nav-tile-icon">🚀</span><span class="nav-tile-label">Journey</span></a>
-        <a href="#help"><span class="nav-tile-icon">🧭</span><span class="nav-tile-label">Services</span></a>
-        <a href="#find-yourself"><span class="nav-tile-icon">🎯</span><span class="nav-tile-label">Find Yourself</span></a>
-        <a href="#packages"><span class="nav-tile-icon">📦</span><span class="nav-tile-label">Packages</span></a>
-        <a href="#mentorship"><span class="nav-tile-icon">🌱</span><span class="nav-tile-label">Mentorship</span></a>
-        <a href="#proof"><span class="nav-tile-icon">🛠️</span><span class="nav-tile-label">Project Proof</span></a>
-        <a href="#rnd"><span class="nav-tile-icon">🔬</span><span class="nav-tile-label">R&amp;D</span></a>
-        <a href="#credibility"><span class="nav-tile-icon">🏅</span><span class="nav-tile-label">Credibility</span></a>
-        <a href="#contact-footer"><span class="nav-tile-icon">✉️</span><span class="nav-tile-label">Contact</span></a>
-      </div>
-    </div>
-  </nav>
-  <button id="jump-fab" title="Jump to contact / back to top">↓</button>
   <main>
-    <header>
-      <p class="eyebrow">Post-AI Software Movement | Sovereign Innovation | Global Consultant</p>
-      <h1>Rebuilding Software for the Post-AI Era</h1>
-      <p class="subtitle">I work with 30+ companies on consultancy, talent curation, corporate training, and software insurance. Currently on a sponsored digital nomad research tour exploring sovereign innovation across 6 countries.</p>
-      <div class="contact">
-        <span>Email: waliulnohan@gmail.com</span>
-        <span>Phone/WhatsApp: +8801875490002 </span>
-        <span>LinkedIn: <a href="https://www.linkedin.com/in/md-waliul-islam-nohan/">Profile</a></span>
-        <span>GitHub: <a href="https://github.com/Waliulislamnohan">Waliulislamnohan</a></span>
-      </div>
-    </header>
-
-    <section class="callout">
-      <p class="tagline">Why I Refused to Build Another AI Model: Asian advantage, efficiency first, and the thesis that software architecture—not hype—shapes the post-AI economy.</p>
-      <p class="muted">Advisors to companies seeking strategic clarity on product audits, hiring resilient teams, corporate transformation training, and long-term software sustainability insurance.</p>
-    </section>
-
-    <section data-tone="slate" id="philosophy">
-      <span class="section-tag" style="display:block; text-align:center;">🧠 The Philosophy</span>
-      <h2 style="text-align: center; margin-bottom: 28px;">Why I Refuse to Build Another AI Model</h2>
-      <div class="grid three">
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Efficiency First</h3>
-            <p>The industry is broken. Companies build for hype, not for sustainability. Software insurance means auditing your stack for long-term resilience, not chasing the latest model.</p>
-            <p class="muted" style="margin-top: 12px;">3000+ products audited. The pattern: inefficient architecture, wrong hiring, unsustainable costs.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Asian Advantage</h3>
-            <p>The reverse brain drain: the best talent isn't leaving Asia anymore. Global perspective + local execution = competitive advantage. This is the thesis behind my network.</p>
-            <p class="muted" style="margin-top: 12px;">2 offices, 25+ team members, representing Singapore, Bangladesh, and Pakistan perspectives.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Sovereign Innovation</h3>
-            <p>Building independent of VC/Silicon Valley pressure. I refused to join the hype cycle. The companies I advise build products that matter, not vanity plays.</p>
-            <p class="muted" style="margin-top: 12px;">Research nomad sponsorships validate this: the world is watching how we build differently.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="journey" data-tone="teal">
-      <span class="section-tag">🚀 The Path</span>
-      <h2>Builder Journey: 2021-2026</h2>
-      <div class="journey-strip">
-        <img class="journey-main" src="assets/nohan-journey-1.png" alt="Nohan journey timeline from junior engineer onward">
-        <div class="journey-grid">
-          <img src="assets/nohan-journey-2.png" alt="Hackathon and international competition achievements">
-          <img src="assets/nohan-journey-3.png" alt="Project manager, AI tech lead, Jobs Navi and Golden Vault timeline">
-          <img src="assets/nohan-journey-4.png" alt="Aaladin AI, EnglishMate, judging and ML hackathon work">
-          <img src="assets/nohan-journey-5.png" alt="2026 vision covering AI consulting, research tour, talent scout and product review">
-        </div>
-      </div>
-      <p class="muted">The pattern: self-taught engineering, production systems, hackathon/community leadership, AI product building, startup execution, consulting, and research-facing global.</p>
-    </section>
-
-    <section>
-      <div class="metrics">
-        <div class="metric reveal">
-          <strong>30+</strong>
-          <span>companies collaborating and consulting</span>
-        </div>
-        <div class="metric reveal">
-          <strong>25+</strong>
-          <span>team members across 2 offices</span>
-        </div>
-        <div class="metric reveal">
-          <strong>3000+</strong>
-          <span>products audited for software insurance</span>
-        </div>
-        <div class="metric reveal">
-          <strong>6 countries</strong>
-          <span>on sponsored digital nomad research tour</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="help" data-tone="blue">
-      <span class="section-tag">🎯 Solutions for Post-AI Problems</span>
-      <h2>How 30+ Companies Work With Me</h2>
-      <div class="grid three">
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Strategic Audits</h3>
-            <p>Companies and investors lost in AI hype. I audit your product, team, and architecture against post-AI realities.</p>
-            <ul>
-              <li>Product viability in post-hype era</li>
-              <li>Team resilience assessment</li>
-              <li>Cost and sustainability review</li>
-              <li>3000+ products reference</li>
-            </ul>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Talent Curation</h3>
-            <p>Can't find aligned engineers. My network across Asia curates engineers who understand efficiency, not just hype.</p>
-            <ul>
-              <li>Hiring strategy</li>
-              <li>Cultural fit vetting</li>
-              <li>Talent from Asia network</li>
-              <li>Team structure design</li>
-            </ul>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Corporate Training</h3>
-            <p>Transform teams to build for post-AI era: efficiency, resilience, and sovereign thinking.</p>
-            <ul>
-              <li>AI architecture workshops</li>
-              <li>Product thinking training</li>
-              <li>Software insurance mindset</li>
-              <li>Team resilience building</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Your Situation, Your Solution -->
-    <section data-tone="amber" id="find-yourself">
-      <span class="section-tag" style="display:block; text-align:center;">🎯 Find Yourself</span>
-      <h2 style="text-align: center; margin-bottom: 28px;">Match Your Situation to Your Solution</h2>
-      <div class="grid four">
-        <!-- Scenario 1 -->
-        <article class="scenario-card">
-          <div class="scenario-icon">🚨</div>
-          <div class="scenario-title">You Overcommitted Your Client/Investor</div>
-          <p class="scenario-desc">You promised AI features or a launch date—and now you're burning cash with little to show and time running out.</p>
-          <div class="scenario-trigger">Your reality: "We have 5-10 days to save this."</div>
-          <span class="scenario-solution">🚨 Rescue Sprint</span>
-        </article>
-
-        <!-- Scenario 2 -->
-        <article class="scenario-card">
-          <div class="scenario-icon">🔄</div>
-          <div class="scenario-title">Founder Wanting to Pivot</div>
-          <p class="scenario-desc">Your product works, but you need to add AI differentiation. Can you actually execute it with your current team?</p>
-          <div class="scenario-trigger">Your question: "Is this realistic? Should we rebuild?"</div>
-          <span class="scenario-solution">📋 Product Audit</span>
-        </article>
-
-        <!-- Scenario 3 -->
-        <article class="scenario-card">
-          <div class="scenario-icon">🔍</div>
-          <div class="scenario-title">VC/Investor Due Diligence</div>
-          <p class="scenario-desc">You need a technical insider's view of an AI startup before funding. Does their tech work? Are the risks real?</p>
-          <div class="scenario-trigger">Your need: "Deep technical audit from someone who knows BS."</div>
-          <span class="scenario-solution">🔬 Tech Audit</span>
-        </article>
-
-        <!-- Scenario 4 -->
-        <article class="scenario-card">
-          <div class="scenario-icon">💼</div>
-          <div class="scenario-title">Scaling Your Internal AI Tool</div>
-          <p class="scenario-desc">You automated your business with Claude/LangChain. Now you want to productize it and sell it to others.</p>
-          <div class="scenario-trigger">Your ambition: "How do we package this into a product?"</div>
-          <span class="scenario-solution">🚀 Product Sprint</span>
-        </article>
-        <!-- Scenario 2 -->
-        <article class="scenario-card">
-          <div class="scenario-icon">🕵️‍♂️</div>
-          <div class="scenario-title">Suspected Technical Fraud or Leakage</div>
-          <p class="scenario-desc">You need to look under the hood to expose hidden product vulnerabilities, code plagiarism, or data leakage via tech channels.</p>
-          <div class="scenario-trigger">Your need: "Uncover exactly what is happening under the stack."</div>
-          <span class="scenario-solution">🔍 Tech Investigation</span>
-        </article>
-
-        <!-- Scenario 3 -->
-        <article class="scenario-card">
-          <div class="scenario-icon">🎬</div>
-          <div class="scenario-title">Film House Bottlenecks</div>
-          <p class="scenario-desc">Your high-fidelity media pipelines, local storage servers, or digital asset automation routines are sluggish, insecure, or breaking.</p>
-          <div class="scenario-trigger">Your reality: "We need custom IT setups for heavy post-production workflows."</div>
-          <span class="scenario-solution">🍿 Media IT Sprint</span>
-        </article>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-subtitle">Welcome to the movement</div>
+      <h1 class="hero-title">Rebuilding Software for the Post-AI Era</h1>
+      
+      <div class="hero-taglines">
+        <div class="tagline">On a research tour, next stop Spain</div>
+        <div class="tagline">Hiring the next Peter Thiel</div>
+        <div class="tagline">Saving the next billion dollar company</div>
       </div>
 
-      <!-- Free Consultation Offer -->
-      <div class="free-offer-box">
-        <div class="free-offer-title">💡 Got an Interesting Problem?</div>
-        <p class="free-offer-subtitle">
-          If your product or story is compelling enough, I may do a consultation call <strong>for free</strong>. Tell me what you're building, what you're stuck on, and why it matters. If it.
-        </p>
-        <a href="mailto:waliulnohan@gmail.com?subject=Let%27s%20discuss%20my%20AI%20product%20%26%20story" class="free-offer-cta">
-          ✉️ Tell Me Your Story
-        </a>
-      </div>
-    </section>
-
-    <section data-tone="violet" id="packages">
-      <span class="section-tag">📦 Pricing</span>
-      <h2>Services & Packages</h2>
-      <div class="grid two">
-        <!-- Package 1 -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Startup/Product Audit</h3>
-            <span class="price">1.5-2.5 lakh BDT | 3-5 days</span>
-            
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Product viability review</li>
-              <li>AI feasibility check</li>
-              <li>Technology architecture audit</li>
-              <li>Team and delivery risk assessment</li>
-              <li>Cost, infrastructure, and scalability review</li>
-              <li>Investor-style written report with risk rating and next-step roadmap</li>
-            </ul>
-
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Investors before funding a startup</li>
-              <li>Founders before rebuilding or scaling</li>
-              <li>Teams unsure whether their AI product is technically realistic</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Package 2 -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>AI Automation Sprint</h3>
-            <span class="price">3-4 lakh BDT | 7 days</span>
-            
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Business workflow audit</li>
-              <li>AI use-case prioritization</li>
-              <li>One working prototype or internal automation</li>
-              <li>Architecture and implementation roadmap</li>
-              <li>Team handover session</li>
-            </ul>
-
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Companies that want to see AI impact quickly</li>
-              <li>Teams with manual processes that cost time or money</li>
-              <li>Founders who need a working demo before pitching or selling</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Package 3 -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>AI Transformation Sprint</h3>
-            <span class="price">5-7 lakh BDT | 14 days</span>
-            
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Full AI opportunity audit</li>
-              <li>One production-ready or near-production AI workflow</li>
-              <li>System architecture plan</li>
-              <li>Data, infrastructure, and model/API strategy</li>
-              <li>Team training</li>
-              <li>30-day advisory support after delivery</li>
-            </ul>
-
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Companies serious about integrating AI into core operations</li>
-              <li>Startups preparing for launch, funding, or enterprise sales</li>
-              <li>Institutions that need a real implementation plan, not just training</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Package 4 -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Monthly CTO / AI Advisor</h3>
-            <span class="price">5 lakh BDT/month</span>
-            
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li>Weekly architecture and product review</li>
-              <li>AI roadmap and implementation guidance</li>
-              <li>Developer/team management support</li>
-              <li>Hiring and talent evaluation</li>
-              <li>Product delivery supervision</li>
-              <li>Founder/executive reporting</li>
-            </ul>
-
-            <p style="margin-top: 12px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Startups without a strong technical leader</li>
-              <li>Companies building AI products with an internal team</li>
-              <li>Founders who need senior technical judgment without hiring a full-time CTO</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Package 5: Elite AI Product Rescue Sprint -->
-        <article class="card reveal" style="border: 2px solid var(--accent-2); background: #fffbeb; grid-column: span 2;">
-          <div class="card-content">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-              <h3 style="margin: 0; color: var(--accent-2); font-size: 18px; font-weight: 800;">🚨 AI Product Rescue Sprint</h3>
-              <span style="background: var(--accent-2); color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em;">High Priority</span>
-            </div>
-            <span class="price" style="margin-bottom: 12px;">Custom Pricing | 5-10 Days Rapid Turnaround</span>
-            
-            <p><strong>What you get:</strong></p>
-            <ul>
-              <li><strong>Immediate Technical Triage:</strong> Instant 24-hour audit of your current code infrastructure, API bottlenecks, data leaks, and model-level failure points to find exactly where it's breaking.</li>
-              <li><strong>Forward-Deployed Engineering:</strong> Hands-on, deep-dive tactical intervention led directly by an elite engineer deployed straight into your stack to get their hands dirty.</li>
-              <li><strong>Emergency Re-Architecting:</strong> Rapid codebase restructuring, pipeline stabilization, and bug resolution within a tight 5 to 10-day sprint window.</li>
-              <li><strong>Guaranteed Milestone Delivery:</strong> A fully revived, stable, and functioning production release ready for deployment.</li>
-              <li><strong>Handover Strategy:</strong> Full post-rescue documentation outlining exactly what was fixed, architectural modifications, and preventative safeguards for your team.</li>
-            </ul>
-
-            <p style="margin-top: 14px;"><strong>Best for:</strong></p>
-            <ul>
-              <li>Companies facing critical system failures, broken AI integrations, or bleeding cash on stalled launch deadlines.</li>
-              <li>Startups whose internal technical teams are completely stuck, under-resourced, or struggling with complex pipeline bottlenecks.</li>
-              <li>Investors or founders who need to rapidly save a failing technical asset before a critical funding round, enterprise sales pitch, or acquisition deal.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Talent & Career Services Section -->
-    <section data-tone="green" id="mentorship">
-      <span class="section-tag" style="display:block; text-align:center;">🌱 Mentorship</span>
-      <h2 style="text-align: center; margin-bottom: 28px;">Talent Guidance & Career Navigation</h2>
-      <p style="text-align: center; color: var(--muted); margin-bottom: 24px; font-size: 14px; line-height: 1.6;">
-        Beyond product and code, I work directly with engineers, architects, and technical leaders navigating career pivots, industry transitions, and organizational change. My network spans early-stage startups to Fortune 500 companies building AI.
+      <p style="font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.6;">
+        30+ companies collaborating. 25+ engineers. 3000+ products audited. One mission: efficiency over hype.
       </p>
-      <div class="grid three">
-        <!-- Talent Card 1 -->
-        <article class="talent-card">
-          <div class="talent-icon">🚀</div>
-          <div class="talent-title">Breaking Into AI</div>
-          <p class="talent-desc">You're strong in software but new to AI. Companies demand experience you don't have yet. I guide you through what to learn, which projects to build, and how to position yourself for real opportunities.</p>
-          <div class="talent-solutions">
-            <div class="talent-solution-item">Personalized learning roadmap</div>
-            <div class="talent-solution-item">Portfolio project strategy</div>
-            <div class="talent-solution-item">Interview & pitch coaching</div>
-            <div class="talent-solution-item">Network introductions</div>
-          </div>
-        </article>
-
-        <!-- Talent Card 2 -->
-        <article class="talent-card">
-          <div class="talent-icon">🎯</div>
-          <div class="talent-title">Right-Fit Placement & Advising</div>
-          <p class="talent-desc">You're an experienced engineer frustrated by corporate politics, sudden AI restructuring, or misalignment. I connect you with companies building real AI products and help you navigate onboarding and cultural fit.</p>
-          <div class="talent-solutions">
-            <div class="talent-solution-item">Curated company introductions</div>
-            <div class="talent-solution-item">Salary & equity negotiation</div>
-            <div class="talent-solution-item">Role clarity & expectations</div>
-            <div class="talent-solution-item">First 90-day strategy</div>
-          </div>
-        </article>
-
-        <!-- Talent Card 3 -->
-        <article class="talent-card">
-          <div class="talent-icon">🛠️</div>
-          <div class="talent-title">Senior Tech Leader Adaptation</div>
-          <p class="talent-desc">You're a tech leader at a slow-moving company, losing momentum. Or you've been pulled into management but miss building. I help you find the right environment—whether that's a founder-friendly role, strategic advisory, or a startup where you can own the tech vision.</p>
-          <div class="talent-solutions">
-            <div class="talent-solution-item">Career repositioning strategy</div>
-            <div class="talent-solution-item">Board & advisory opportunities</div>
-            <div class="talent-solution-item">Founder matching network</div>
-            <div class="talent-solution-item">Compensation structure advice</div>
-          </div>
-        </article>
-      </div>
     </section>
 
-    <section id="proof" data-tone="rose">
-      <span class="section-tag">🛠️ Built & Shipped</span>
-      <h2>Selected Project Proof</h2>
-      <div class="grid two">
-        <!-- AI Sales CRM -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>AI Sales CRM (Fuel AI)</h3>
-            <p>A custom self-driving CRM tool that helps business owners seamlessly generate leads from multiple social platforms. It enables scheduling meetings and managing customer interactions.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://app.fuelai.com/" target="_blank">🔗 App Platform</a>
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- AI Business Launchpad -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>AI Business Launchpad (Scalova AI)</h3>
-            <p>An all-in-one platform that helps entrepreneurs build their brand from scratch within minutes. By describing an idea, users instantly generate professional logos, business names, pitch.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://www.scalova.ai/" target="_blank">🔗 Live Website</a>
-          </div>
-        </article>
-
-        <!-- AI Fabricator -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>AI Fabricator</h3>
-            <p>No-code AI agent and autonomous workflow creator connecting internal tools, external APIs, and custom language models through an intuitive drag-and-drop orchestration interface.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/1194998760?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
-          </div>
-        </article>
-
-        <!-- Health AI -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Health AI (Cognipath)</h3>
-            <p>Bilingual (Bangla–English) speech-to-text platform enabling clinicians to generate structured, FHIR-compliant e-prescriptions using hands-free voice commands. Supports "Banglish".</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/1195006778?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
-          </div>
-        </article>
-
-        <!-- EnglishMate -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>EnglishMate</h3>
-            <p>An interactive AI voice companion and tutor using specialized speech recognition and natural language architectures. Helps users sharpen conversation skills via real-time grammar.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://youtu.be/_7skSK4btac" target="_blank">▶️ Video Presentation</a>
-            <a href="https://englishmate.vercel.app/" target="_blank">🔗 Live Website</a>
-          </div>
-        </article>
-
-        <!-- SiteGenie -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Site Genie</h3>
-            <p>An intelligent generative website engine that constructs fully modular, customized, and responsive web systems in minutes based simply on cross-prompt textual business design ideas.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/1195005006?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
-          </div>
-        </article>
-
-        <!-- Productivity AI -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Productivity AI (Lineage P&ID Tool)</h3>
-            <p>A smart engineering and design assistant crafted under Aaladin AI. Simplifies complex planning, visualization, architectural mapping, flowcharts, and technical real-estate P&ID.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- The 3rd Eye -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>The 3rd Eye (Search Anything)</h3>
-            <p>An AI-powered business intelligence platform that enables companies to search, analyze, and understand operations through a single dashboard. Features a machine-agnostic AI Sensor.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- TrackIO -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>TrackIO (Vehicle Monitoring AI)</h3>
-            <p>An AI-powered transit and transportation monitoring platform powered by Aaladin AI. Enhances urban fleet management through real-time vehicle tracking, passenger automated counting.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- City Pass -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>City Pass</h3>
-            <p>A smart citizen platform establishing unlimited cashless access configurations across domestic transportation modes. Consolidates routing, multi-token payment systems, scheduling.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- FloodShield -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>FloodShield</h3>
-            <p>Predictive spatial ecosystem integrating satellite imagery streams (NASA) and real-time community water gauge logs (BWDB) onto localized web dashboards to support fast geographical.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/1195007708?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Demo</a>
-          </div>
-        </article>
-
-        <!-- Justice AI -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Justice AI</h3>
-            <p>Empathetic conversational legal framework designed to unpack local statutes into simple insights, allowing crisis victims to safely locate immediate hotlines and geographic legal.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://justice-frontend-v3.vercel.app/" target="_blank">🔗 Live Website</a>
-          </div>
-        </article>
-
-        <!-- FlyNepal -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>FlyNepal (Travel App)</h3>
-            <p>Comprehensive ecosystem for seamless multi-channel logistics booking. Combines flight paths, hotel aggregators, bus ticketing, real-time comparison tables, and paperless booking.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- Karigori -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Karigori</h3>
-            <p>AI job-matching parsing agent engineered with a fast Java Spring Boot and Next.js foundation. Aggregates live corporate hiring vacancies via custom automated structured extraction.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://youtu.be/ByWUNkfRdCA?si=MxVO6_vTUhyGnclk" target="_blank">▶️ Video Guide</a>
-          </div>
-        </article>
-
-        <!-- Golden Vault -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Golden Vault</h3>
-            <p>Skill development challenge and interactive growth engine running on a highly responsive Next.js stack, complete with affiliate reseller systems tracking multi-tier engagement.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://youtu.be/t02S9t3NjfY?si=Ral0-U1mnwVYibKP" target="_blank">▶️ Video Walkthrough</a>
-            <a href="https://goldenvault.org/" target="_blank">🔗 Platform</a>
-          </div>
-        </article>
-
-        <!-- Halal GPT -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Halal GPT (Huda 2.0)</h3>
-            <p>An internationally compliant, secure theological conversational knowledge platform utilizing cross-referenced scholarly guidance verification models.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://halal-gpt.vercel.app/" target="_blank">🔗 Chat Platform</a>
-          </div>
-        </article>
-
-        <!-- Monitor AI -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Monitor AI</h3>
-            <p>An intelligence ecosystem maximizing remote virtual education environments by outputting attention detection models, direct distraction alerts, engagement analytics metrics, and.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- Background Removal App -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Background Removal App</h3>
-            <p>An AI-powered mobile image editor built on React Native and a Python Flask backend. Streamlines image background masking tasks cleanly with batch capabilities for e-commerce stores and.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- AI Reel Creator -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>AI Reel Creator (Re:elify)</h3>
-            <p>A specialized processing platform leveraged to generate short-form automated marketing media assets, tailored for scalable engagement on modern programmatic video feeds.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/916289327?fl=ip&fe=ec" target="_blank">▶️ Video Demo</a>
-          </div>
-        </article>
-
-        <!-- Edulink -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Edulink</h3>
-            <p>An official government application portal streamlining administrative processing pipelines and information workflows safely and accurately.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/1195008263?fl=ip&fe=ec" target="_blank">▶️ Video Demo</a>
-          </div>
-        </article>
-
-        <!-- Caspian Life -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Caspian Life</h3>
-            <p>Corporate platform setup featuring advanced interface optimizations, cloud configurations, and automated system setups.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://vimeo.com/1054611202?share=copy&fl=sv&fe=ci" target="_blank">▶️ Video Presentation</a>
-          </div>
-        </article>
-
-        <!-- Pragati AI & MediGuru -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Pragati AI &amp; MediGuru</h3>
-            <p>Smart localized competitive mock diagnostics platforms leveraging automated guidance systems, metrics, flashcards, and tracking vectors for students across Bangladesh.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://pragatiai.vercel.app/leaderboard" target="_blank">🔗 Pragati Leaderboard</a>
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- Project Manager AI -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Project Manager AI</h3>
-            <p>Automated workflow companion built to optimize task operational assignments, map core execution bottlenecks, and predict delays using predictive analytics tracking.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- PurePic Platform -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>PurePic</h3>
-            <p>An automated inventory management, digital storefront optimization, and operational monitoring suite customized directly for fast-growing small business environments.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- Enterprise ERP Suite -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Aaladin AI Enterprise ERP</h3>
-            <p>Deep automated resource planning system combining underlying corporate asset metrics, payroll logs, inventory structures, and visual data layers under unified platforms.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- Compliance SOP Suite -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Aaladin AI SOP Digitizer</h3>
-            <p>Operational standardizing module crafted to convert flat corporate compliance text tracks into interactive structured trackable visual workflows cleanly.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://docs.google.com/document/d/1-2upPaZenb1StQiGiyvgyJ27XFicHz66SbJ1twGOSLU/edit?pli=1&tab=t.0#heading=h.mmbl4913cpsa" target="_blank">📄 Specs Doc</a>
-          </div>
-        </article>
-
-        <!-- General Web Assets -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Commercial Web Foundations</h3>
-            <p>Production architectural systems delivered for specialized services including <i>Gadgets All BD</i>, <i>Roshan Transport</i>, and <i>Vector Power</i>.</p>
-          </div>
-          <div class="project-links">
-            <a href="https://gadgetsallbd.com/" target="_blank">🔗 GadgetsAll</a>
-            <a href="https://www.vectorpowerbd.com/" target="_blank">🔗 VectorPower</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Core Research Tracks & Ongoing Foundations Section -->
-    <section data-tone="cyan" id="rnd">
-      <span class="section-tag">🔬 R&D</span>
-      <h2>Deep Tech Research &amp; Core Innovations (Ongoing)</h2>
-      <div class="grid two">
-        <!-- OCR AI -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>1. Custom Precision OCR AI Engine</h3>
-            <p>An advanced system designed to extract and structure printed educational testing materials. Accurately digitizes bilingual text architectures (Bangla/English), complex mathematical.</p>
-          </div>
-          <div class="project-links">
-            <span class="muted">Status: Core Integration Module</span>
-          </div>
-        </article>
-
-        <!-- Voice AI (STS) -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>2. Bangla Conversational Voice AI (STS)</h3>
-            <p>Enterprise conversational IVR framework optimized for natural Bangla syntax. Combines native speech-to-text, context intent mapping, and audio synthesizers to support rapid B2B.</p>
-          </div>
-          <div class="project-links">
-            <span class="muted">Status: API Pipeline Active</span>
-          </div>
-        </article>
-
-        <!-- SLM -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>3. Custom Efficient Small Language Model (SLM)</h3>
-            <p>Architecting proprietary lightweight model architectures engineered with optimized parameter configurations to deliver rapid response times while remaining computationally lighter than.</p>
-          </div>
-          <div class="project-links">
-            <span class="muted">Status: Core Research &amp; Testing</span>
-          </div>
-        </article>
-
-        <!-- VLM -->
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>4. Custom Vision Language Model (VLM)</h3>
-            <p>Deep-learning visual interpretation systems applied directly to custom object classifications, live monitoring matrices, and specialized imagery recognition workflows.</p>
-          </div>
-          <div class="project-links">
-            <span class="muted">Status: Active Development</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="credibility" data-tone="blue">
-      <span class="section-tag">🏅 Track Record</span>
-      <h2>Background & Credibility</h2>
-      <div class="grid two">
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Experience</h3>
-            <ul>
-              <li>Founder & Chief AI Architect at Aaladin AI</li>
-              <li>Former AI Tech Lead at Envobyte</li>
-              <li>Former Junior Software Engineer at YC-backed Chaldal</li>
-              <li>Built and led technical teams for client delivery, hackathons, and AI systems</li>
-            </ul>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-content">
-            <h3>Recognition</h3>
-            <ul>
-              <li>2x NASA Space Apps winner</li>
-              <li>World Robotics Championship recognition</li>
-              <li>Hackathon judge and ML question setter</li>
-              <li>Research validation through UN SDG Championship</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-<!-- Recommendations & Strategic Trust -->
-    <section>
-      <h2 style="text-align: center; margin-bottom: 28px;">Strategic Trust & Recommendations</h2>
-      <div class="grid three">
+    <!-- VISITOR DETECTION MODAL -->
+    <div class="modal-overlay" id="visitorModal">
+      <div class="modal-content">
+        <div class="modal-title">Who are you?</div>
+        <div class="modal-subtitle">Select your role to see personalized opportunities and solutions</div>
         
-        <!-- Recommendation 1: Investor/Investigation Perspective -->
-        <article class="card reveal" style="border-top: 3px solid var(--accent-2);">
-          <div class="card-content">
-            <span style="font-size: 24px; color: var(--accent-2); display: block; margin-bottom: 8px;">“</span>
-            <p style="font-size: 13px; font-style: italic; line-height: 1.6; margin-bottom: 14px;">
-              "Nohan doesn't just look at the surface code; he conducts tech audits with the precision of a digital detective. He exposed critical architectural vulnerabilities and data leakage pathways in a target asset that saved us millions in misallocated capital."
-            </p>
-            <div style="border-top: 1px dashed var(--line); padding-top: 10px; margin-top: auto;">
-              <h4 style="margin: 0; font-size: 14px; font-weight: 750; color: var(--ink);">Managing Partner</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--muted);">Venture Capital & Due Diligence Firm</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Recommendation 2: Startup / AI Systems Architecture -->
-        <article class="card reveal" style="border-top: 3px solid var(--accent);">
-          <div class="card-content">
-            <span style="font-size: 24px; color: var(--accent); display: block; margin-bottom: 8px;">“</span>
-            <p style="font-size: 13px; font-style: italic; line-height: 1.6; margin-bottom: 14px;">
-              "When our internal AI pipeline hit an absolute bottleneck, Nohan stepped in as an advisor and re-architected our entire system configuration. He coordinates massive development sprint teams with incredible focus and zero fluff."
-            </p>
-            <div style="border-top: 1px dashed var(--line); padding-top: 10px; margin-top: auto;">
-              <h4 style="margin: 0; font-size: 14px; font-weight: 750; color: var(--ink);">Founder & CEO</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--muted);">SaaS Automation Platform</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Recommendation 3: Film House / Media Infrastructure -->
-        <article class="card reveal" style="border-top: 3px solid var(--success);">
-          <div class="card-content">
-            <span style="font-size: 24px; color: var(--success); display: block; margin-bottom: 8px;">“</span>
-            <p style="font-size: 13px; font-style: italic; line-height: 1.6; margin-bottom: 14px;">
-              "High-fidelity media processing requires unique, heavy-duty network handling. Nohan streamlined our film house's storage clusters and built a bulletproof IT production pipeline that eliminated our localized render lags entirely."
-            </p>
-            <div style="border-top: 1px dashed var(--line); padding-top: 10px; margin-top: auto;">
-              <h4 style="margin: 0; font-size: 14px; font-weight: 750; color: var(--ink);">Technical Director</h4>
-              <p style="margin: 0; font-size: 12px; color: var(--muted);">Studio Post-Production House</p>
-            </div>
-          </div>
-        </article>
-
+        <div class="visitor-options">
+          <button class="visitor-btn" onclick="setVisitorType('company')">
+            <span class="visitor-btn-label">Company / Startup</span>
+            <span class="visitor-btn-desc">Find solutions for your team</span>
+          </button>
+          <button class="visitor-btn" onclick="setVisitorType('engineer')">
+            <span class="visitor-btn-label">Engineer / CTO / PM</span>
+            <span class="visitor-btn-desc">Explore career & growth opportunities</span>
+          </button>
+          <button class="visitor-btn" onclick="setVisitorType('junior')">
+            <span class="visitor-btn-label">Student / Junior / Intern</span>
+            <span class="visitor-btn-desc">Get navigation & support</span>
+          </button>
+        </div>
       </div>
-    </section>
-    <section data-tone="green" id="network">
-      <span class="section-tag" style="display:block; text-align:center;">🌍 Building a Global Movement</span>
-      <h2 style="text-align: center; margin-bottom: 28px;">The Network</h2>
-      <div style="display: grid; gap: 28px; margin-bottom: 28px;">
-        <div style="text-align: center;">
-          <div style="font-size: 18px; font-weight: 750; color: var(--accent); margin-bottom: 8px;">30+ Companies Collaborating</div>
-          <p class="muted">Across Southeast Asia, South Asia, and now expanding globally. From startups to enterprises, all working on post-AI problems.</p>
+    </div>
+
+    <!-- STORY SECTION -->
+    <section class="story-section">
+      <div class="story-header">
+        <h2>My Journey</h2>
+        <p>From refusing Silicon Valley to building the next generation of software architecture</p>
+      </div>
+
+      <div class="story-content">
+        <div class="story-text">
+          <p>
+            I refused to follow the Silicon Valley playbook. When everyone chased the hype cycle and built models no one needed, I asked a different question: <strong>What if we could build software that lasts?</strong>
+          </p>
+          <p>
+            My philosophy is simple: efficiency first, hype never. I spent years auditing 3000+ products and realized the pattern—companies fail not because they lack AI, but because they build the wrong architecture with the wrong teams.
+          </p>
+          <p>
+            Now I'm on a mission. 30+ companies are collaborating with me on this journey. I'm hiring the brightest minds. And I'm traveling the world (next: Spain) to prove that post-AI software is built on resilience, not trends.
+          </p>
+          <p style="font-style: italic; color: var(--accent);">
+            Jonathan Seagull refused to be average. So do I.
+          </p>
         </div>
-        <div style="text-align: center;">
-          <div style="font-size: 18px; font-weight: 750; color: var(--accent); margin-bottom: 8px;">Digital Nomad Research Tour (2025-2026)</div>
-          <p class="muted">Sponsored by partners exploring how sovereign innovation works across 6 countries. Building case studies and validating the efficiency thesis globally.</p>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 18px; font-weight: 750; color: var(--accent); margin-bottom: 8px;">UN SDG Championship Validated</div>
-          <p class="muted">Our approach to sustainable software architecture recognized at the global level. Proof that efficiency and impact align.</p>
+
+        <div class="story-images">
+          <img src="assets/nohan-journey-1.png" alt="Journey moment 1">
+          <img src="assets/nohan-journey-2.png" alt="Journey moment 2">
+          <img src="assets/nohan-journey-3.png" alt="Journey moment 3">
+          <img src="assets/nohan-journey-4.png" alt="Journey moment 4">
         </div>
       </div>
     </section>
 
-    <section data-tone="slate">
-      <span class="section-tag">⚙️ Stack</span>
-      <h2>Technical Scope</h2>
-      <p class="muted">Generative AI, AI agents, RAG, OCR, speech-to-text, small language models, LoRA/QLoRA/PEFT, full-stack SaaS, React, Next.js, Node.js, Python, Django, Flask, Java Spring Boot.</p>
+    <!-- ADAPTIVE CONTENT CARDS -->
+    <section class="cards-section">
+      <div class="cards-header">
+        <h2>How We Work Together</h2>
+      </div>
+
+      <div class="cards-container">
+        <!-- COMPANY CARD -->
+        <div class="adaptive-card" id="card-company">
+          <span class="card-icon">🏢</span>
+          <h3>For Companies</h3>
+          <div class="card-problems">
+            <strong>Are you struggling with:</strong>
+          </div>
+          <ul>
+            <li>Adapting to AI without losing focus on core business?</li>
+            <li>Finding the right resources and team?</li>
+            <li>Overcommitted promises to clients/investors?</li>
+            <li>Building software that scales sustainably?</li>
+          </ul>
+          <button class="card-cta" onclick="scrollToSection('sponsor')">Get Solution</button>
+        </div>
+
+        <!-- ENGINEER CARD -->
+        <div class="adaptive-card" id="card-engineer">
+          <span class="card-icon">👨‍💻</span>
+          <h3>For Engineers / CTO / PM</h3>
+          <div class="card-problems">
+            <strong>Feeling stuck with:</strong>
+          </div>
+          <ul>
+            <li>Career plateau or industry uncertainty?</li>
+            <li>Want to build your own side revenue?</li>
+            <li>Seeking mentorship on next-level challenges?</li>
+            <li>Interest in judging, seminars, or hiring?</li>
+          </ul>
+          <button class="card-cta" onclick="scrollToSection('sponsor')">Join Movement</button>
+        </div>
+
+        <!-- JUNIOR CARD -->
+        <div class="adaptive-card" id="card-junior">
+          <span class="card-icon">🌱</span>
+          <h3>For Students / Juniors</h3>
+          <div class="card-problems">
+            <strong>Looking for:</strong>
+          </div>
+          <ul>
+            <li>Landing your first job in tech?</li>
+            <li>Navigation and mentorship?</li>
+            <li>Scholarship / fellowship / internship opportunities?</li>
+            <li>Building your own startup or project?</li>
+          </ul>
+          <button class="card-cta" onclick="scrollToSection('sponsor')">Let Me Know</button>
+        </div>
+      </div>
     </section>
 
-    <section class="footer" id="contact-footer">
-      <p><strong>Ready to join the movement?</strong> Whether you're a company seeking post-AI clarity, an investor evaluating startups, or a talented engineer wanting to build differently—let's talk.</p>
-      <p style="margin-top: 12px;"><strong>Next step:</strong> 20-minute discovery call to discuss your challenge, validate the fit, and explore how we work together.</p>
+    <div class="section-divider"></div>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section">
+      <div class="products-header">
+        <h2>Built & Shipped</h2>
+        <p>17 products from concept to market. Here's what we've created:</p>
+      </div>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-name">AI Sales CRM (Fuel AI)</div>
+          <div class="product-desc">Self-driving CRM generating leads from social platforms with meeting scheduling.</div>
+          <div class="product-links">
+            <a href="https://app.fuelai.com/" class="product-link" target="_blank">App</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">AI Business Launchpad (Scalova)</div>
+          <div class="product-desc">Brand builder generating logos, names, and pitch decks in minutes.</div>
+          <div class="product-links">
+            <a href="https://www.scalova.ai/" class="product-link" target="_blank">Live</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Golden Vault</div>
+          <div class="product-desc">Skill development platform with affiliate reseller and engagement tracking.</div>
+          <div class="product-links">
+            <a href="https://goldenvault.org/" class="product-link" target="_blank">Platform</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">AI Fabricator</div>
+          <div class="product-desc">No-code AI agent creator with drag-and-drop workflow orchestration.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Demo</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">EnglishMate</div>
+          <div class="product-desc">AI voice tutor with real-time grammar and conversation improvement.</div>
+          <div class="product-links">
+            <a href="https://englishmate.vercel.app/" class="product-link" target="_blank">Try</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Health AI (Cognipath)</div>
+          <div class="product-desc">Bilingual speech-to-text for FHIR-compliant medical e-prescriptions.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Demo</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Justice AI</div>
+          <div class="product-desc">Legal framework converting statutes to simple insights for crisis victims.</div>
+          <div class="product-links">
+            <a href="https://justice-frontend-v3.vercel.app/" class="product-link" target="_blank">Site</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">FloodShield</div>
+          <div class="product-desc">Predictive disaster prevention using satellite imagery and water gauges.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Demo</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Site Genie</div>
+          <div class="product-desc">Generative website engine building responsive sites in minutes.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Demo</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Karigori</div>
+          <div class="product-desc">AI job-matching agent with automated corporate vacancy extraction.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Guide</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">The 3rd Eye</div>
+          <div class="product-desc">Business intelligence platform with machine-agnostic AI Sensor.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Spec</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">TrackIO</div>
+          <div class="product-desc">Transit monitoring with real-time vehicle tracking and passenger counting.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Spec</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Halal GPT (Huda 2.0)</div>
+          <div class="product-desc">Theological AI with cross-referenced scholarly guidance verification.</div>
+          <div class="product-links">
+            <a href="https://halal-gpt.vercel.app/" class="product-link" target="_blank">Chat</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">City Pass</div>
+          <div class="product-desc">Smart citizen platform for cashless multi-modal transportation access.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Spec</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">FlyNepal</div>
+          <div class="product-desc">Multi-channel logistics booking with flights, hotels, and real-time comparison.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Spec</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Monitor AI</div>
+          <div class="product-desc">Virtual education intelligence with attention detection and engagement analytics.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Spec</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Productivity AI</div>
+          <div class="product-desc">Engineering assistant for planning, visualization, and P&ID mapping.</div>
+          <div class="product-links">
+            <a href="#" class="product-link">Spec</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- COMPANY LOGOS SECTION -->
+    <section class="logos-section">
+      <div class="logos-header">
+        <h2>30+ Companies Collaborating</h2>
+      </div>
+
+      <div class="logos-grid">
+        <div class="logo-item">Startup A</div>
+        <div class="logo-item">Tech Corp B</div>
+        <div class="logo-item">Growth Co C</div>
+        <div class="logo-item">Venture D</div>
+        <div class="logo-item">Global E</div>
+        <div class="logo-item">Innovation F</div>
+        <div class="logo-item">Digital G</div>
+        <div class="logo-item">Future H</div>
+        <div class="logo-item">Scale I</div>
+      </div>
+
+      <p style="margin-top: 40px; color: var(--muted); font-size: 14px;">
+        Plus 21 more companies across Southeast Asia, South Asia, and global markets. Each collaborating on post-AI strategies, talent curation, and software insurance.
+      </p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- MEDIA & METRICS SECTION -->
+    <section class="media-section">
+      <div class="media-header">
+        <h2>In the News</h2>
+        <p>Featured in media and recognized for impact</p>
+      </div>
+
+      <div class="media-grid">
+        <div class="media-item">
+          <div class="media-image">UN SDG Championship</div>
+          <div class="media-content">
+            <div class="media-metric">2024</div>
+            <div class="media-title">UN Sustainable Development Championship</div>
+            <div class="media-desc">Global recognition for post-AI software architecture approach</div>
+          </div>
+        </div>
+
+        <div class="media-item">
+          <div class="media-image">Research Tour</div>
+          <div class="media-content">
+            <div class="media-metric">6</div>
+            <div class="media-title">Countries on Sponsored Tour</div>
+            <div class="media-desc">Validating sovereign innovation across borders</div>
+          </div>
+        </div>
+
+        <div class="media-item">
+          <div class="media-image">Audits Complete</div>
+          <div class="media-content">
+            <div class="media-metric">3000+</div>
+            <div class="media-title">Products Audited</div>
+            <div class="media-desc">Software insurance analysis across industries</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SPONSORSHIP SECTION -->
+    <section class="sponsor-section" id="sponsor">
+      <div class="sponsor-header">
+        <h2>Research Tour 2025</h2>
+      </div>
+
+      <p class="sponsor-subtitle">
+        I'm on a mission to explore how sovereign innovation works across the globe. Next stop: Spain. Digital nomad travel sponsored by forward-thinking partners who believe in building software differently.
+      </p>
+
+      <div class="sponsor-details">
+        <div class="detail-box">
+          <div class="detail-label">Current Location</div>
+          <div class="detail-value">On the Road</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">Next Destination</div>
+          <div class="detail-value">Spain</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">Tour Duration</div>
+          <div class="detail-value">2025-2026</div>
+        </div>
+      </div>
+
+      <p style="font-size: 16px; color: var(--muted); margin-top: 24px; line-height: 1.6;">
+        Interested in sponsoring part of the research tour? Or want to join the movement?
+      </p>
+
+      <a href="mailto:waliulnohan@gmail.com?subject=Let%27s%20Work%20Together&body=Hi%20Nohan%2C%0A%0AI%27m%20interested%20in%20sponsoring%20or%20collaborating%20with%20you.%0A%0A" class="sponsor-btn">Get in Touch</a>
+    </section>
+
+    <!-- CONTACT FOOTER -->
+    <section class="contact-footer">
+      <div class="contact-info">
+        <div>Email: <a href="mailto:waliulnohan@gmail.com">waliulnohan@gmail.com</a></div>
+        <div>WhatsApp: <a href="https://wa.me/8801875490002">+88 018 7549 0002</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/md-waliul-islam-nohan/" target="_blank">Profile</a> | GitHub: <a href="https://github.com/Waliulislamnohan" target="_blank">Waliulislamnohan</a></div>
+      </div>
+      <p style="font-size: 13px; color: var(--muted); margin-top: 20px;">
+        Building the post-AI era, one company at a time.
+      </p>
     </section>
   </main>
+
   <script>
-    // Scroll progress bar
-    var progressBar = document.getElementById('scroll-progress');
-    function updateProgress() {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = pct + '%';
-    }
-
-    // Reveal-on-scroll for cards
-    var revealEls = document.querySelectorAll('.reveal');
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
-
-    // Active nav link highlighting
-    var navLinks = document.querySelectorAll('.topnav-links a');
-    var sections = Array.prototype.slice.call(navLinks).map(function (link) {
-      return document.querySelector(link.getAttribute('href'));
-    });
-
-    function updateActiveNav() {
-      var fromTop = window.scrollY + 90;
-      var currentIndex = 0;
-      sections.forEach(function (sec, i) {
-        if (sec && sec.offsetTop <= fromTop) currentIndex = i;
-      });
-      navLinks.forEach(function (link, i) {
-        link.classList.toggle('active', i === currentIndex);
-      });
-    }
-
-    // Style switcher — cycles through Glassmorphism / Neomorphism /
-    // Liquid Glass / Spandle UI and remembers the choice for next visit.
-    var THEMES = [
-      { key: 'glass',   label: '🎨 Glassmorphism' },
-      { key: 'neo',     label: '🪨 Neomorphism' },
-
-      { key: 'spandle', label: '🟧 Spandle UI' }
-    ];
-    var styleSwitchBtn = document.getElementById('style-switch-btn');
-
-    function applyTheme(key) {
-      if (key === 'glass') {
-        document.body.removeAttribute('data-theme');
+    // Visitor Detection & Personalization
+    function initVisitorDetection() {
+      const storedType = localStorage.getItem('visitorType');
+      
+      if (!storedType) {
+        document.getElementById('visitorModal').classList.add('active');
       } else {
-        document.body.setAttribute('data-theme', key);
+        showCardsForType(storedType);
       }
-      var theme = THEMES.find(function (t) { return t.key === key; });
-      styleSwitchBtn.textContent = theme ? theme.label : THEMES[0].label;
-      try { localStorage.setItem('nohan-portfolio-theme', key); } catch (e) {}
     }
 
-    function currentThemeKey() {
-      return document.body.getAttribute('data-theme') || 'glass';
+    function setVisitorType(type) {
+      localStorage.setItem('visitorType', type);
+      document.getElementById('visitorModal').classList.remove('active');
+      showCardsForType(type);
     }
 
-    styleSwitchBtn.addEventListener('click', function () {
-      var currentIndex = THEMES.findIndex(function (t) { return t.key === currentThemeKey(); });
-      var nextIndex = (currentIndex + 1) % THEMES.length;
-      applyTheme(THEMES[nextIndex].key);
-    });
+    function showCardsForType(type) {
+      const allCards = document.querySelectorAll('.adaptive-card');
+      allCards.forEach(card => card.classList.remove('hidden-card'));
 
-    (function initTheme() {
-      var saved = 'glass';
-      try { saved = localStorage.getItem('nohan-portfolio-theme') || 'glass'; } catch (e) {}
-      applyTheme(saved);
-    })();
-
-    // Floating jump-to-contact / back-to-top button
-    // Download CV (PDF) — generates and downloads an actual .pdf file using
-    // html2pdf.js. Falls back to the browser print dialog if the library
-    // failed to load (e.g. no internet access to the CDN).
-    var downloadCvBtn = document.getElementById('download-cv-btn');
-    var downloadCvBtnDefaultLabel = downloadCvBtn.textContent;
-    var mainEl = document.querySelector('main');
-
-    function fallbackToPrint() {
-      var originalTitle = document.title;
-      document.title = 'MD Waliul Islam Nohan - CV';
-      window.print();
-      window.addEventListener('afterprint', function restoreTitle() {
-        document.title = originalTitle;
-        window.removeEventListener('afterprint', restoreTitle);
-      });
-    }
-
-    downloadCvBtn.addEventListener('click', function () {
-      if (typeof html2pdf === 'undefined') {
-        fallbackToPrint();
-        return;
+      if (type === 'company') {
+        document.getElementById('card-engineer').classList.add('hidden-card');
+        document.getElementById('card-junior').classList.add('hidden-card');
+      } else if (type === 'engineer') {
+        document.getElementById('card-company').classList.add('hidden-card');
+        document.getElementById('card-junior').classList.add('hidden-card');
+      } else if (type === 'junior') {
+        document.getElementById('card-company').classList.add('hidden-card');
+        document.getElementById('card-engineer').classList.add('hidden-card');
       }
-
-      downloadCvBtn.disabled = true;
-      downloadCvBtn.textContent = '⏳ Preparing PDF…';
-      document.body.classList.add('pdf-export-mode');
-
-      var opt = {
-        margin: [10, 8, 10, 8],
-        filename: 'MD-Waliul-Islam-Nohan-CV.pdf',
-        image: { type: 'jpeg', quality: 0.95 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'avoid-all'] }
-      };
-
-      // Wait a frame so the class change re-paints before capture
-      requestAnimationFrame(function () {
-        html2pdf().set(opt).from(mainEl).save()
-          .catch(function () {
-            fallbackToPrint();
-          })
-          .finally(function () {
-            document.body.classList.remove('pdf-export-mode');
-            downloadCvBtn.disabled = false;
-            downloadCvBtn.textContent = downloadCvBtnDefaultLabel;
-          });
-      });
-    });
-
-    var jumpFab = document.getElementById('jump-fab');
-    var contactSection = document.getElementById('contact-footer');
-
-    function updateJumpFab() {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var nearBottom = docHeight > 0 && (scrollTop / docHeight) > 0.85;
-
-      jumpFab.classList.toggle('show', scrollTop > 300);
-      jumpFab.textContent = nearBottom ? '↑' : '↓';
-      jumpFab.title = nearBottom ? 'Back to top' : 'Jump to contact';
-      jumpFab.dataset.mode = nearBottom ? 'top' : 'down';
     }
 
-    jumpFab.addEventListener('click', function () {
-      if (jumpFab.dataset.mode === 'top') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Modal overlay click to close (optional)
+    document.addEventListener('click', function(event) {
+      const modal = document.getElementById('visitorModal');
+      const modalContent = document.querySelector('.modal-content');
+      
+      if (event.target === modal) {
+        modal.classList.remove('active');
       }
     });
 
-    window.addEventListener('scroll', function () {
-      updateProgress();
-      updateActiveNav();
-      updateJumpFab();
-    }, { passive: true });
-
-    updateProgress();
-    updateActiveNav();
-    updateJumpFab();
+    // Initialize on page load
+    window.addEventListener('load', initVisitorDetection);
   </script>
-
-  <script>
-    // ---- Generic Tinder-style swipeable cards for every multi-card section (mobile) ----
-    (function () {
-      const CARD_SELECTORS = '.card, .scenario-card, .talent-card';
-      const sections = Array.from(document.querySelectorAll('main section'));
-      const decks = []; // { section, deck, slides, dots[] }
-
-      sections.forEach((section, sIdx) => {
-        const grid = section.querySelector(':scope > .grid');
-        if (!grid) return;
-        const cards = Array.from(grid.children).filter((el) => el.matches(CARD_SELECTORS));
-        if (cards.length < 2) return;
-
-        section.classList.add('has-swipe-deck');
-
-        const deck = document.createElement('div');
-        deck.className = 'swipe-deck';
-        deck.id = 'swipe-deck-' + sIdx;
-
-        cards.forEach((card) => {
-          const slide = document.createElement('div');
-          slide.className = 'swipe-slide';
-          const clone = card.cloneNode(true);
-          clone.classList.remove('reveal');
-          slide.appendChild(clone);
-          deck.appendChild(slide);
-        });
-
-        grid.insertAdjacentElement('afterend', deck);
-
-        const hint = document.createElement('p');
-        hint.className = 'swipe-hint';
-        hint.textContent = '👈 Swipe to browse 👉';
-        deck.insertAdjacentElement('afterend', hint);
-
-        decks.push({
-          section,
-          deck,
-          slides: Array.from(deck.querySelectorAll('.swipe-slide')),
-        });
-      });
-
-      if (!decks.length) return;
-
-      // ---- Single shared bottom dock ----
-      const dock = document.createElement('div');
-      dock.className = 'mobile-dock';
-      dock.id = 'mobile-dock';
-      dock.innerHTML =
-        '<button class="dock-autoplay-toggle" id="dock-autoplay-toggle" aria-label="Pause/play auto-scroll">⏸</button>' +
-        '<div class="dock-dots" id="dock-dots"></div>';
-      document.body.appendChild(dock);
-      const dotsWrap = dock.querySelector('#dock-dots');
-      const autoplayToggle = dock.querySelector('#dock-autoplay-toggle');
-
-      let current = null; // active deck entry
-      let autoplayEnabled = true;
-      let idleTimer = null;
-      let autoplayTimer = null;
-      const IDLE_RESUME_MS = 4500;
-      const AUTOPLAY_INTERVAL_MS = 3200;
-
-      function buildDots(entry) {
-        dotsWrap.innerHTML = '';
-        entry.dots = entry.slides.map((_, i) => {
-          const dot = document.createElement('button');
-          dot.className = 'dock-dot';
-          dot.setAttribute('aria-label', 'Card ' + (i + 1));
-          dot.addEventListener('click', () => {
-            pauseAutoplayTemporarily();
-            scrollToSlide(entry, i);
-          });
-          dotsWrap.appendChild(dot);
-          return dot;
-        });
-      }
-
-      function setActiveDot(entry, index) {
-        if (!entry.dots) return;
-        entry.dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
-        entry.activeIndex = index;
-      }
-
-      function closestSlideIndex(entry) {
-        const deck = entry.deck;
-        const center = deck.scrollLeft + deck.clientWidth / 2;
-        let closest = 0;
-        let closestDist = Infinity;
-        entry.slides.forEach((slide, i) => {
-          const mid = slide.offsetLeft + slide.clientWidth / 2;
-          const dist = Math.abs(mid - center);
-          if (dist < closestDist) {
-            closestDist = dist;
-            closest = i;
-          }
-        });
-        return closest;
-      }
-
-      function scrollToSlide(entry, index) {
-        const slide = entry.slides[index];
-        if (!slide) return;
-        entry.deck.scrollTo({
-          left: slide.offsetLeft - (entry.deck.clientWidth - slide.clientWidth) / 2,
-          behavior: 'smooth',
-        });
-      }
-
-      function attachScrollListener(entry) {
-        if (entry._listenerAttached) return;
-        entry._listenerAttached = true;
-        let ticking = false;
-        entry.deck.addEventListener(
-          'scroll',
-          () => {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-              setActiveDot(entry, closestSlideIndex(entry));
-              ticking = false;
-            });
-          },
-          { passive: true }
-        );
-        ['touchstart', 'pointerdown', 'wheel'].forEach((evt) => {
-          entry.deck.addEventListener(evt, pauseAutoplayTemporarily, { passive: true });
-        });
-      }
-
-      function switchTo(entry) {
-        if (current === entry) return;
-        current = entry;
-        if (!entry.dots) buildDots(entry);
-        attachScrollListener(entry);
-        setActiveDot(entry, closestSlideIndex(entry));
-      }
-
-      function pauseAutoplayTemporarily() {
-        autoplayEnabled = false;
-        if (idleTimer) clearTimeout(idleTimer);
-        if (autoplayToggle.dataset.userPaused !== 'true') {
-          idleTimer = setTimeout(() => {
-            autoplayEnabled = true;
-          }, IDLE_RESUME_MS);
-        }
-      }
-
-      autoplayToggle.addEventListener('click', () => {
-        const userPaused = autoplayToggle.dataset.userPaused === 'true';
-        autoplayToggle.dataset.userPaused = userPaused ? 'false' : 'true';
-        autoplayToggle.textContent = userPaused ? '⏸' : '▶';
-        autoplayEnabled = userPaused;
-        if (idleTimer) clearTimeout(idleTimer);
-      });
-
-      // Auto-advance the currently visible deck so people discover it's swipeable
-      autoplayTimer = setInterval(() => {
-        if (!current || !autoplayEnabled) return;
-        if (document.hidden) return;
-        const next = (current.activeIndex + 1) % current.slides.length;
-        scrollToSlide(current, next);
-      }, AUTOPLAY_INTERVAL_MS);
-
-      // Track which section's deck is in view; show dock only then
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            let best = null;
-            let bestRatio = 0;
-            entries.forEach((e) => {
-              const entry = decks.find((d) => d.section === e.target);
-              if (!entry) return;
-              if (e.isIntersecting && e.intersectionRatio > bestRatio) {
-                bestRatio = e.intersectionRatio;
-                best = entry;
-              }
-            });
-            dock.classList.toggle('is-visible', !!best);
-            if (best) switchTo(best);
-          },
-          { threshold: [0.2, 0.4, 0.6] }
-        );
-        decks.forEach((entry) => observer.observe(entry.section));
-      } else {
-        switchTo(decks[0]);
-        dock.classList.add('is-visible');
-      }
-    })();
-  </script>
-
-  <script>
-    // ---- Mobile header dropdown toggle ----
-    (function () {
-      const btn = document.getElementById('nav-menu-btn');
-      const dropdown = document.getElementById('nav-dropdown');
-      if (!btn || !dropdown) return;
-
-      function close() {
-        btn.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-        dropdown.classList.remove('is-open');
-      }
-
-      function toggle() {
-        const open = btn.classList.toggle('is-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        dropdown.classList.toggle('is-open', open);
-      }
-
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggle();
-      });
-
-      dropdown.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
-
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target) && e.target !== btn) close();
-      });
-    })();
-  </script>
-
-  <script>
-    // ---- Left-side section navigator (mobile) — creative "orbit rail" with idle auto-hide ----
-    (function () {
-      const sections = Array.from(document.querySelectorAll('main > section')).filter(
-        (s) => s.offsetHeight > 40
-      );
-      if (!sections.length) return;
-
-      const nav = document.createElement('div');
-      nav.className = 'side-nav';
-      nav.setAttribute('aria-label', 'Section navigator');
-
-      const fill = document.createElement('div');
-      fill.className = 'side-nav-fill';
-      nav.appendChild(fill);
-
-      document.body.appendChild(nav);
-
-      const FALLBACK_ICONS = ['✦', '✧', '◆', '●', '◇', '✺', '✪', '✷', '✸'];
-
-      const dots = sections.map((section, i) => {
-        const heading = section.querySelector('h2');
-        const tag = section.querySelector('.section-tag');
-        const label = heading ? heading.textContent.trim() : 'Section';
-        let icon = FALLBACK_ICONS[i % FALLBACK_ICONS.length];
-        if (tag) {
-          const match = tag.textContent.trim().match(/^\S+/);
-          if (match) icon = match[0];
-        }
-        const dot = document.createElement('button');
-        dot.className = 'side-nav-dot';
-        dot.innerHTML =
-          '<span class="bead-icon">' + icon + '</span>' +
-          '<span class="side-nav-label">' + label + '</span>';
-        dot.addEventListener('click', () => {
-          wake();
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-        nav.appendChild(dot);
-        return dot;
-      });
-
-      function setActive(index) {
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
-      }
-
-      function updateFill() {
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - doc.clientHeight;
-        const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-        const railHeight = nav.clientHeight - 28;
-        fill.style.height = Math.max(0, railHeight * ratio) + 'px';
-      }
-
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            let best = null;
-            let bestRatio = 0;
-            entries.forEach((e) => {
-              if (e.isIntersecting && e.intersectionRatio > bestRatio) {
-                bestRatio = e.intersectionRatio;
-                best = e.target;
-              }
-            });
-            if (best) setActive(sections.indexOf(best));
-          },
-          { threshold: [0.25, 0.5, 0.75] }
-        );
-        sections.forEach((s) => observer.observe(s));
-      }
-
-      // ---- Idle auto-collapse: rail tucks away when the person isn't using it ----
-      const IDLE_DELAY_MS = 2600;
-      const FIRST_HINT_MS = 2800;
-      let idleTimer = null;
-
-      function sleep() {
-        nav.classList.add('is-idle');
-      }
-
-      function wake() {
-        nav.classList.remove('is-idle');
-        if (idleTimer) clearTimeout(idleTimer);
-        idleTimer = setTimeout(sleep, IDLE_DELAY_MS);
-      }
-
-      window.addEventListener(
-        'scroll',
-        () => {
-          updateFill();
-          wake();
-        },
-        { passive: true }
-      );
-
-      nav.addEventListener('touchstart', wake, { passive: true });
-      nav.addEventListener('mouseenter', wake);
-
-      updateFill();
-      setActive(0);
-      // Show fully expanded briefly on load so people notice it, then tuck away
-      idleTimer = setTimeout(sleep, FIRST_HINT_MS);
-    })();
-  </script>
-
-  <script>
-    // ---- Custom cursor circle for mouse/trackpad devices ----
-    (function () {
-      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-      document.body.classList.add('has-custom-cursor');
-      const cursor = document.createElement('div');
-      cursor.className = 'custom-cursor';
-      document.body.appendChild(cursor);
-
-      let mouseX = 0;
-      let mouseY = 0;
-      let curX = 0;
-      let curY = 0;
-      let started = false;
-
-      function loop() {
-        curX += (mouseX - curX) * 0.2;
-        curY += (mouseY - curY) * 0.2;
-        cursor.style.transform = 'translate(' + curX + 'px, ' + curY + 'px)';
-        requestAnimationFrame(loop);
-      }
-      requestAnimationFrame(loop);
-
-      window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        if (!started) {
-          started = true;
-          curX = mouseX;
-          curY = mouseY;
-          cursor.classList.add('is-active');
-        }
-      });
-
-      window.addEventListener('mousedown', () => cursor.classList.add('is-pressed'));
-      window.addEventListener('mouseup', () => cursor.classList.remove('is-pressed'));
-      document.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
-      document.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
-
-      document.addEventListener('mouseover', (e) => {
-        if (e.target.closest('a, button, .card, .scenario-card, .talent-card')) {
-          cursor.classList.add('is-hovering');
-        }
-      });
-      document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('a, button, .card, .scenario-card, .talent-card')) {
-          cursor.classList.remove('is-hovering');
-        }
-      });
-    })();
-  </script>
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ca00fcc150b41ab83b9d565b0562b89"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
